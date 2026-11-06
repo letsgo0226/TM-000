@@ -12,6 +12,7 @@
     {"id":"TM-007","record":"TM-007-Three-Cat-Cookies-Master.md","cores":["three_cat_cookies_universal_pocket_2kb.sh"],"status":"preserved"},
     {"id":"TM-008","record":"TM-008-God-Turing-Machine-No-SHA-Master.md","cores":["god_turing_machine_no_sha_2kb.sh"],"status":"registered-candidate"},
     {"id":"TM-009","record":"TM-009-Photonic-Singularity-UGTM.md","cores":["Photonic_Singularity_Exact_Arithmetic_Encoding_Closed_Loop_2KB.sh"],"status":"active-total-machine-reference"},
-    {"id":"TM-010","record":"TM-010-Essence-Existence-Alignment-UCGTM.md","cores":["essence_existence_alignment_ucgtm_2kb.sh"],"considers":["TM-001","TM-002","TM-003","TM-004","TM-005","TM-006","TM-007","TM-008","TM-009"],"pipeline":["ENCODE","LOAD","VERIFY"],"status":"active-research-prototype"}
+    {"id":"TM-010","record":"TM-010-Essence-Existence-Alignment-UCGTM.md","cores":["essence_existence_alignment_ucgtm_2kb.sh"],"considers":["TM-001","TM-002","TM-003","TM-004","TM-005","TM-006","TM-007","TM-008","TM-009"],"pipeline":["ENCODE","LOAD","VERIFY","COMPLETE"],"status":"active-research-prototype"},
+    {"id":"TM-011","record":"TM-011-Logical-Chronon-Temporal-Closure.md","cores":["logical_chronon_temporal_closure_2kb.sh"],"considers":["TM-001","TM-002","TM-003","TM-004","TM-005","TM-006","TM-007","TM-008","TM-009","TM-010"],"temporal_state":"TEMPORALLY_CLOSED","completeness_scope":"FINITE_HALTING_TRACE","status":"active-research-prototype"}
   ]
 }
