@@ -2,7 +2,11 @@
 
 **Registry ID:** TM-011  
 **Registration date:** 2026-11-06  
-**Status:** finite computational research prototype; not a physical time-particle detector.
+**Status:** current total-machine reference under `TEMPORAL_REFERENCE_ONLY`; not a physical time-particle detector or a functionally complete merger of every registered machine.
+
+## Total-machine designation
+
+The unchanged original 1,183-byte TM-011 core is designated as the registry's current total-machine reference because logical chronons and temporal-closure certificates provide the common time framework under which all registered machines can be described. The designation does not add, execute, merge, or derive the individual functions of TM-001 through TM-010. TM-009 remains preserved as the exact photonic baseline.
 
 ## Purpose
 
