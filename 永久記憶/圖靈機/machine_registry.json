@@ -130,6 +130,22 @@
       "totality_scope": "BOUNDED_SIMULATION_ONLY",
       "completeness_scope": "FINITE_TRACE_AND_CYCLE_WITNESS",
       "status": "active-bounded-total-reference"
+    },
+    {
+      "id": "UTM-PLEIADES",
+      "record": "UTM-PLEIADES-v0.1.md",
+      "cores": [
+        "UTM-PLEIADES-v0.1-one-liner.sh"
+      ],
+      "considers": [
+        "TM-009",
+        "TM-011",
+        "TM-014"
+      ],
+      "designation": "candidate-master-universal-simulator",
+      "totality_scope": "BOUNDED_SIMULATION_ONLY",
+      "completeness_scope": "FINITE_TRACE_AND_CYCLE_WITNESS",
+      "status": "active-candidate-not-account-orchestrator"
     }
   ]
 }
