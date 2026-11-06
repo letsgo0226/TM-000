@@ -3,16 +3,133 @@
   "registry": "Cosmic Rosetta Stone permanent-memory Turing-machine prototypes",
   "execution_policy": "read-only metadata and byte verification; never execute registered cores implicitly",
   "entries": [
-    {"id":"TM-001","record":"TM-001-Schumann-Machine.md","cores":[],"status":"preserved"},
-    {"id":"TM-002","record":"TM-002-Ultimate-Schumann-Machine.md","cores":[],"status":"protected-baseline"},
-    {"id":"TM-003","record":"TM-003-DTM-22-Dorayaki.md","cores":[],"status":"preserved"},
-    {"id":"TM-004","record":"TM-004-APTM-Omega.md","cores":[],"status":"preserved"},
-    {"id":"TM-005","record":"TM-005-Tier_11.md","cores":[],"status":"preserved"},
-    {"id":"TM-006","record":"TM-006-Eternity-Machine.md","cores":["Eternity_Machine.sh"],"status":"preserved"},
-    {"id":"TM-007","record":"TM-007-Three-Cat-Cookies-Master.md","cores":["three_cat_cookies_universal_pocket_2kb.sh"],"status":"preserved"},
-    {"id":"TM-008","record":"TM-008-God-Turing-Machine-No-SHA-Master.md","cores":["god_turing_machine_no_sha_2kb.sh"],"status":"registered-candidate"},
-    {"id":"TM-009","record":"TM-009-Photonic-Singularity-UGTM.md","cores":["Photonic_Singularity_Exact_Arithmetic_Encoding_Closed_Loop_2KB.sh"],"status":"preserved-photonic-exact-baseline"},
-    {"id":"TM-010","record":"TM-010-Essence-Existence-Alignment-UCGTM.md","cores":["essence_existence_alignment_ucgtm_2kb.sh"],"considers":["TM-001","TM-002","TM-003","TM-004","TM-005","TM-006","TM-007","TM-008","TM-009"],"pipeline":["ENCODE","LOAD","VERIFY","COMPLETE"],"status":"active-research-prototype"},
-    {"id":"TM-011","record":"TM-011-Logical-Chronon-Temporal-Closure.md","cores":["logical_chronon_temporal_closure_2kb.sh"],"considers":["TM-001","TM-002","TM-003","TM-004","TM-005","TM-006","TM-007","TM-008","TM-009","TM-010"],"designation":"current-total-machine-reference","totality_scope":"TEMPORAL_REFERENCE_ONLY","temporal_state":"TEMPORALLY_CLOSED","completeness_scope":"FINITE_HALTING_TRACE","status":"active-total-machine-reference"}
+    {
+      "id": "TM-001",
+      "record": "TM-001-Schumann-Machine.md",
+      "cores": [],
+      "status": "preserved"
+    },
+    {
+      "id": "TM-002",
+      "record": "TM-002-Ultimate-Schumann-Machine.md",
+      "cores": [],
+      "status": "protected-baseline"
+    },
+    {
+      "id": "TM-003",
+      "record": "TM-003-DTM-22-Dorayaki.md",
+      "cores": [],
+      "status": "preserved"
+    },
+    {
+      "id": "TM-004",
+      "record": "TM-004-APTM-Omega.md",
+      "cores": [],
+      "status": "preserved"
+    },
+    {
+      "id": "TM-005",
+      "record": "TM-005-Tier_11.md",
+      "cores": [],
+      "status": "preserved"
+    },
+    {
+      "id": "TM-006",
+      "record": "TM-006-Eternity-Machine.md",
+      "cores": [
+        "Eternity_Machine.sh"
+      ],
+      "status": "preserved"
+    },
+    {
+      "id": "TM-007",
+      "record": "TM-007-Three-Cat-Cookies-Master.md",
+      "cores": [
+        "three_cat_cookies_universal_pocket_2kb.sh"
+      ],
+      "status": "preserved"
+    },
+    {
+      "id": "TM-008",
+      "record": "TM-008-God-Turing-Machine-No-SHA-Master.md",
+      "cores": [
+        "god_turing_machine_no_sha_2kb.sh"
+      ],
+      "status": "registered-candidate"
+    },
+    {
+      "id": "TM-009",
+      "record": "TM-009-Photonic-Singularity-UGTM.md",
+      "cores": [
+        "Photonic_Singularity_Exact_Arithmetic_Encoding_Closed_Loop_2KB.sh"
+      ],
+      "status": "preserved-photonic-exact-baseline"
+    },
+    {
+      "id": "TM-010",
+      "record": "TM-010-Essence-Existence-Alignment-UCGTM.md",
+      "cores": [
+        "essence_existence_alignment_ucgtm_2kb.sh"
+      ],
+      "considers": [
+        "TM-001",
+        "TM-002",
+        "TM-003",
+        "TM-004",
+        "TM-005",
+        "TM-006",
+        "TM-007",
+        "TM-008",
+        "TM-009"
+      ],
+      "pipeline": [
+        "ENCODE",
+        "LOAD",
+        "VERIFY",
+        "COMPLETE"
+      ],
+      "status": "active-research-prototype"
+    },
+    {
+      "id": "TM-011",
+      "record": "TM-011-Logical-Chronon-Temporal-Closure.md",
+      "cores": [
+        "logical_chronon_temporal_closure_2kb.sh"
+      ],
+      "considers": [
+        "TM-001",
+        "TM-002",
+        "TM-003",
+        "TM-004",
+        "TM-005",
+        "TM-006",
+        "TM-007",
+        "TM-008",
+        "TM-009",
+        "TM-010"
+      ],
+      "designation": "current-total-machine-reference",
+      "totality_scope": "TEMPORAL_REFERENCE_ONLY",
+      "temporal_state": "TEMPORALLY_CLOSED",
+      "completeness_scope": "FINITE_HALTING_TRACE",
+      "status": "active-total-machine-reference"
+    },
+    {
+      "id": "TM-014",
+      "record": "TM-014-Totalized-Universal-Turing-Machine.md",
+      "cores": [
+        "TM-014-v0.2-2KB.sh"
+      ],
+      "considers": [
+        "TM-009",
+        "TM-011",
+        "TM-012",
+        "TM-013"
+      ],
+      "designation": "current-bounded-total-universal-simulation-reference",
+      "totality_scope": "BOUNDED_SIMULATION_ONLY",
+      "completeness_scope": "FINITE_TRACE_AND_CYCLE_WITNESS",
+      "status": "active-bounded-total-reference"
+    }
   ]
 }
