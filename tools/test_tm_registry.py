@@ -17,6 +17,9 @@ def main():
     for machine in ("TM-008", "TM-009", "TM-010"):
         out = json.loads(subprocess.check_output(["bash", str(ONE), machine], text=True, cwd=ROOT))
         assert out["selected"] == machine
+        assert out["verification_state"] == "COMPLETE"
+        assert out["completeness_scope"] == "FINITE_REGISTRY"
+        assert out["pipeline"] == ["ENCODE", "LOAD", "VERIFY", "COMPLETE"]
         assert out["predecessors"] == [f"TM-{n:03d}" for n in range(1, 10)]
         assert out["essence_existence_aligned"] is True
         assert out["conditional_entropy_bits"] == 0
