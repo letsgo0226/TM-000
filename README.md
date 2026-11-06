@@ -1,6 +1,6 @@
 # TM-000 — Turing-Machine Prototype Registry
 
-TM-000 is the parent registry for the TM-001 through TM-011 research prototypes.
+TM-000 is the parent registry for the TM-001 through TM-014 (TM-012 and TM-013 remain unregistered research precursors) research prototypes.
 
 ## Registered machines
 
@@ -16,7 +16,8 @@ TM-000 is the parent registry for the TM-001 through TM-011 research prototypes.
 | [TM-008](永久記憶/圖靈機/TM-008-God-Turing-Machine-No-SHA-Master.md) | GTM-001 No-SHA | registered orchestration candidate |
 | [TM-009](永久記憶/圖靈機/TM-009-Photonic-Singularity-UGTM.md) | Photonic Singularity UGTM | preserved exact photonic baseline |
 | [TM-010](永久記憶/圖靈機/TM-010-Essence-Existence-Alignment-UCGTM.md) | Essence–Existence Exact-Alignment UCGTM | active registry research prototype |
-| [TM-011](永久記憶/圖靈機/TM-011-Logical-Chronon-Temporal-Closure.md) | Logical Chronon and Temporal-Closure Certificate Machine | current total-machine reference (`TEMPORAL_REFERENCE_ONLY`) |
+| [TM-011](永久記憶/圖靈機/TM-011-Logical-Chronon-Temporal-Closure.md) | Logical Chronon and Temporal-Closure Certificate Machine | temporal reference (`TEMPORAL_REFERENCE_ONLY`) |
+| [TM-014](永久記憶/圖靈機/TM-014-Totalized-Universal-Turing-Machine.md) | Totalized Universal Turing Machine v0.2 | current bounded-total simulation reference (`BOUNDED_SIMULATION_ONLY`) |
 
 ## Scope
 
@@ -33,6 +34,7 @@ Machine-readable index: [machine_registry.json](永久記憶/圖靈機/machine_r
 ```bash
 python3 tools/load_turing_registry.py
 python3 tools/load_turing_registry.py --select TM-008
+python3 tools/load_turing_registry.py --select TM-014
 python3 tools/load_turing_registry.py --select TM-010 --run-tm010
 bash 永久記憶/圖靈機/logical_chronon_temporal_closure_2kb.sh 111
 python3 tools/test_tm_registry.py
@@ -44,7 +46,7 @@ The first two commands perform read-only verification. The third explicitly runs
 
 Initial source: [letsgo0226/Cosmic_Rosetta_Stone](https://github.com/letsgo0226/Cosmic_Rosetta_Stone) main commit `ffbb058123e1ef876c794f1b6828353f22588741` (2026-11-06).
 
-The unchanged original TM-011 is the current total-machine reference under `TEMPORAL_REFERENCE_ONLY`. It supplies the common logical-chronon framework but does not merge every registered function. TM-009 remains the preserved exact photonic baseline.
+The unchanged original TM-011 remains the temporal reference under `TEMPORAL_REFERENCE_ONLY`. TM-014 is the bounded-total simulation reference under `BOUNDED_SIMULATION_ONLY`. It supplies the common logical-chronon framework but does not merge every registered function. TM-009 remains the preserved exact photonic baseline.
 
 ## Scientific boundary
 
