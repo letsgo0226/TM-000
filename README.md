@@ -1,6 +1,6 @@
 # TM-000 — Turing-Machine Prototype Registry
 
-TM-000 is the parent registry for the TM-001 through TM-010 research prototypes.
+TM-000 is the parent registry for the TM-001 through TM-011 research prototypes.
 
 ## Registered machines
 
@@ -15,7 +15,8 @@ TM-000 is the parent registry for the TM-001 through TM-010 research prototypes.
 | [TM-007](永久記憶/圖靈機/TM-007-Three-Cat-Cookies-Master.md) | Three Cat Cookies Master | preserved pipeline prototype |
 | [TM-008](永久記憶/圖靈機/TM-008-God-Turing-Machine-No-SHA-Master.md) | GTM-001 No-SHA | registered orchestration candidate |
 | [TM-009](永久記憶/圖靈機/TM-009-Photonic-Singularity-UGTM.md) | Photonic Singularity UGTM | active total-machine reference |
-| [TM-010](永久記憶/圖靈機/TM-010-Essence-Existence-Alignment-UCGTM.md) | Essence–Existence Exact-Alignment UCGTM | active registry research prototype |\n| [TM-011](永久記憶/圖靈機/TM-011-Logical-Chronon-Temporal-Closure.md) | Logical Chronon and Temporal-Closure Certificate Machine | active finite-trace research prototype |
+| [TM-010](永久記憶/圖靈機/TM-010-Essence-Existence-Alignment-UCGTM.md) | Essence–Existence Exact-Alignment UCGTM | active registry research prototype |
+| [TM-011](永久記憶/圖靈機/TM-011-Logical-Chronon-Temporal-Closure.md) | Logical Chronon and Temporal-Closure Certificate Machine | active finite-trace research prototype |
 
 ## Scope
 
@@ -33,10 +34,11 @@ Machine-readable index: [machine_registry.json](永久記憶/圖靈機/machine_r
 python3 tools/load_turing_registry.py
 python3 tools/load_turing_registry.py --select TM-008
 python3 tools/load_turing_registry.py --select TM-010 --run-tm010
+bash 永久記憶/圖靈機/logical_chronon_temporal_closure_2kb.sh 111
 python3 tools/test_tm_registry.py
 ```
 
-The first two commands perform read-only verification. The third explicitly runs only TM-010's read-only verifier; TM-010 does not execute TM-001 through TM-009.
+The first two commands perform read-only verification. The third explicitly runs only TM-010's read-only verifier. The fourth creates a finite TM-011 logical-chronon certificate. Neither command executes the other registered machines.
 
 ## Canonical source snapshot
 
