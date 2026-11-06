@@ -146,6 +146,23 @@
       "totality_scope": "BOUNDED_SIMULATION_ONLY",
       "completeness_scope": "FINITE_TRACE_AND_CYCLE_WITNESS",
       "status": "active-candidate-not-account-orchestrator"
+    },
+    {
+      "id": "UTM-PLEIADES-v0.2",
+      "record": "UTM-PLEIADES-v0.2-plaintext.md",
+      "cores": [
+        "UTM-PLEIADES-v0.2-plaintext-one-liner.sh"
+      ],
+      "considers": [
+        "TM-009",
+        "TM-011",
+        "TM-014",
+        "TM-000"
+      ],
+      "designation": "designated-plaintext-master-core",
+      "totality_scope": "BOUNDED_SIMULATION_ONLY",
+      "completeness_scope": "FINITE_TRACE_AND_CYCLE_WITNESS",
+      "status": "active-master-candidate"
     }
   ]
 }
