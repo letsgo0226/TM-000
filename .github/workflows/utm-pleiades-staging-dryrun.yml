@@ -1,0 +1,21 @@
+name: UTM-PLEIADES Isolated Staging Dry Run
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  staging-dryrun:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify core and registry
+        run: python3 tools/test_utm_pleiades_ci.py
+      - name: Run isolated staging and simulated rollback
+        run: python3 tools/staging_dryrun.py
