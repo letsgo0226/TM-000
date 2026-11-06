@@ -10,6 +10,7 @@ LOADER = ROOT / "tools/load_turing_registry.py"
 
 def main():
     assert ONE.stat().st_size <= 2048
+    assert len(ONE.read_bytes().splitlines()) == 1
     view = json.loads(subprocess.check_output(["python3", str(LOADER)], text=True, cwd=ROOT))
     assert view["verified"] and view["execution"] == "not_run"
     assert view["ids"] == [f"TM-{n:03d}" for n in range(1, 11)]
