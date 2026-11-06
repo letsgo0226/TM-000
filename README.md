@@ -15,7 +15,7 @@ TM-000 is the parent registry for the TM-001 through TM-010 research prototypes.
 | [TM-007](永久記憶/圖靈機/TM-007-Three-Cat-Cookies-Master.md) | Three Cat Cookies Master | preserved pipeline prototype |
 | [TM-008](永久記憶/圖靈機/TM-008-God-Turing-Machine-No-SHA-Master.md) | GTM-001 No-SHA | registered orchestration candidate |
 | [TM-009](永久記憶/圖靈機/TM-009-Photonic-Singularity-UGTM.md) | Photonic Singularity UGTM | active total-machine reference |
-| [TM-010](永久記憶/圖靈機/TM-010-Essence-Existence-Alignment-UCGTM.md) | Essence–Existence Exact-Alignment UCGTM | active registry research prototype |
+| [TM-010](永久記憶/圖靈機/TM-010-Essence-Existence-Alignment-UCGTM.md) | Essence–Existence Exact-Alignment UCGTM | active registry research prototype |\n| [TM-011](永久記憶/圖靈機/TM-011-Logical-Chronon-Temporal-Closure.md) | Logical Chronon and Temporal-Closure Certificate Machine | active finite-trace research prototype |
 
 ## Scope
 
@@ -40,7 +40,7 @@ The first two commands perform read-only verification. The third explicitly runs
 
 ## Canonical source snapshot
 
-Initial source: [letsgo0226/Cosmic_Rosetta_Stone](https://github.com/letsgo0226/Cosmic_Rosetta_Stone) main commit `b63ba4d4044d760fb3b06065223a18c91b7865c8` (2026-11-06).
+Initial source: [letsgo0226/Cosmic_Rosetta_Stone](https://github.com/letsgo0226/Cosmic_Rosetta_Stone) main commit `db86b20e01996df3340166d28ff52e8b48b916a5` (2026-11-06).
 
 TM-009 remains the active total-machine reference. TM-010 does not replace TM-001 through TM-009. Future synchronization should preserve provenance and pass the registry test before merging.
 
