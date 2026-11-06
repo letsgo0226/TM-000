@@ -14,7 +14,8 @@ def main():
     assert len(ONE.read_bytes().splitlines()) == 1
     view = json.loads(subprocess.check_output(["python3", str(LOADER)], text=True, cwd=ROOT))
     assert view["verified"] and view["execution"] == "not_run"
-    assert view["ids"] == [f"TM-{n:03d}" for n in range(1, 12)]
+    assert view["ids"][:11] == [f"TM-{n:03d}" for n in range(1, 12)]
+    assert {"TM-014", "UTM-PLEIADES", "UTM-PLEIADES-v0.2"}.issubset(set(view["ids"]))
     entries = {e["id"]: e for e in json.loads((ROOT / "永久記憶/圖靈機/machine_registry.json").read_text())["entries"]}
     assert entries["TM-011"]["status"] == "active-total-machine-reference"
     assert entries["TM-011"]["totality_scope"] == "TEMPORAL_REFERENCE_ONLY"

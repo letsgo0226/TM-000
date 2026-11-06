@@ -1,0 +1,27 @@
+name: UTM-PLEIADES Safety Gate
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: utm-pleiades-safety-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    name: Verify master controller (no deployment)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Syntax, registry, and behavioral safety tests
+        run: python3 tools/test_utm_pleiades_ci.py
+      - name: Existing registry tests
+        run: python3 tools/test_tm_registry.py
