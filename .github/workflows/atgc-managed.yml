@@ -1,0 +1,39 @@
+name: ATGC Managed G257 Entropy Selector
+
+on:
+  repository_dispatch:
+    types: [atgc-reconcile]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atgc-managed-${{ github.repository }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - name: Verify 2 KB finite entropy selector
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(wc -l < lfp_atgc_tm_2kb.sh)" -eq 1
+          test "$(wc -c < lfp_atgc_tm_2kb.sh)" -lt 2048
+          sh -n lfp_atgc_tm_2kb.sh
+          sh lfp_atgc_tm_2kb.sh > atgc-certificate.json
+          python3 - <<'PY'
+          import json
+          x=json.load(open("atgc-certificate.json"))
+          assert x["encoding"]=="base257 digits=byte+1"
+          assert x["N"]==100000 and x["candidates"]==387
+          assert x["prototype"]=={"code":341,"program_hex":"53","SELF":341}
+          assert x["unique"] is True and x["fixed_point"] is True
+          assert x["limit_H_bits"]==0 and 0<=x["H_N_bits"]<=1e-12
+          assert "finite-stage computable approximation" in x["scope"]
+          print("G257_FINITE_SELECTOR_VERIFIED=1; no halting oracle, executable SELF rule, or QTM recurrence claim")
+          PY
