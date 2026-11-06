@@ -1,0 +1,31 @@
+name: Permanent-memory Turing-machine registry
+
+on:
+  pull_request:
+    paths:
+      - '永久記憶/圖靈機/**'
+      - 'tools/load_turing_registry.py'
+      - 'tools/test_tm_registry.py'
+      - '.github/workflows/tm-registry-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - '永久記憶/圖靈機/**'
+      - 'tools/load_turing_registry.py'
+      - 'tools/test_tm_registry.py'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 tools/load_turing_registry.py
+      - run: python3 tools/test_tm_registry.py
+      - run: bash 永久記憶/圖靈機/god_turing_machine_no_sha_2kb.sh | python3 -c 'import json,sys;x=json.load(sys.stdin);assert x["self_reproduced"] and x["godel_roundtrip"] and x["verified"]'
