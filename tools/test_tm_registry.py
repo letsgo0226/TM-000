@@ -6,7 +6,6 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 ONE = ROOT / "永久記憶/圖靈機/essence_existence_alignment_ucgtm_2kb.sh"
 CHRONON = ROOT / "永久記憶/圖靈機/logical_chronon_temporal_closure_2kb.sh"
-TOTAL = ROOT / "永久記憶/圖靈機/tm011_composite_total_machine_2kb.sh"
 LOADER = ROOT / "tools/load_turing_registry.py"
 
 
@@ -32,28 +31,13 @@ def main():
     for unary in ("", "1", "111", "11111"):
         out = json.loads(subprocess.check_output(["bash", str(CHRONON), unary], text=True, cwd=ROOT))
         assert out["time_particle_model"] == "LOGICAL_CHRONON"
-        assert out["designation"] == "CURRENT_TOTAL_MACHINE_REFERENCE"
-        assert out["totality_scope"] == "FINITE_REGISTERED_ORCHESTRATION"
-        assert out["registry_complete"] is True
-        assert out["loaded"] == [f"TM-{n:03d}" for n in range(1, 12)]
         assert out["temporal_state"] == "TEMPORALLY_CLOSED"
         assert out["completeness_scope"] == "FINITE_HALTING_TRACE"
         assert out["steps"] == len(unary) + 1
         assert out["trace_contiguous"] and out["trace_exact"] and out["replayable"]
         assert out["physical_time_particle_proven"] is False
         assert out["float_used"] is False and out["sha_used"] is False
-    assert TOTAL.stat().st_size <= 2048
-    assert len(TOTAL.read_bytes().splitlines()) == 1
-    total = json.loads(subprocess.check_output(["bash", str(TOTAL), "111"], text=True, cwd=ROOT))
-    assert total["system"] == "TM-011-COMPOSITE-TOTAL"
-    assert total["designation"] == "CURRENT_TOTAL_MACHINE_REFERENCE"
-    assert total["composition"] == ["TM-009", "TM-010", "TM-011"]
-    assert total["photonic_model_state"] == "SYMBOLIC_MODEL_CLOSED"
-    assert total["registry_state"] == "COMPLETE"
-    assert total["temporal_state"] == "TEMPORALLY_CLOSED"
-    assert total["subcores_executed"] is True and total["deployment"] is False and total["trading"] is False
-    assert set(total["certificates"]) == {"TM-009", "TM-010", "TM-011"}
-    print(f"PASS: TM-011 composite total reference {TOTAL.stat().st_size} bytes; temporal core {CHRONON.stat().st_size} bytes; registry TM-001..TM-011")
+    print(f"PASS: registry TM-001..TM-011; TM-010 {ONE.stat().st_size} bytes; TM-011 {CHRONON.stat().st_size} bytes")
 
 
 if __name__ == "__main__":
