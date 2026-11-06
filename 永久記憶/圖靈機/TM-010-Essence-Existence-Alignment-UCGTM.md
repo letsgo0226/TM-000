@@ -41,7 +41,7 @@ For a successfully verified finite input, `conditional_entropy_bits: 0` means on
 
 ## Canonical prototype
 
-- [2 KB one-liner](essence_existence_alignment_ucgtm_2kb.sh)
+- [Strict physical one-line 2 KB program](essence_existence_alignment_ucgtm_2kb.sh) — exactly one text line, 1,686 bytes.
 - Maximum size: 2,048 bytes.
 - Default selection: `TM-010`; pass another registered ID as the first argument to inspect it.
 - Execution policy: registry/record/core verification only; registered cores are never invoked.
