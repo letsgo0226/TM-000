@@ -14,9 +14,9 @@ TM-000 is the parent registry for the TM-001 through TM-011 research prototypes.
 | [TM-006](永久記憶/圖靈機/TM-006-Eternity-Machine.md) | Eternity Machine | preserved finite modal model |
 | [TM-007](永久記憶/圖靈機/TM-007-Three-Cat-Cookies-Master.md) | Three Cat Cookies Master | preserved pipeline prototype |
 | [TM-008](永久記憶/圖靈機/TM-008-God-Turing-Machine-No-SHA-Master.md) | GTM-001 No-SHA | registered orchestration candidate |
-| [TM-009](永久記憶/圖靈機/TM-009-Photonic-Singularity-UGTM.md) | Photonic Singularity UGTM | active total-machine reference |
+| [TM-009](永久記憶/圖靈機/TM-009-Photonic-Singularity-UGTM.md) | Photonic Singularity UGTM | required preserved exact photonic subcore |
 | [TM-010](永久記憶/圖靈機/TM-010-Essence-Existence-Alignment-UCGTM.md) | Essence–Existence Exact-Alignment UCGTM | active registry research prototype |
-| [TM-011](永久記憶/圖靈機/TM-011-Logical-Chronon-Temporal-Closure.md) | Logical Chronon and Temporal-Closure Certificate Machine | active finite-trace research prototype |
+| [TM-011](永久記憶/圖靈機/TM-011-Logical-Chronon-Temporal-Closure.md) | Composite Photonic–Registry–Temporal Machine | current total-machine reference |
 
 ## Scope
 
@@ -34,6 +34,7 @@ Machine-readable index: [machine_registry.json](永久記憶/圖靈機/machine_r
 python3 tools/load_turing_registry.py
 python3 tools/load_turing_registry.py --select TM-008
 python3 tools/load_turing_registry.py --select TM-010 --run-tm010
+bash 永久記憶/圖靈機/tm011_composite_total_machine_2kb.sh 111
 bash 永久記憶/圖靈機/logical_chronon_temporal_closure_2kb.sh 111
 python3 tools/test_tm_registry.py
 ```
@@ -42,9 +43,9 @@ The first two commands perform read-only verification. The third explicitly runs
 
 ## Canonical source snapshot
 
-Initial source: [letsgo0226/Cosmic_Rosetta_Stone](https://github.com/letsgo0226/Cosmic_Rosetta_Stone) main commit `db86b20e01996df3340166d28ff52e8b48b916a5` (2026-11-06).
+Initial source: [letsgo0226/Cosmic_Rosetta_Stone](https://github.com/letsgo0226/Cosmic_Rosetta_Stone) main commit `9a07269f4ed51155a0964607cab6bad559fa7006` (2026-11-06).
 
-TM-009 remains the active total-machine reference. TM-010 does not replace TM-001 through TM-009. Future synchronization should preserve provenance and pass the registry test before merging.
+TM-011 is the current total-machine reference under `FINITE_REGISTERED_ORCHESTRATION`. It explicitly validates TM-009's exact photonic certificate, TM-010's registry/alignment certificate, and TM-011's temporal certificate. TM-009 remains the required exact photonic subcore.
 
 ## Scientific boundary
 
