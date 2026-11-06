@@ -51,3 +51,12 @@ The unchanged original TM-011 remains the temporal reference under `TEMPORAL_REF
 ## Scientific boundary
 
 Registry inclusion, zero-conditional-entropy fields, and finite encoding certificates do not prove a physical singularity, immortality, time travel, metaphysical identity, a halting oracle, or zero uncertainty about reality.
+
+## UTM-PLEIADES master-machine candidate
+
+[UTM-PLEIADES v0.1](永久記憶/圖靈機/UTM-PLEIADES-v0.1.md) is registered as a candidate master bounded universal simulator, integrating TM-009 Gödel encoding, TM-011 logical chronons, and TM-014 bounded simulation. Its [single-line 2KB core](永久記憶/圖靈機/UTM-PLEIADES-v0.1-one-liner.sh) is preserved independently. The GitHub account-wide orchestration layer and independent certificate verifier are not yet implemented. The registry loader is read-only by default; no registered code is executed implicitly.
+
+```bash
+python3 tools/load_turing_registry.py --select UTM-PLEIADES
+bash 永久記憶/圖靈機/UTM-PLEIADES-v0.1-one-liner.sh
+```
