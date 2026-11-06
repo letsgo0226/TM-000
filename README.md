@@ -40,7 +40,7 @@ The first two commands perform read-only verification. The third explicitly runs
 
 ## Canonical source snapshot
 
-Initial source: [letsgo0226/Cosmic_Rosetta_Stone](https://github.com/letsgo0226/Cosmic_Rosetta_Stone) main commit `1a770670f44aa50db7f1740cff5dfd1329b362f5` (2026-11-06).
+Initial source: [letsgo0226/Cosmic_Rosetta_Stone](https://github.com/letsgo0226/Cosmic_Rosetta_Stone) main commit `b63ba4d4044d760fb3b06065223a18c91b7865c8` (2026-11-06).
 
 TM-009 remains the active total-machine reference. TM-010 does not replace TM-001 through TM-009. Future synchronization should preserve provenance and pass the registry test before merging.
 

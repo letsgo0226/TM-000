@@ -1,6 +1,5 @@
-# TM-010 — 本質—實存精確對齊通用閉環圖靈機
+# TM-010 — Essence–Existence Exact-Alignment Universal Closed-Loop Turing Machine
 
-**English:** Essence–Existence Exact-Alignment Universal Closed-Loop Turing Machine  
 **Registry ID:** TM-010  
 **Registration date:** 2026-11-06  
 **Status:** research prototype; read-only registry loader; not a production deployment.
@@ -18,6 +17,22 @@ Its operational sequence is inherited from TM-007's “Three Cat Cookies” patt
 1. **Encode:** serialize the registry entry and repository bytes exactly.
 2. **Load/Simulate:** load the declared finite artifacts and run only the embedded fixed interpreter self-test.
 3. **Verify:** decode, compare, and emit an alignment certificate; do not deploy or execute registered cores.
+4. **Complete:** enter `COMPLETE` only after every finite registry invariant has passed.
+
+## Formally complete state
+
+`verification_state: "COMPLETE"` is emitted only after the program has established all of the following for the loaded finite snapshot:
+
+1. TM-001 through TM-010 have unique registry IDs.
+2. Every declared record and core uses a repository-local safe path and exists.
+3. Every record identifies its own registry ID.
+4. Every loaded byte sequence survives the fixed byte-exact reversible roundtrip.
+5. The embedded interpreter self-test produces `S`.
+6. The selected machine ID is present.
+
+The accompanying `completeness_scope: "FINITE_REGISTRY"` prevents this result from being read as absolute, metaphysical, physical, temporal, or computability-theoretic completeness.
+
+This state is also distinct from **Turing completeness**. The embedded Brainfuck transition semantics belong to a Turing-complete language model when supplied with unbounded tape, input, time, and arbitrary programs. TM-010's fixed `S` self-test demonstrates only one finite execution; it does not by itself prove unrestricted universal simulation by this packaged implementation.
 
 ## TM-001 through TM-009 contribution map
 
@@ -41,7 +56,7 @@ For a successfully verified finite input, `conditional_entropy_bits: 0` means on
 
 ## Canonical prototype
 
-- [Strict physical one-line 2 KB program](essence_existence_alignment_ucgtm_2kb.sh) — exactly one text line, 1,686 bytes.
+- [Strict physical one-line 2 KB program](essence_existence_alignment_ucgtm_2kb.sh) — exactly one text line; size is enforced by the regression test.
 - Maximum size: 2,048 bytes.
 - Default selection: `TM-010`; pass another registered ID as the first argument to inspect it.
 - Execution policy: registry/record/core verification only; registered cores are never invoked.
