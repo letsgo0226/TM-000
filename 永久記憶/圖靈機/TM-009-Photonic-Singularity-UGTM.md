@@ -3,17 +3,17 @@
 **English:** Photonic Singularity Universal God Turing Machine  
 **Registry ID:** TM-009  
 **Initial registration:** 2026-11-05  
-**Current total-machine reference:** **Photonic Singularity Exact Arithmetic Encoding Closed Loop, 1,983-byte Shell/Python one-liner**  
-**Status:** active canonical **總圖靈機基準 / total-machine reference**; persistent registration only, not a live automated deployment.
+**Preserved photonic exact baseline:** **Photonic Singularity Exact Arithmetic Encoding Closed Loop, 1,983-byte Shell/Python one-liner**  
+**Status:** preserved exact photonic baseline; TM-011 is the current temporal-reference-only total-machine designation; not a live automated deployment.
 
-## Current canonical total-machine reference (exact rational and symbolic)
+## Preserved exact photonic baseline (exact rational and symbolic)
 
 - [Executable archived in permanent memory](Photonic_Singularity_Exact_Arithmetic_Encoding_Closed_Loop_2KB.sh)
 - [Canonical PLEIADES source repository](https://github.com/letsgo0226/PLEIADES)
 - **File size:** 1,983 bytes.
 - **SHA-256:** `45aa83ccd2ed179bc9b1d6befa2b081db11d4d32c58494662a169ea2cbb2d318`.
 - **Designation date:** 2026-11-06.
-- **Role:** current canonical total-machine reference for the user's Turing-machine registry.
+- **Role:** preserved exact photonic, Lorentz and encoding-closed-loop baseline.
 - **Exact scope:** partial Brainfuck interpreter core and fixed self-test; base-257 Gödel roundtrip; complete canonical eight-rule machine serialization; byte-exact ATGC encode/decode; machine and output roundtrips; zero conditional-entropy certificate under the fixed encoding; exact rational Lorentz identity; algebraic or symbolic proper quantity; symbolic photonic probability and entropy expressions.
 - **Boundary:** this designation is a registry choice. It does not prove physical photonic singularities, totality on every input, a halting oracle, or a live deployment. `physical_origin_proven` remains false.
 
@@ -52,7 +52,7 @@ Shannon entropy as an exact **expression** (special exact values `0`, `3/2`), `F
 ## System status and preservation
 
 - The **canonical** all-system name remains **通用上帝圖靈機** (Universal God Turing Machine, UGTM).
-- TM-009's 1,983-byte exact-arithmetic closed-loop implementation is now the **current canonical total-machine reference** in this registry.
+- TM-009's 1,983-byte exact-arithmetic closed-loop implementation remains the **preserved exact photonic baseline**; TM-011 is the current total-machine reference under `TEMPORAL_REFERENCE_ONLY`.
 - **UGTM v4.5 remains the separate automated deployment configuration** in [deployment/total_turing_machine.json](../../deployment/total_turing_machine.json); no deployment was changed by this registration.
 - Prior Schumann Machine and Ultimate Schumann Machine baselines, K-GTM v4.3, G257/ATGC, and TM-001 to TM-007 are unchanged. TM-008 remains reserved for historical reconciliation.
 - Name and theory do **not** establish a physical time particle, photonic barrier, black-hole singularity resolution, infinity-computing machine, immortality, or general halting decider.
