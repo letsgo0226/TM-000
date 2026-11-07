@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "registry": "Cosmic Rosetta Stone permanent-memory Turing-machine prototypes",
   "execution_policy": "read-only metadata and byte verification; never execute registered cores implicitly",
   "entries": [
@@ -159,10 +159,29 @@
         "TM-014",
         "TM-000"
       ],
-      "designation": "designated-plaintext-master-core",
+      "designation": "preserved-plaintext-master-predecessor",
       "totality_scope": "BOUNDED_SIMULATION_ONLY",
       "completeness_scope": "FINITE_TRACE_AND_CYCLE_WITNESS",
-      "status": "active-master-candidate"
+      "status": "preserved-superseded-master"
+    },
+    {
+      "id": "UTM-PLEIADES-v0.2-PTCA",
+      "record": "UTM-PLEIADES-v0.2-PTCA.md",
+      "cores": [
+        "UTM-PLEIADES-v0.2-PTCA-2KB-one-liner.sh"
+      ],
+      "considers": [
+        "TM-009",
+        "TM-011",
+        "TM-014",
+        "TM-000"
+      ],
+      "designation": "designated-master-universal-simulator",
+      "totality_scope": "BOUNDED_SIMULATION_ONLY",
+      "completeness_scope": "FINITE_TRACE_CYCLE_WITNESS_AND_RESUMABLE_G257_CHECKPOINT",
+      "continuity_scope": "FUNCTIONAL_ONLY",
+      "status": "active-designated-master"
     }
-  ]
+  ],
+  "default_machine": "UTM-PLEIADES-v0.2-PTCA"
 }
