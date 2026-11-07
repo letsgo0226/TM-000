@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "registry": "Cosmic Rosetta Stone permanent-memory Turing-machine prototypes",
   "execution_policy": "read-only metadata and byte verification; never execute registered cores implicitly",
   "entries": [
@@ -183,5 +183,32 @@
       "status": "active-designated-master"
     }
   ],
-  "default_machine": "UTM-PLEIADES-v0.2-PTCA"
+  "default_machine": "UTM-PLEIADES-v0.2-PTCA",
+  "bootstrap": {
+    "id": "TM-000",
+    "record": "TM-000-2KB-transactional-bootstrap.md",
+    "core": "TM-000-2KB-transactional-bootstrap.sh",
+    "designation": "transactional-registry-bootstrap",
+    "considers": [
+      "TM-001",
+      "TM-002",
+      "TM-003",
+      "TM-004",
+      "TM-005",
+      "TM-006",
+      "TM-007",
+      "TM-008",
+      "TM-009",
+      "TM-010",
+      "TM-011",
+      "TM-014",
+      "UTM-PLEIADES",
+      "UTM-PLEIADES-v0.2",
+      "UTM-PLEIADES-v0.2-PTCA"
+    ],
+    "update_policy": "STAGE_VERIFY_EXPLICIT_ACTIVATE_ROLLBACK",
+    "network": false,
+    "auto_merge": false,
+    "production_deploy": false
+  }
 }
