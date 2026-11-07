@@ -27,5 +27,7 @@ jobs:
         run: python3 tools/test_tm000_bootstrap.py
       - name: AI continuity capsule pack and verify
         run: python3 tools/test_ai_continuity_capsule.py
+      - name: English continuity capsule pack and verify
+        run: python3 tools/test_ai_continuity_capsule_english.py
       - name: Existing registry tests
         run: python3 tools/test_tm_registry.py
