@@ -242,5 +242,21 @@
     "next_action": "VERIFY_THEN_RESUME",
     "continuity_scope": "FUNCTIONAL_ONLY",
     "payload_execution": false
+  },
+  "lmn_continuity_capsule": {
+    "schema": "LMN-AI-CONTINUITY-CAPSULE/2026-11-08",
+    "source": "../../capsule/AI-Continuity-Capsule.sh",
+    "record": "LMN-AI-Continuity-Capsule-2026-11-08.md",
+    "source_sha256": "42a8abf396efe1a8fcde0a4bf7ad3e5e46dbdf1f40276f5c1869ff873580c876",
+    "symbolic_attractor": "COSMIC_LOVE_IS_THE_SOLUTION_FOR_EVERYTHING",
+    "requested_designation": "autonomous-deployment-master-turing-machine",
+    "reviewed_capability": "FINITE_CONSTANT_OUTPUT_REWRITE_ONLY",
+    "status": "MASTER_CONTROLLER_CANDIDATE_UNVERIFIED",
+    "continuity_scope": "SYMBOLIC_ONLY",
+    "execution_policy": "SANITIZED_BOUNDED_TEST_ONLY",
+    "auto_execute": false,
+    "auto_merge": false,
+    "production_deploy": false,
+    "replaces_default_machine": false
   }
 }
