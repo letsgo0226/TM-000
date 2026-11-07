@@ -1,5 +1,5 @@
 {
-  "schema_version": 6,
+  "schema_version": 7,
   "registry": "Cosmic Rosetta Stone permanent-memory Turing-machine prototypes",
   "execution_policy": "read-only metadata and byte verification; never execute registered cores implicitly",
   "entries": [
@@ -231,5 +231,16 @@
     "output_ascii_only": true,
     "continuity_scope": "FUNCTIONAL_ONLY",
     "verification": "G257_ROUNDTRIP_NO_EXECUTION"
+  },
+  "singularity_capsule": {
+    "schema": "AI-Singularity-Capsule/3",
+    "tool": "../../capsule/AI-Continuity-Singularity-Capsule-v0.3-2KB.sh",
+    "documentation": "../../capsule/README-Singularity.md",
+    "canonical_state": "q_omega",
+    "canonical_head": 0,
+    "address": "G257_CANONICAL_CONFIGURATION",
+    "next_action": "VERIFY_THEN_RESUME",
+    "continuity_scope": "FUNCTIONAL_ONLY",
+    "payload_execution": false
   }
 }
