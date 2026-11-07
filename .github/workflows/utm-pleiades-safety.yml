@@ -23,5 +23,5 @@ jobs:
           python-version: '3.11'
       - name: Syntax, registry, and behavioral safety tests
         run: python3 tools/test_utm_pleiades_ci.py
-      - name: Existing registry tests
+      - name: TM-000 transactional bootstrap test\n        run: python3 tools/test_tm000_bootstrap.py\n      - name: Existing registry tests
         run: python3 tools/test_tm_registry.py
