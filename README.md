@@ -70,3 +70,9 @@ The earlier v0.1 and plaintext v0.2 candidates remain preserved as historical pr
 ## TM-000 transactional bootstrap
 
 The [TM-000 2 KB bootstrap](永久記憶/圖靈機/TM-000-2KB-transactional-bootstrap.md) validates the complete current registry, reversibly encodes the designated UTM-PLEIADES core, and supports isolated stage, explicitly authorized atomic activation, and rollback. GitHub Actions performs PR validation only; the bootstrap has no network operation, automatic main-branch merge, or production deployment authority.
+
+## LMN-AI-CONTINUITY-CAPSULE (2026-11-08) — research candidate
+
+The user-supplied [AI-Continuity-Capsule.sh](capsule/AI-Continuity-Capsule.sh) is archived verbatim, with its [permanent-memory research record](永久記憶/圖靈機/LMN-AI-Continuity-Capsule-2026-11-08.md) and [isolated CI regression](tools/test_lmn_ai_continuity_capsule.py). The file has been nominated as the autonomous-deployment master but **is not validated as a universal Turing machine or a deployment controller**. The output entropy is zero because the finite tape is overwritten with a constant; no physical or eternal continuity follows. It reads process environment values, so it must only run in an intentionally sanitized test environment.
+
+**No promotion:** `UTM-PLEIADES-v0.2-PTCA` remains the designated master. The new capsule is a non-executing-by-default, safety-reviewed candidate. No production deployment or automatic GitHub mutation is enabled.
