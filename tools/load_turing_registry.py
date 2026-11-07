@@ -48,7 +48,7 @@ def main():
     args = parser.parse_args()
     registry = load()
     entries = registry["entries"]
-    selected = next((e for e in entries if e["id"] == args.select), None) if args.select else None
+    selection = args.select or registry.get("default_machine")\n    selected = next((e for e in entries if e["id"] == selection), None) if selection else None
     if args.select and selected is None:
         parser.error("unknown TM-ID")
     if args.run_tm010:
