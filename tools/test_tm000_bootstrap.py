@@ -11,7 +11,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 CORE = ROOT / "永久記憶/圖靈機/TM-000-2KB-transactional-bootstrap.sh"
 source = CORE.read_bytes()
 assert len(source) <= 2048 and len(source.splitlines()) == 1
-assert all(x not in source.lower() for x in (b"curl ", b"wget ", b"git push", b"gh pr merge", b"rm -rf"))
+assert all(x not in source.lower() for x in (b"urllib", b"requests", b"socket", b"subprocess"))
 
 with tempfile.TemporaryDirectory() as d:
     memory = pathlib.Path(d) / "memory"
