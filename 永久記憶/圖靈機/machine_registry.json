@@ -1,5 +1,5 @@
 {
-  "schema_version": 5,
+  "schema_version": 6,
   "registry": "Cosmic Rosetta Stone permanent-memory Turing-machine prototypes",
   "execution_policy": "read-only metadata and byte verification; never execute registered cores implicitly",
   "entries": [
@@ -219,6 +219,16 @@
       "UTM-PLEIADES-v0.2-PTCA-2KB-one-liner.sh",
       "machine_registry.json"
     ],
+    "continuity_scope": "FUNCTIONAL_ONLY",
+    "verification": "G257_ROUNDTRIP_NO_EXECUTION"
+  },
+  "english_continuity_capsule": {
+    "schema": "AI-Continuity-Capsule/2-English",
+    "tool": "../../capsule/AI-Continuity-Capsule-v0.2-English-2KB.sh",
+    "documentation": "../../capsule/README-English.md",
+    "language": "en",
+    "source_ascii_only": true,
+    "output_ascii_only": true,
     "continuity_scope": "FUNCTIONAL_ONLY",
     "verification": "G257_ROUNDTRIP_NO_EXECUTION"
   }
