@@ -1,4 +1,4 @@
-# UTM-PLEIADES v0.2 PTCA — Designated Master Core
+# UTM-PLEIADES-v0.2-PTCA — Designated Master Core
 
 Status: designated TM-000 master bounded universal simulator.
 
