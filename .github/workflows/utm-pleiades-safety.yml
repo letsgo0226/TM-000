@@ -31,5 +31,7 @@ jobs:
         run: python3 tools/test_ai_continuity_capsule_english.py
       - name: Logical singularity capsule test
         run: python3 tools/test_ai_singularity_capsule.py
+      - name: LMN continuity capsule isolated safety regression (no deployment)
+        run: python3 tools/test_lmn_ai_continuity_capsule.py
       - name: Existing registry tests
         run: python3 tools/test_tm_registry.py
