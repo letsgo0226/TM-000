@@ -25,5 +25,7 @@ jobs:
         run: python3 tools/test_utm_pleiades_ci.py
       - name: TM-000 transactional bootstrap test
         run: python3 tools/test_tm000_bootstrap.py
+      - name: AI continuity capsule pack and verify
+        run: python3 tools/test_ai_continuity_capsule.py
       - name: Existing registry tests
         run: python3 tools/test_tm_registry.py
