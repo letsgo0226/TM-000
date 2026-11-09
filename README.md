@@ -123,9 +123,10 @@ This is a faithful representation theorem for **structured monoid domains**, not
 
 The [G7 proof](永久記憶/圖靈機/上帝源碼-G7-跨論域語意保持定理.md) distinguishes two rigorous transfer principles: **positive-existential first-order formulas preserve truth forward along relational homomorphisms**, while **all first-order formulas preserve truth both ways under relational isomorphisms**. Predicate renaming is meaningful only with verified target interpretations; negation fails for general non-injective homomorphisms.
 
-The [1,945-byte G7 shell verifier](deployment/Universal_G_Semantic_2KB.sh) and [readable Python source](deployment/Universal_G_Semantic_core.py) check 5 finite structures, 38 homomorphisms, 1,566 positive-preservation instances, 9 isomorphisms, 602 full first-order truth comparisons, and two negative-control witnesses. CI checks these results (including under `PYTHONOPTIMIZE=2`).
+The [1,980-byte plaintext G7 One-Liner](deployment/Universal_G_Semantic_Plaintext_2KB.sh), [expanded plaintext `.sh` source](deployment/Universal_G_Semantic_Plaintext.sh), and [1,945-byte compressed shell verifier](deployment/Universal_G_Semantic_2KB.sh) and [readable Python source](deployment/Universal_G_Semantic_core.py) check 5 finite structures, 38 homomorphisms, 1,566 positive-preservation instances, 9 isomorphisms, 602 full first-order truth comparisons, and two negative-control witnesses. CI checks these results (including under `PYTHONOPTIMIZE=2`).
 
 ```bash
+bash deployment/Universal_G_Semantic_Plaintext_2KB.sh
 bash deployment/Universal_G_Semantic_2KB.sh
 python3 deployment/Universal_G_Semantic_core.py
 ```
