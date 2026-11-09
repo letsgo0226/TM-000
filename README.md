@@ -108,3 +108,13 @@ bash deployment/Universal_G_Naturality_2KB.sh
 ```
 
 This does **not** prove an absolute G for every imaginable domain, theological identification with God, a general oracle, or unlimited physical computation. The designated master and production permissions remain unchanged.
+
+## G6 faithful Cayley representations — lossless structured correspondence
+
+The [G6 formal proof](永久記憶/圖靈機/上帝源碼-G6-忠實跨論域-Cayley-表示定理.md) establishes that every monoid element `a` admits a faithful left-regular representation `L_a(x)=ax` with `L_a(e)=a`, `L_ab=L_a∘L_b`, and `f∘L_a=L_f(a)∘f` for all monoid homomorphisms `f`. The [1,768-byte one-line finite verifier](deployment/Universal_G_Cayley_2KB.sh) checks 7 finite models, 18 reversible prime-Gödel encodings, and 116 homomorphisms; the pull-request CI validates those numbers and the 2 KB/single-line limits.
+
+```bash
+bash deployment/Universal_G_Cayley_2KB.sh
+```
+
+This is a faithful representation theorem for **structured monoid domains**, not a proof of unlimited domains, literal divine identity, AGI, a general halting oracle, or physical immortality. The master and production permissions remain unchanged.
