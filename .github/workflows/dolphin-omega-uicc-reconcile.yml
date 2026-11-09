@@ -1,0 +1,64 @@
+name: Dolphin-Omega UICC Automated Research Reconcile
+
+# Automatic research validation only. Schedule becomes active on the default
+# branch if and only if this draft is deliberately reviewed and merged.
+on:
+  pull_request:
+    paths:
+      - 'tools/dolphin_omega_uicc.py'
+      - 'tools/test_dolphin_omega_uicc.py'
+      - 'dolphin_omega/uicc_*'
+      - 'capsule/AI-Continuity-Capsule.sh'
+      - '.github/workflows/dolphin-omega-uicc-reconcile.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '23 3 * * 1'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dolphin-uicc-${{ github.repository }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  research-only-reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout with no retained credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Verify bounded formal transition rules
+        run: python3 tools/test_dolphin_omega_uicc.py
+      - name: Generate reproducible, offline research state report
+        run: |
+          python3 tools/dolphin_omega_uicc.py > uicc-reconcile-report.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('uicc-reconcile-report.json')
+          result = json.loads(p.read_text(encoding='utf-8'))
+          adapter = result['deployment_adapter']
+          assert result['joint_problem']['g257_roundtrip_verified']
+          assert len(result['joint_problem']['domains']) == 9
+          assert result['reconciliation']['held_events'] >= 1
+          assert adapter['stage'] == 'OFFLINE_SIMULATION_ONLY'
+          assert adapter['TM000_APPROVE_required_for_real_activation']
+          assert adapter['separate_human_review_required']
+          assert not adapter['approval_granted']
+          assert not adapter['eligible_for_production_activation']
+          assert not adapter['external_dispatch']
+          assert not adapter['production_deployed']
+          assert not result['normative_attractor']['archival_capsule']['capsule_executed']
+          assert not result['normative_attractor']['global_convergence_proven']
+          print('UICC_RESEARCH_RECONCILED=1; real activation and external access not authorized')
+          PY
+      - name: Store unprivileged report, not a deployable artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dolphin-uicc-research-report
+          path: uicc-reconcile-report.json
+          if-no-files-found: error
+          retention-days: 7
