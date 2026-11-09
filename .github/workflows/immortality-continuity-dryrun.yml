@@ -7,6 +7,8 @@ on:
       - 'capsule/Immortality-Continuity-README.md'
       - 'tools/icc_node.py'
       - 'tools/icc_peer.py'
+      - 'tools/icc_archive.py'
+      - 'tools/test_icc_archive.py'
       - 'tools/test_icc_node.py'
       - 'tools/test_icc_peer.py'
       - '.github/workflows/immortality-continuity-dryrun.yml'
@@ -29,6 +31,7 @@ jobs:
       - run: python3 -m pip install cryptography==46.0.4
       - run: python3 tools/test_icc_node.py
       - run: python3 tools/test_icc_peer.py
+      - run: python3 tools/test_icc_archive.py
 
   independent-runners:
     strategy:
@@ -94,3 +97,17 @@ jobs:
           python3 tools/icc_peer.py recover --registry trusted2.json --witness witnesses/signed-ubuntu-latest.json --output restored-checkpoint.json
           cmp restored-checkpoint.json witnesses/checkpoint-ubuntu-latest.json
           cmp restored-checkpoint.json witnesses/checkpoint-macos-15.json
+
+      - name: Verify redundant local backup and simulated single-copy loss
+        shell: bash
+        run: |
+          mkdir -p site-one site-two
+          python3 tools/icc_archive.py create --witness witnesses/signed-ubuntu-latest.json --registry trusted2.json --dest site-one --dest site-two
+          python3 tools/icc_archive.py audit --registry trusted2.json --source site-one/icc-backup.json --source site-two/icc-backup.json --min-valid 2
+          echo CORRUPTED > site-one/icc-backup.json
+          python3 tools/icc_archive.py recover --registry trusted2.json --source site-one/icc-backup.json --source site-two/icc-backup.json --min-valid 1 --output disaster-recovered.json
+          cmp disaster-recovered.json witnesses/checkpoint-ubuntu-latest.json
+          if python3 tools/icc_archive.py recover --registry trusted2.json --source site-one/icc-backup.json --source site-two/icc-backup.json --min-valid 2 --output invalid-quorum.json; then
+            echo 'ERROR: incorrectly accepted single valid archive as two' >&2
+            exit 1
+          fi
