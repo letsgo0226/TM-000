@@ -21,6 +21,32 @@ jobs:
         run: python3 tools/test_dolphin_omega_optimizer.py
       - name: Offline provenance firewall / evidence metadata tests
         run: python3 tools/test_dolphin_omega_dossier.py
+      - name: Offline least-privilege grant, revocation and audit regression
+        run: python3 tools/test_dolphin_omega_collaboration.py
+      - name: Confirm protocol simulates authorization without external control
+        run: |
+          python3 tools/dolphin_omega_collaboration.py > /tmp/dolphin-omega-collaboration.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/dolphin-omega-collaboration.json', encoding='utf-8') as f:
+              r = json.load(f)
+          assert r['version'] == '0.8-simulated-consent-protocol'
+          assert r['audit_entries'] == 15
+          assert len(r['last_audit_digest']) == 64
+          decisions = [row['decision'] for row in r['audit']]
+          assert decisions.count('ALLOW_SIMULATION') == 1
+          assert 'RECORDED_SIMULATED_REVOCATION' in decisions
+          reasons = {row['reason'] for row in r['audit']}
+          assert 'REVOKED_GRANT' in reasons
+          assert 'EXPIRED_GRANT' in reasons
+          assert 'EXTERNAL_NODE_UNSUPPORTED' in reasons
+          assert not r['verification']['owner_identities_authenticated']
+          assert not r['verification']['log_immutability_proven']
+          assert not r['execution']['external_dispatch']
+          assert not r['execution']['real_authorization_granted']
+          assert not r['execution']['production_deployed']
+          print('DOLPHIN_OMEGA_V08_COLLABORATION=PASS; offline policy simulation only')
+          PY
       - name: Offline reviewer interface / unverified draft tests
         run: python3 tools/test_dolphin_omega_reviewer_ui.py
       - name: Confirm exported reviewer interface cannot auto-approve or transmit
