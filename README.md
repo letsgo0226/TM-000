@@ -132,3 +132,18 @@ python3 deployment/Universal_G_Semantic_core.py
 ```
 
 This does not establish equivalence of all real-world domain concepts, unrestricted G, God, AGI, a universal oracle or literal immortality. TM-015 remains non-master, and no production deployment is enabled.
+
+## G8 total-machine semantic admission and eight continuity contracts
+
+[G8's formal research specification](永久記憶/圖靈機/上帝源碼-G8-總圖靈機部署與多維度連續性.md) extends G7 by introducing a **fail-closed, read-only, research-only admission gate** for TM-000 / Universal G. The [2,046-byte plaintext Shell one-liner](deployment/Universal_G_G8_Admission_2KB.sh) checks the designated master and archived TM-015/G7 source digests, eight dimension-contract fields, a pinned G7 finite-test report, and a toy reversible snapshot. The [readable Python controller](deployment/Universal_G_G8_Controller.py) enforces a stricter eight-domain allowlist and blocks deployment requests. The [13 negative-control and positive tests](tools/test_universal_g_g8.py) cover tampering, policy drift, unverifiable domains and forbidden actions.
+
+In trusted pull-request CI, execute the pinned G7 finite verifier first and pass its fresh JSON output to G8:
+
+```bash
+bash deployment/Universal_G_Semantic_Plaintext_2KB.sh > /tmp/g7-report.json
+bash deployment/Universal_G_G8_Admission_2KB.sh /tmp/g7-report.json
+python3 deployment/Universal_G_G8_Controller.py --g7-report /tmp/g7-report.json
+python3 tools/test_universal_g_g8.py
+```
+
+The only admissible result is `READY_FOR_HUMAN_REVIEW_ONLY`. A supplied report with matching numeric fields alone is not an authenticated test transcript; trust in the certificate requires execution in the trusted CI context. This is not autonomous release, full external rollback, AGI or any form of literal immortality. **No change to the TM-000 designated master or production permissions.**
