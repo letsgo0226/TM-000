@@ -8,6 +8,8 @@ on:
       - 'tools/icc_node.py'
       - 'tools/icc_peer.py'
       - 'tools/icc_archive.py'
+      - 'tools/icc_fieldkit.py'
+      - 'tools/test_icc_fieldkit.py'
       - 'tools/test_icc_archive.py'
       - 'tools/test_icc_node.py'
       - 'tools/test_icc_peer.py'
@@ -32,6 +34,7 @@ jobs:
       - run: python3 tools/test_icc_node.py
       - run: python3 tools/test_icc_peer.py
       - run: python3 tools/test_icc_archive.py
+      - run: python3 tools/test_icc_fieldkit.py
 
   independent-runners:
     strategy:
@@ -111,3 +114,84 @@ jobs:
             echo 'ERROR: incorrectly accepted single valid archive as two' >&2
             exit 1
           fi
+
+      - name: Prepare public checkpoint handoff and fresh challenge
+        shell: bash
+        run: |
+          python3 tools/icc_fieldkit.py challenge --witness witnesses/signed-ubuntu-latest.json --registry trusted2.json --output challenge.json
+          cp witnesses/signed-ubuntu-latest.json origin-witness.json
+          cp site-two/icc-backup.json origin-archive.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: icc-fieldkit-public-handoff
+          path: |
+            trusted2.json
+            challenge.json
+            origin-witness.json
+            origin-archive.json
+          if-no-files-found: error
+          retention-days: 7
+
+  fieldkit-custodian:
+    needs: [cross-node-compare]
+    runs-on: macos-15
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install cryptography==46.0.4
+      - uses: actions/download-artifact@v4
+        with:
+          name: icc-fieldkit-public-handoff
+          path: handoff
+      - name: Simulate opt-in custodian, keep key private to this runner
+        shell: bash
+        run: |
+          python3 tools/icc_peer.py keygen --private "$RUNNER_TEMP/custodian.key" --public custodian.pub
+          python3 tools/icc_peer.py enroll --private "$RUNNER_TEMP/custodian.key" --node mac-offline-custodian --output custodian.enroll.json
+          python3 tools/icc_fieldkit.py fingerprint --public custodian.pub > fingerprint-info.json
+          fp=$(python3 -c 'import json;print(json.load(open("fingerprint-info.json"))["fingerprint"])')
+          python3 tools/icc_fieldkit.py trust-pin --enrollment custodian.enroll.json --public custodian.pub --approved-fingerprint "$fp" --registry handoff/trusted2.json --output custodian-registry.json
+          python3 tools/icc_fieldkit.py respond --challenge handoff/challenge.json --archive handoff/origin-archive.json --registry custodian-registry.json --private "$RUNNER_TEMP/custodian.key" --custodian mac-offline-custodian --output custodian.response.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: icc-fieldkit-mac-response
+          path: |
+            custodian.pub
+            custodian.enroll.json
+            custodian.response.json
+          if-no-files-found: error
+          retention-days: 7
+
+  fieldkit-verifier:
+    needs: [fieldkit-custodian]
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install cryptography==46.0.4
+      - uses: actions/download-artifact@v4
+        with:
+          name: icc-fieldkit-public-handoff
+          path: origin
+      - uses: actions/download-artifact@v4
+        with:
+          name: icc-fieldkit-mac-response
+          path: custodian
+      - name: Simulate out-of-band key pin then verify Mac custody response
+        shell: bash
+        run: |
+          python3 tools/icc_fieldkit.py fingerprint --public custodian/custodian.pub > fingerprint-info.json
+          fp=$(python3 -c 'import json;print(json.load(open("fingerprint-info.json"))["fingerprint"])')
+          python3 tools/icc_fieldkit.py trust-pin --enrollment custodian/custodian.enroll.json --public custodian/custodian.pub --approved-fingerprint "$fp" --registry origin/trusted2.json --output verifier-registry.json
+          python3 tools/icc_fieldkit.py verify --challenge origin/challenge.json --response custodian/custodian.response.json --witness origin/origin-witness.json --registry verifier-registry.json
+          echo "PASS: independently signed Mac runner response matches the fresh source challenge"
