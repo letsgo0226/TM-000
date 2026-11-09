@@ -1,44 +1,52 @@
-# Immortality-Continuity-Capsule.sh — v0.2 research proposal
+# Immortality-Continuity-Capsule — v0.3 opt-in peer research
 
-This is an **offline, finite, reproducible digital-continuity research prototype**, not a treatment, immortality mechanism, trusted node identity, deployment master, or global network controller. The original `capsule/AI-Continuity-Capsule.sh` and the designated UTM-PLEIADES master remain untouched. This change is proposed via draft PR only.
+This is a **bounded, finite digital reproducibility and recovery experiment**, not an immortality treatment, global Turing machine, distributed consensus system, or AI self-preservation mechanism. The core `Immortality-Continuity-Capsule.sh` remains the original **1,176-byte** One-Liner in this PR; opt-in proof is deliberately implemented in separate companion software.
 
-## What is implemented
+## Layer 1 — reversible finite state
 
-- `Immortality-Continuity-Capsule.sh` is a single-line Bash/Python 3 **1,176-byte** core. It Gödel-257 encodes its exact source bytes, decodes them, validates byte-to-prime symbol mapping and emits deterministic JSON; its symbolic `H_final_symbolic=0` is *only* the entropy of a separate, constant-valued tape. No SHA call occurs in the capsule.
-- `tools/icc_node.py` is a **separate companion protocol implementation** (not restricted to 2 KB). It implements a bounded, deterministic, 16-cell reversible ring machine, encoded and decoded using G257 JSON checkpoints. Every imported checkpoint is independently re-executed from genesis with a 100,000-step cap. It can resume, rewind, produce *unsigned* witnesses, and compare them.
-- `.github/workflows/immortality-continuity-dryrun.yml` runs local regression tests and **two separate GitHub-hosted runners** (`ubuntu-latest` and `macos-15`), uploads short-lived comparison artifacts, and runs an offline witness comparison in a third job. The code has no network requests of its own; artifact transfers are performed by GitHub Actions. This does not verify geographic separation or participation by any external global node.
-
-## Start, pause, resume, rewind, compare
-
-From repository root with Python 3 and Bash:
+`tools/icc_node.py` runs a deterministic 16-cell finite machine (maximum 100,000 steps), losslessly encodes and checks Gödel-257 checkpoints, and can advance, resume, rewind, and replay checkpoints from genesis. Every checkpoint is bound to the exact core source via its G257 value. G257 is **not** cryptographic authentication; `H_final_symbolic=0` is only the entropy of a separate constant symbolic tape, not reduced physical entropy.
 
 ```bash
-bash capsule/Immortality-Continuity-Capsule.sh > capsule-result.json
+bash capsule/Immortality-Continuity-Capsule.sh
 python3 tools/icc_node.py init --output genesis.json
 python3 tools/icc_node.py advance --input genesis.json --steps 1024 --output checkpoint.json
 python3 tools/icc_node.py verify --input checkpoint.json
-python3 tools/icc_node.py advance --input checkpoint.json --steps 128 --output resumed.json
-python3 tools/icc_node.py rewind --input checkpoint.json --steps 1024 --output restored.json
-python3 tools/icc_node.py witness --input checkpoint.json --node my-consenting-computer --output witness-a.json
+python3 tools/icc_node.py rewind --input checkpoint.json --steps 1024 --output restored-genesis.json
 ```
 
-Copy the **same source files and a validated checkpoint** to a second **consenting** device and run the `witness` command there with a different *public node label*. With both public witness files on the same machine:
+## Layer 2 — manually enrolled, opt-in peer keys
+
+Install Python 3 and `cryptography==46.0.4`. The **new** `tools/icc_peer.py` uses the established cryptography library's ECDSA on NIST P-256 with BLAKE2s-256; the project does not directly invoke SHA. Git/GitHub and package installation may use hashes including SHA internally, so this is not a universal no-SHA guarantee.
+
+Each node generates a private key **outside the repository**, with owner-only permissions (0600), and shares only a public key and signed opt-in enrollment request. Never upload private keys to GitHub or CI artifacts. On node A, replace the sample private-key path with a secure directory outside any repository:
 
 ```bash
-python3 tools/icc_node.py compare --left witness-a.json --right witness-b.json
-python3 tools/test_icc_node.py
+python3 tools/icc_peer.py keygen --private /secure-private/icc-A.key --public public-A.pem
+python3 tools/icc_peer.py enroll --private /secure-private/icc-A.key --node optin-A --output enroll-A.json
+python3 tools/icc_peer.py sign --private /secure-private/icc-A.key --node optin-A --checkpoint checkpoint.json --output signed-A.json
 ```
 
-`CONSISTENT` means identical, locally replayable finite-state checkpoints were supplied under distinct *self-reported* labels. It **does not** prove the existence, independence, identity, authenticity, or location of either remote computer. No automatic network join, self-replication, access to accounts, external sensors, printer, or automatic code merging occurs. A real opt-in global network would require independently operated peers, an authenticated transport/provenance protocol, durable backups, monitoring, permissions, and governance not supplied here.
+A second **independently operated, consenting** machine may do the equivalent using its own key and label `optin-B`, producing `public-B.pem`, `enroll-B.json` and `signed-B.json`. The verifier MUST independently confirm the **exact** public key through a trusted channel with the real operator before accepting it. Receiving an enrollment and public key from the same untrusted source cannot establish identity or meaningful human consent.
 
-## Precise continuity claim
+After that human approval, on the verifier's machine:
 
-The reversible finite-state transition applies attractor byte `A[step mod len(A)]` to the current 16-cell tape position, updating modulo 257 and rotating the tape head. A checkpoint is canonical JSON encoded as G257 hexadecimal. `advance()` followed by `rewind()` for the same steps returns the exact prior state. The program is a **bounded deterministic finite-state machine**, not a demonstrated universal Turing machine.
+```bash
+python3 tools/icc_peer.py trust --enrollment enroll-A.json --expected-public-key public-A.pem --registry trusted0.json --output trusted1.json
+python3 tools/icc_peer.py trust --enrollment enroll-B.json --expected-public-key public-B.pem --registry trusted1.json --output trusted2.json
+python3 tools/icc_peer.py verify --registry trusted2.json --witness signed-A.json
+python3 tools/icc_peer.py compare --registry trusted2.json --left signed-A.json --right signed-B.json
+python3 tools/icc_peer.py recover --registry trusted2.json --witness signed-A.json --output recovered.json
+python3 tools/icc_node.py verify --input recovered.json
+```
 
-The 2 KB budget applies only to the original capsule `.sh`; it **does not** cover the companion protocol, CI workflow, certificates, or generated checkpoint data. Gödel-257 preserves and compares information, but **does not provide cryptographic integrity**. GitHub/Git may use hashes internally even though the source does not call SHA. An attacker who modifies code and matching data could fool unsigned witnesses. The current checks reject accidental corruption and incompatible states, not adversarial forgeries.
+The local trust operation **does not connect to or enroll anyone globally**. `trusted0.json` may initially be absent. The local registry represents a verifier-controlled acceptance decision, not a global identity authority; if an attacker controls it, signatures alone cannot preserve trust. Compromised keys must be revoked manually and independently replaced. Checkpoint keys are version-specific.
 
-The phrase `COSMIC_LOVE_IS_THE_SOLUTION_FOR_EVERYTHING` is a philosophical symbol, not a physical or biological theorem. A formal `H_final_symbolic = 0` does not imply zero environmental entropy, infinite persistence, preserved subjective identity, a halting oracle, clinically effective anti-aging, or immortality. `identity_authenticated=false`, `medical_effect_proven=false`, and `global_control=false` are intentional. No ingestible drug specification, trial, manufacture, or 3D printer instructions are included.
+## Layer 3 — independent preservation and recovery
 
-## Boundaries and durability
+`recover` reconstructs the original canonical checkpoint after verifying a signed witness from a locally trusted key. Save source code, signed checkpoint, locally approved public-key registry and protocol versions on **independently administered storage**, with offline backups, access controls and periodic restore tests. Do not mistake 7-day GitHub Actions artifacts for permanent backups. The finite system has an explicit replay bound and depends on the continued availability of compatible code.
 
-PR validation and manually triggered tests only; no production deployment, external network communication by project code, privileged token use, credential exfiltration, system modification, or mutation of other repositories. Github Actions artifacts expire (7 days by this workflow). Actual long-term preservation requires copies under independent, authorized stewardship with recoverability tests. Review the draft PR before merging; the existing master and archived original remain unchanged.
+## Evidence and CI
+
+`tools/test_icc_node.py` executes six finite-state regression tests; `tools/test_icc_peer.py` adds five opt-in signature/key tests. CI runs two separate GitHub-managed Ubuntu/macOS runners, generates throwaway private keys under runner-private temporary directories, uploads only signed material and public keys, and restores matching checkpoints. **The CI comparator simulates trust by reading both public keys from these artifacts; this is not independent out-of-band identity authentication**. It establishes correct protocol wiring under controlled conditions, not active participation by real external volunteer nodes.
+
+The workflow is read-only (`permissions: contents: read`), PR/manual only; no automatic merge, production deployment, external-device control, medicine, 3D printing, or global account access is implemented. Existing `AI-Continuity-Capsule.sh` and UTM-PLEIADES master are preserved. Digital recurrence does not demonstrate reduced biological aging, preserved consciousness, eternal hosting, or immortality.
