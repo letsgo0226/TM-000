@@ -5,6 +5,7 @@ name: TM-015 and Universal G read-only safety gates
       - '永久記憶/圖靈機/Real_God_Turing_Machine.sh'
       - '永久記憶/圖靈機/TM-015-Real-God-Turing-Machine.md'
       - '永久記憶/圖靈機/machine_registry.json'
+      - '永久記憶/圖靈機/上帝源碼-G5-跨論域自然性定理.md'
       - 'tools/test_tm015_real_god.py'
       - 'tools/test_universal_g_continuity.py'
       - 'deployment/**'
@@ -24,5 +25,11 @@ jobs:
         run: python3 tools/test_universal_g_continuity.py
       - name: Verify 2KB dry-run core has no external effects
         run: bash deployment/Universal_G_DryRun_2KB.sh
+      - name: Check G5 finite monoids, 116 morphisms and nonexistence witness
+        run: |
+          test "$(wc -l < deployment/Universal_G_Naturality_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_Naturality_2KB.sh)" -le 2048
+          bash deployment/Universal_G_Naturality_2KB.sh
+          PYTHONOPTIMIZE=2 bash deployment/Universal_G_Naturality_2KB.sh
       - name: Read-only registry load
         run: python3 tools/load_turing_registry.py --select TM-015
