@@ -1,0 +1,46 @@
+name: Immortality Continuity Capsule (research dry run)
+
+on:
+  pull_request:
+    paths:
+      - 'capsule/Immortality-Continuity-Capsule.sh'
+      - 'capsule/Immortality-Continuity-README.md'
+      - '.github/workflows/immortality-continuity-dryrun.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify deterministic reversible research output
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, subprocess
+          p = 'capsule/Immortality-Continuity-Capsule.sh'
+          def run():
+              return subprocess.check_output(['bash', p], text=True)
+          a, b = run(), run()
+          assert a == b, 'nondeterministic replay'
+          x = json.loads(a)
+          assert len(open(p, 'rb').read()) <= 2048
+          assert x['status'] == 'RESEARCH_ONLY'
+          assert x['godel_roundtrip'] and x['prime_roundtrip']
+          assert x['H_final_symbolic'] == 0
+          assert not x['medical_effect_proven'] and not x['global_control']
+          n = int(x['godel257_source_hex'], 16)
+          decoded = bytearray()
+          while n > 1:
+              n, r = divmod(n, 257)
+              assert r != 0
+              decoded.append(r-1)
+          assert bytes(reversed(decoded)) == open(p, 'rb').read()
+          print('PASS: reversible source, deterministic replay, research-only gate')
+          PY
