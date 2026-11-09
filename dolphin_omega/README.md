@@ -131,3 +131,46 @@ reviewers examine actual source content, assign verifiable reviewer
 attributions, document methodological quality and contrary findings,
 and authorize specific research actions separately. Production promotion is
 always outside the authority of this research prototype.
+
+## v0.4 — offline, fail-closed evidence review packets
+
+    python3 tools/dolphin_omega_review.py
+    python3 tools/test_dolphin_omega_review.py
+
+v0.4 builds on the *unverified* v0.3 dossiers and retains the v0.2 ethical
+hold states. It defines a narrow, auditable format for **operator-supplied**
+UTF-8 text snapshots, a declared SHA-256 byte digest, source/candidate
+cross-references, and named reviewer-attestation metadata. The SHA-256 digest
+is a file **integrity check** only; it does not validate that bytes came from
+the cited external URL or demonstrate scientific truth. This separate review
+utility does not modify the preserved no-SHA UTM-PLEIADES core.
+
+Each review records a reviewer identifier, team identifier, role, verdict,
+declared conflict-of-interest status, an exact quote contained in the pinned
+snapshot, and reasoning. Review metadata is validated structurally and kept
+offline. The script detects mismatches, duplicated reviewers, insufficient
+nonconflicted and different-team attestations, and conflicting votes. v0.2
+policy holds take precedence over all such records.
+
+The sample files `synthetic_review_packets.json` and
+`review_snapshots/synthetic-context.txt` are **fictional**, not a real
+capture of the GitHub README referenced by an earlier dossier. Reviewer IDs
+and team IDs are fictional. The most-positive possible output is
+`MULTIPLE_SYNTHETIC_ATTESTATIONS_RECORDED`: never "scientifically
+verified", "independent reviewers authenticated", or "ready to deploy".
+
+Inputs are bounded to 32 local snapshot entries and 128 review entries. Only
+path-restricted UTF-8 .txt files under `dolphin_omega/review_snapshots` are
+read (<=16 KiB each); no external files, links, credentials, or remote
+machines are accessed. This is an initial trust-boundary prototype, not a
+hardened general-purpose evidence repository or identity provider.
+
+**Beyond v0.4:** a real scientific review would require authoritatively
+obtained and reproducible primary-source snapshots, explicit copyright and
+privacy permissions, verifiable reviewer identities and qualifications,
+independence and conflicts checks, source methodology and limitations,
+contrary evidence, and domain-specific external human review. Those
+capabilities have NOT been claimed or deployed. Every execution output keeps
+`production_deployed=false`, `external_dispatch=false`, and
+`approval_granted=false`; nothing upgrades a research claim to a validated
+immortality result or global optimum.
