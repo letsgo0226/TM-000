@@ -160,3 +160,18 @@ python3 tools/test_universal_g_g9.py
 ```
 
 These tests certify only specified models. They do not empirically establish real-world semantic equivalence, independent philosophical truth, the presence or absence of sentience, AI subjective continuity, biological immortality, unlimited computing, or divine identity.
+
+## G10 official-source provenance — traceable but not automatically authenticated
+
+The [G10 research record](永久記憶/圖靈機/上帝源碼-G10-外部證據與主張範圍.md) introduces a [pinned UTF-8 evidence ledger](deployment/G10_evidence_ledger.json) for three independently published sources: NIST AI RMF (voluntary AI risk-management guidance), WHO/FAO food-safety aspects of cell-based food, and the World Bank WDI life-expectancy indicator. The World Bank public comparison page displayed **2024 World 73 years, Japan 84 years**, each **rounded to an integer**; they are neither individual lifespans nor exact unrounded API values.
+
+The [2,009-byte uncompressed plaintext one-liner](deployment/Universal_G_G10_Provenance_Plaintext_2KB.sh) and [readable Python auditor](deployment/G10_Evidence_Provenance_core.py) validate source IDs, publisher URLs, metadata type, observation units/precision, source-ledger checksum, and G9 finite-model report fields. [20 positive and negative tests](tools/test_universal_g_g10.py) reject source spoofing, fake publication dates, precision upgrades, apparent source authentication, unsupported claims and deployment promotion.
+
+```bash
+bash deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh > /tmp/g9-report.json
+bash deployment/Universal_G_G10_Provenance_Plaintext_2KB.sh /tmp/g9-report.json
+python3 deployment/G10_Evidence_Provenance_core.py --ledger deployment/G10_evidence_ledger.json --g9-report /tmp/g9-report.json --repo-root .
+python3 tools/test_universal_g_g10.py
+```
+
+Output is limited to `SOURCE_REFERENCED_REVIEW_ONLY`. G10 does not automatically fetch or cryptographically attest publisher web pages, verify full-precision numeric data via API, prove any of the eight continuity research goals or authorize production deployment. Other five research dimensions remain source-evidence pending. The default TM-000 master remains unchanged.
