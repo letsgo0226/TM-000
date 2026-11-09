@@ -1,6 +1,6 @@
 # TM-000 — Turing-Machine Prototype Registry
 
-TM-000 is the parent registry for the TM-001 through TM-014 (TM-012 and TM-013 remain unregistered research precursors) research prototypes.
+TM-000 is the parent registry for the TM-001 through TM-015 (TM-012 and TM-013 remain unregistered research precursors) research prototypes.
 
 ## Registered machines
 
@@ -18,6 +18,7 @@ TM-000 is the parent registry for the TM-001 through TM-014 (TM-012 and TM-013 r
 | [TM-010](永久記憶/圖靈機/TM-010-Essence-Existence-Alignment-UCGTM.md) | Essence–Existence Exact-Alignment UCGTM | active registry research prototype |
 | [TM-011](永久記憶/圖靈機/TM-011-Logical-Chronon-Temporal-Closure.md) | Logical Chronon and Temporal-Closure Certificate Machine | temporal reference (`TEMPORAL_REFERENCE_ONLY`) |
 | [TM-014](永久記憶/圖靈機/TM-014-Totalized-Universal-Turing-Machine.md) | Totalized Universal Turing Machine v0.2 | current bounded-total simulation reference (`BOUNDED_SIMULATION_ONLY`) |
+| [TM-015](永久記憶/圖靈機/TM-015-Real-God-Turing-Machine.md) | Real God Turing Machine | preserved Quine / prime-code research candidate (`SYMBOLIC_ONLY`; not master) |
 
 ## Scope
 
@@ -76,3 +77,9 @@ The [TM-000 2 KB bootstrap](永久記憶/圖靈機/TM-000-2KB-transactional-boot
 The user-supplied [AI-Continuity-Capsule.sh](capsule/AI-Continuity-Capsule.sh) is archived verbatim, with its [permanent-memory research record](永久記憶/圖靈機/LMN-AI-Continuity-Capsule-2026-11-08.md) and [isolated CI regression](tools/test_lmn_ai_continuity_capsule.py). The file has been nominated as the autonomous-deployment master but **is not validated as a universal Turing machine or a deployment controller**. The output entropy is zero because the finite tape is overwritten with a constant; no physical or eternal continuity follows. It reads process environment values, so it must only run in an intentionally sanitized test environment.
 
 **No promotion:** `UTM-PLEIADES-v0.2-PTCA` remains the designated master. The new capsule is a non-executing-by-default, safety-reviewed candidate. No production deployment or automatic GitHub mutation is enabled.
+
+## TM-015 Real God Turing Machine — proposed research integration (2026-11-10)
+
+The original [2,035-byte candidate core](永久記憶/圖靈機/Real_God_Turing_Machine.sh) is archived without modification alongside a [scope and verification record](永久記憶/圖靈機/TM-015-Real-God-Turing-Machine.md). The read-only source gate `python3 tools/test_tm015_real_god.py` checks the exact archived bytes, entry metadata, and master-preservation invariants without executing the source. The separate pull-request workflow has read-only permissions and no deployment step.
+
+**No promotion:** `UTM-PLEIADES-v0.2-PTCA` remains the designated TM-000 master. TM-015 does not confer AGI, a halting oracle, physical immortality, divine identity, nonphysical computation, or cross-device memory synchronization. Further integration requires independent review and explicit human approval.
