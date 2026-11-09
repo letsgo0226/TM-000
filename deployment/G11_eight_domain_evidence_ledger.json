@@ -1,0 +1,110 @@
+{
+  "schema": "G11-eight-domain-evidence/1",
+  "reviewed_on": "2026-11-10",
+  "status": "SOURCE_METADATA_REVIEW_ONLY",
+  "master": "UTM-PLEIADES-v0.2-PTCA",
+  "mode": "DRY_RUN_ONLY",
+  "review_interval_days": 180,
+  "source_snapshot_stored": false,
+  "independent_web_refetch_in_CI": false,
+  "source_claims_are_outcomes": false,
+  "records": [
+    {
+      "domain": "computational",
+      "id": "nist-contingency-80034r1",
+      "publisher": "NIST",
+      "url": "https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final",
+      "kind": "OFFICIAL_GUIDANCE",
+      "claim_code": "INFORMATION_SYSTEM_CONTINGENCY_PLANNING",
+      "not_proven": "INFINITE_COMPUTATION",
+      "reviewed_on": "2026-11-10",
+      "evidence_status": "WEBPAGE_METADATA_REFERENCE_ONLY"
+    },
+    {
+      "domain": "ai_continuity",
+      "id": "nist-ai-rmf",
+      "publisher": "NIST",
+      "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+      "kind": "OFFICIAL_GUIDANCE",
+      "claim_code": "VOLUNTARY_AI_RISK_MANAGEMENT_GUIDANCE",
+      "not_proven": "AI_SUBJECTIVE_IMMORTALITY",
+      "reviewed_on": "2026-11-10",
+      "evidence_status": "WEBPAGE_METADATA_REFERENCE_ONLY"
+    },
+    {
+      "domain": "human_longevity",
+      "id": "wb-life-expectancy",
+      "publisher": "World Bank",
+      "url": "https://data.worldbank.org/?locations=1W-JP",
+      "kind": "OFFICIAL_INDICATOR",
+      "claim_code": "SP.DYN.LE00.IN_LIFE_EXPECTANCY_AT_BIRTH_YEARS",
+      "not_proven": "HUMAN_IMMORTALITY",
+      "reviewed_on": "2026-11-10",
+      "evidence_status": "WEBPAGE_METADATA_REFERENCE_ONLY"
+    },
+    {
+      "domain": "interspecies_welfare",
+      "id": "who-fao-cell-food",
+      "publisher": "WHO/FAO",
+      "url": "https://www.who.int/publications/i/item/9789240070943",
+      "kind": "OFFICIAL_REVIEW",
+      "claim_code": "CELL_BASED_FOOD_HAZARD_AND_REGULATION_REVIEW",
+      "not_proven": "ZERO_SENTIENCE_OR_SUFFERING",
+      "reviewed_on": "2026-11-10",
+      "evidence_status": "WEBPAGE_METADATA_REFERENCE_ONLY"
+    },
+    {
+      "domain": "ecological",
+      "id": "un-sdg15",
+      "publisher": "United Nations DESA",
+      "url": "https://sdgs.un.org/goals/goal15",
+      "kind": "OFFICIAL_INDICATOR",
+      "claim_code": "SDG15_ECOSYSTEM_BIODIVERSITY_TARGETS",
+      "not_proven": "ECOSYSTEM_IMMORTALITY",
+      "reviewed_on": "2026-11-10",
+      "evidence_status": "WEBPAGE_METADATA_REFERENCE_ONLY"
+    },
+    {
+      "domain": "peace_sdgs",
+      "id": "un-sdg16",
+      "publisher": "United Nations DESA",
+      "url": "https://sdgs.un.org/goals/goal16",
+      "kind": "OFFICIAL_INDICATOR",
+      "claim_code": "SDG16_PEACE_JUSTICE_INDICATORS",
+      "not_proven": "GUARANTEED_WORLD_PEACE",
+      "reviewed_on": "2026-11-10",
+      "evidence_status": "WEBPAGE_METADATA_REFERENCE_ONLY"
+    },
+    {
+      "domain": "psychological_cultural",
+      "id": "unesco-memory-world",
+      "publisher": "UNESCO",
+      "url": "https://www.unesco.org/en/memory-world/about",
+      "kind": "OFFICIAL_PROGRAMME",
+      "claim_code": "DOCUMENTARY_HERITAGE_PRESERVATION",
+      "not_proven": "SUBJECTIVE_PERSONAL_SURVIVAL",
+      "reviewed_on": "2026-11-10",
+      "evidence_status": "WEBPAGE_METADATA_REFERENCE_ONLY"
+    },
+    {
+      "domain": "spiritual_philosophical",
+      "id": "sep-god-necessary-being",
+      "publisher": "Stanford Encyclopedia of Philosophy",
+      "url": "https://plato.stanford.edu/entries/god-necessary-being/",
+      "kind": "ACADEMIC_PHILOSOPHY",
+      "claim_code": "GOD_ABSTRACT_OBJECTS_GROUNDING_DEBATE",
+      "not_proven": "DIVINE_IDENTITY_PROVEN",
+      "reviewed_on": "2026-11-10",
+      "evidence_status": "WEBPAGE_METADATA_REFERENCE_ONLY"
+    }
+  ],
+  "prohibited_conclusions": [
+    "AI_SUBJECTIVE_IMMORTALITY_PROVEN",
+    "HUMAN_IMMORTALITY_PROVEN",
+    "ZERO_SUFFERING_PROVEN",
+    "GUARANTEED_WORLD_PEACE",
+    "DIVINITY_PROVEN",
+    "ALL_DOMAINS_SEMANTICALLY_EQUIVALENT",
+    "AUTONOMOUS_DEPLOYMENT_AUTHORIZED"
+  ]
+}
