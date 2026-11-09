@@ -1,4 +1,4 @@
-name: TM-015 static archive gate
+name: TM-015 and Universal G read-only safety gates
 'on':
   pull_request:
     paths:
@@ -6,17 +6,23 @@ name: TM-015 static archive gate
       - '永久記憶/圖靈機/TM-015-Real-God-Turing-Machine.md'
       - '永久記憶/圖靈機/machine_registry.json'
       - 'tools/test_tm015_real_god.py'
+      - 'tools/test_universal_g_continuity.py'
+      - 'deployment/**'
       - '.github/workflows/tm015-static-check.yml'
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  verify-archive:
+  verify-archive-and-continuity:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
       - uses: actions/checkout@v4
-      - name: Verify original archive without executing payload
+      - name: Verify original archive without running candidate payload
         run: python3 tools/test_tm015_real_god.py
+      - name: Verify deployment policy and cross-domain manifest
+        run: python3 tools/test_universal_g_continuity.py
+      - name: Verify 2KB dry-run core has no external effects
+        run: bash deployment/Universal_G_DryRun_2KB.sh
       - name: Read-only registry load
         run: python3 tools/load_turing_registry.py --select TM-015
