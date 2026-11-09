@@ -8,6 +8,7 @@ name: TM-015 and Universal G read-only safety gates
       - '永久記憶/圖靈機/上帝源碼-G5-跨論域自然性定理.md'
       - '永久記憶/圖靈機/上帝源碼-G6-忠實跨論域-Cayley-表示定理.md'
       - '永久記憶/圖靈機/上帝源碼-G7-跨論域語意保持定理.md'
+      - '永久記憶/圖靈機/上帝源碼-G8-總圖靈機部署與多維度連續性.md'
       - 'tools/test_tm015_real_god.py'
       - 'tools/test_universal_g_continuity.py'
       - 'deployment/**'
@@ -59,5 +60,15 @@ jobs:
           test "$a" = "$b"
           test "$a" = "$c"
           printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["finite_models"],x["homomorphisms"],x["positive_preservation_tests"],x["isomorphisms"],x["full_truth_equivalences"],x["arbitrary_rename_counterexample"],x["all_domains_proved"],x["God_identity_proved"]) == ("G7",5,38,1566,9,602,True,False,False) else 1)'
+      - name: Verify G8 fail-closed admission from a freshly computed G7 report
+        run: |
+          test "$(wc -l < deployment/Universal_G_G8_Admission_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G8_Admission_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G8_Admission_2KB.sh
+          python3 tools/test_universal_g_g8.py
+          bash deployment/Universal_G_Semantic_Plaintext_2KB.sh > "$RUNNER_TEMP/g7-finite.json"
+          python3 deployment/Universal_G_G8_Controller.py --g7-report "$RUNNER_TEMP/g7-finite.json" | python3 -c 'import sys,json;x=json.load(sys.stdin);sys.exit(0 if x["result"]=="READY_FOR_HUMAN_REVIEW_ONLY" and x["checked_dimensions"]==8 and x["snapshot_roundtrip"] and not x["external_deployment"] and not x["all_dimensions_immortality_proved"] else 1)'
+          bash deployment/Universal_G_G8_Admission_2KB.sh "$RUNNER_TEMP/g7-finite.json" | python3 -c 'import sys,json;x=json.load(sys.stdin);sys.exit(0 if x["status"]=="READY_FOR_HUMAN_REVIEW_ONLY" and x["domains"]==8 and x["g7_fields_ok"] and not x["deployed"] and not x["immortality_proved"] else 1)'
+          PYTHONOPTIMIZE=2 bash deployment/Universal_G_G8_Admission_2KB.sh "$RUNNER_TEMP/g7-finite.json"
       - name: Read-only registry load
         run: python3 tools/load_turing_registry.py --select TM-015
