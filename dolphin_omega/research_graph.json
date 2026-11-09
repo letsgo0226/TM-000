@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "notice": "A research QUESTION graph, not an empirical evidence graph. Hypotheses, checks and counterfactual triggers are explicitly untested. Cross-domain edges only ask questions; they never transfer efficacy claims.",
+  "nodes": [
+    {
+      "id": "paper-aging",
+      "kind": "paper",
+      "domain": "human",
+      "paper_id": "hallmarks-aging-2023"
+    },
+    {
+      "id": "hyp-aging",
+      "kind": "hypothesis",
+      "domain": "human",
+      "statement": "A subset of aging-related mechanisms is associated with replicably measurable human healthspan outcomes.",
+      "predicted_observation": "Independent, appropriately controlled human studies report reproducible links between prespecified aging markers and validated healthspan endpoints.",
+      "would_count_against": "Well-powered independent evidence appraisals repeatedly find no replicable association under prespecified quality criteria.",
+      "status": "UNTESTED"
+    },
+    {
+      "id": "check-aging",
+      "kind": "proposed_check",
+      "domain": "human",
+      "check_kind": "offline_literature_appraisal",
+      "method": "Plan a preregistered, literature-only evaluation of independently replicated human findings; no interventions.",
+      "evaluation_criteria": "Record population, marker definition, healthspan measure, bias controls, replication status and contradictory results before making any conclusion.",
+      "status": "NOT_RUN",
+      "observed_outcome": null,
+      "human_intervention": false
+    },
+    {
+      "id": "contrary-aging",
+      "kind": "contrary_question",
+      "domain": "human",
+      "question": "Which independent controlled human findings contradict rather than support the proposed marker–healthspan link?"
+    },
+    {
+      "id": "paper-axolotl",
+      "kind": "paper",
+      "domain": "cross_species",
+      "paper_id": "axolotl-shh-2026"
+    },
+    {
+      "id": "hyp-axolotl",
+      "kind": "hypothesis",
+      "domain": "cross_species",
+      "statement": "Independent axolotl studies may reproduce reported links between dorsoventral patterning and Shh induction during limb regeneration.",
+      "predicted_observation": "Comparable independent axolotl studies report a consistent qualitative relationship under prespecified experimental conditions.",
+      "would_count_against": "Independent replication attempts fail to observe the reported association in comparable axolotl conditions.",
+      "status": "UNTESTED"
+    },
+    {
+      "id": "check-axolotl",
+      "kind": "proposed_check",
+      "domain": "cross_species",
+      "check_kind": "offline_literature_appraisal",
+      "method": "Plan an observational systematic literature appraisal of published axolotl replication results only; no experiments.",
+      "evaluation_criteria": "Record species, experimental conditions, assay, controls, independent replication and negative results; do not extrapolate to humans.",
+      "status": "NOT_RUN",
+      "observed_outcome": null,
+      "human_intervention": false
+    },
+    {
+      "id": "contrary-axolotl",
+      "kind": "contrary_question",
+      "domain": "cross_species",
+      "question": "Are there independent axolotl findings that challenge the proposed patterning and Shh association?"
+    }
+  ],
+  "edges": [
+    {
+      "from": "paper-aging",
+      "to": "hyp-aging",
+      "relation": "MOTIVATES_QUESTION"
+    },
+    {
+      "from": "hyp-aging",
+      "to": "check-aging",
+      "relation": "PROPOSED_CHECK"
+    },
+    {
+      "from": "check-aging",
+      "to": "contrary-aging",
+      "relation": "ADDRESSES_COUNTEREVIDENCE"
+    },
+    {
+      "from": "paper-axolotl",
+      "to": "hyp-axolotl",
+      "relation": "MOTIVATES_QUESTION"
+    },
+    {
+      "from": "hyp-axolotl",
+      "to": "check-axolotl",
+      "relation": "PROPOSED_CHECK"
+    },
+    {
+      "from": "check-axolotl",
+      "to": "contrary-axolotl",
+      "relation": "ADDRESSES_COUNTEREVIDENCE"
+    },
+    {
+      "from": "hyp-axolotl",
+      "to": "hyp-aging",
+      "relation": "CROSS_DOMAIN_QUESTION_ONLY",
+      "qualification": "Whether nonhuman regeneration mechanisms have any relationship to human healthy aging remains unknown; no efficacy, identity, longevity, or mechanism transfers are asserted."
+    }
+  ]
+}

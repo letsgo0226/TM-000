@@ -1,0 +1,205 @@
+name: Dolphin-Omega Offline Safety Gate
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  research-dry-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Offline, standard-library-only tests
+        run: python3 tools/test_dolphin_omega.py
+      - name: Bounded optimizer / ethics gate unit tests
+        run: python3 tools/test_dolphin_omega_optimizer.py
+      - name: Offline provenance firewall / evidence metadata tests
+        run: python3 tools/test_dolphin_omega_dossier.py
+      - name: Offline least-privilege grant, revocation and audit regression
+        run: python3 tools/test_dolphin_omega_collaboration.py
+      - name: Confirm protocol simulates authorization without external control
+        run: |
+          python3 tools/dolphin_omega_collaboration.py > /tmp/dolphin-omega-collaboration.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/dolphin-omega-collaboration.json', encoding='utf-8') as f:
+              r = json.load(f)
+          assert r['version'] == '0.8-simulated-consent-protocol'
+          assert r['audit_entries'] == 15
+          assert len(r['last_audit_digest']) == 64
+          decisions = [row['decision'] for row in r['audit']]
+          assert decisions.count('ALLOW_SIMULATION') == 1
+          assert 'RECORDED_SIMULATED_REVOCATION' in decisions
+          reasons = {row['reason'] for row in r['audit']}
+          assert 'REVOKED_GRANT' in reasons
+          assert 'EXPIRED_GRANT' in reasons
+          assert 'EXTERNAL_NODE_UNSUPPORTED' in reasons
+          assert not r['verification']['owner_identities_authenticated']
+          assert not r['verification']['log_immutability_proven']
+          assert not r['execution']['external_dispatch']
+          assert not r['execution']['real_authorization_granted']
+          assert not r['execution']['production_deployed']
+          print('DOLPHIN_OMEGA_V08_COLLABORATION=PASS; offline policy simulation only')
+          PY
+      - name: UICC formal research closed-loop and archive-only attractor tests
+        run: python3 tools/test_dolphin_omega_uicc.py
+      - name: Verify nine-domain reversible research reconciliation never deploys
+        run: |
+          python3 tools/dolphin_omega_uicc.py > /tmp/dolphin-omega-uicc-report.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('/tmp/dolphin-omega-uicc-report.json').read_text(encoding='utf-8'))
+          assert r['version'] == '0.9-formal-research-closure'
+          assert len(r['joint_problem']['domains']) == 9
+          assert {'peace', 'sdgs', 'cultivated_meat'} <= set(r['joint_problem']['domains'])
+          assert r['joint_problem']['g257_roundtrip_verified']
+          assert r['reconciliation']['accepted_draft_events'] == 5
+          assert r['reconciliation']['held_events'] == 1
+          assert r['normative_attractor']['archival_capsule']['literal_symbol_present_in_source']
+          assert not r['normative_attractor']['archival_capsule']['capsule_executed']
+          assert not r['normative_attractor']['global_convergence_proven']
+          assert not r['normative_attractor']['immortality_proven']
+          assert not r['deployment_adapter']['eligible_for_production_activation']
+          assert not r['deployment_adapter']['external_dispatch']
+          assert not r['deployment_adapter']['production_deployed']
+          print('DOLPHIN_OMEGA_UICC=PASS; archival attractor and bounded formal closure only')
+          PY
+      - name: Offline reviewer interface / unverified draft tests
+        run: python3 tools/test_dolphin_omega_reviewer_ui.py
+      - name: Confirm exported reviewer interface cannot auto-approve or transmit
+        run: |
+          python3 tools/dolphin_omega_reviewer_ui.py --render-html > /tmp/dolphin-omega-reviewer.html
+          python3 - <<'PY'
+          from pathlib import Path
+          html = Path('/tmp/dolphin-omega-reviewer.html').read_text(encoding='utf-8')
+          assert 'connect-src &#x27;none&#x27;' in html or "connect-src 'none'" in html
+          assert 'form-action &#x27;none&#x27;' in html or "form-action 'none'" in html
+          assert 'UNVERIFIED_REVIEW_DRAFT' in html
+          assert 'URL.createObjectURL(blob)' in html
+          assert 'production_deployed: false' in html
+          assert 'approved: false' in html
+          assert 'https://pubmed.ncbi.nlm.nih.gov/36599349/' in html
+          assert 'https://pubmed.ncbi.nlm.nih.gov/41642075/' in html
+          print('DOLPHIN_OMEGA_V07_REVIEWER_HTML=PASS; offline draft export only')
+          PY
+      - name: Archive the static offline reviewer worksheet (not a deployment)
+        uses: actions/upload-artifact@v4
+        with:
+          name: dolphin-omega-v0.7-offline-reviewer-html
+          path: /tmp/dolphin-omega-reviewer.html
+          if-no-files-found: error
+          retention-days: 7
+      - name: Offline falsifiability and provenance graph tests
+        run: python3 tools/test_dolphin_omega_graph.py
+      - name: Confirm cross-domain graph contains no inferred immortality or deployment claims
+        run: |
+          python3 tools/dolphin_omega_graph.py > /tmp/dolphin-omega-graph.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/dolphin-omega-graph.json', encoding='utf-8') as f:
+              r = json.load(f)
+          assert r['version'] == '0.6-falsifiability-graph'
+          assert r['node_counts']['paper'] == 2
+          assert r['node_counts']['hypothesis'] == 2
+          assert r['edge_count'] == 7
+          assert len(r['uncovered_domains']) == 4
+          assert all(not x['evidence_transfer_verified'] for x in r['cross_domain_links'])
+          assert all(not x['scientifically_validated'] for x in r['research_chains'])
+          assert all(x['human_review_state'] == 'AWAITING_INDEPENDENT_HUMAN_REVIEW' for x in r['research_chains'])
+          assert not r['verification']['tests_run']
+          assert not r['verification']['immortality_proven']
+          assert not r['verification']['global_optimum_computed']
+          assert not r['execution']['external_dispatch']
+          assert not r['execution']['production_deployed']
+          print('DOLPHIN_OMEGA_FALSIFIABILITY_GRAPH=PASS; structure only, no causal/evidential inference')
+          PY
+      - name: Offline real-literature metadata and pending review tests
+        run: python3 tools/test_dolphin_omega_literature.py
+      - name: Verify bibliography does not imply scientific validation or approval
+        run: |
+          python3 tools/dolphin_omega_literature.py > /tmp/dolphin-omega-literature.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/dolphin-omega-literature.json', encoding='utf-8') as f:
+              r = json.load(f)
+          assert r['version'] == '0.5-literature-triage'
+          assert r['curated_bibliography_count'] == 2
+          assert set(r['recorded_domains']) == {'human', 'cross_species'}
+          assert len(r['uncovered_domains']) == 4
+          assert not r['verification']['metadata_verified_live_by_ci']
+          assert not r['verification']['clinical_efficacy_verified']
+          assert not r['verification']['immortality_verified']
+          assert not r['execution']['production_deployed']
+          assert not r['execution']['external_dispatch']
+          assert all(p['human_review_state'] == 'AWAITING_INDEPENDENT_HUMAN_REVIEW' for p in r['papers'])
+          print('DOLPHIN_OMEGA_REAL_BIBLIOGRAPHY_TRIAGE=PASS; no science or deployment approval')
+          PY
+      - name: Offline evidence packet / reviewer attestation tests
+        run: python3 tools/test_dolphin_omega_review.py
+      - name: Fail-closed synthetic review packet audit
+        run: |
+          python3 tools/dolphin_omega_review.py > /tmp/dolphin-omega-review.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/dolphin-omega-review.json', encoding='utf-8') as f:
+              x = json.load(f)
+          assert x['version'] == '0.4-offline-review-packet'
+          assert x['packet_results'][0]['snapshot_byte_integrity']
+          assert x['packet_results'][0]['review_state'] == 'MULTIPLE_SYNTHETIC_ATTESTATIONS_RECORDED'
+          assert not x['packet_results'][0]['reviewer_identities_authenticated']
+          assert not x['verification']['scientific_claims_verified']
+          assert not x['verification']['source_content_fetched']
+          assert not x['execution']['production_deployed']
+          assert not x['execution']['external_dispatch']
+          print('DOLPHIN_OMEGA_SYNTHETIC_REVIEW=PASS; no provenance or science authenticity claimed')
+          PY
+      - name: Verify provenance dossier is unverified and never deploys
+        run: |
+          python3 tools/dolphin_omega_dossier.py > /tmp/dolphin-omega-dossier.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/dolphin-omega-dossier.json', encoding='utf-8') as f:
+              x = json.load(f)
+          assert x['version'] == '0.3-epistemic-firewall'
+          assert not x['verification']['sources_downloaded']
+          assert not x['verification']['sources_independently_verified']
+          assert not x['execution']['production_deployed']
+          assert not x['execution']['external_dispatch']
+          assert all(not r['ready_for_real_world_use'] for r in x['dossiers'])
+          print('DOLPHIN_OMEGA_EPISTEMIC_FIREWALL=PASS')
+          PY
+      - name: Verify a simulated Pareto ranking is never deployment authority
+        run: |
+          python3 tools/dolphin_omega_optimizer.py > /tmp/dolphin-omega-ranking.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/dolphin-omega-ranking.json', encoding='utf-8') as f:
+              x = json.load(f)
+          assert x["synthetic_winners_by_domain"]["ai"] == "ai-version-snapshot"
+          assert x["synthetic_winners_by_domain"]["human"] is None
+          assert x["synthetic_winners_by_domain"]["spiritual"] is None
+          assert not x["execution"]["production_deployed"]
+          assert not x["execution"]["external_dispatch"]
+          assert not x["claims"]["general_or_global_optimum"]
+          print("DOLPHIN_OMEGA_SIMULATED_OPTIMIZER=PASS; ethics and authorization veto held")
+          PY
+      - name: Validate a sample reversible question encoding without deploying
+        run: |
+          python3 tools/dolphin_omega.py --question 'How can AI and living systems preserve continuity responsibly?' > /tmp/dolphin-omega-plan.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/dolphin-omega-plan.json', encoding='utf-8') as f:
+              r = json.load(f)
+          assert r['encoding']['roundtrip_verified']
+          assert r['dolphin_formula']['status'] == 'UNDEFINED_NOT_EXECUTED'
+          assert not r['deployment']['production_deployed']
+          assert not r['node_selection']['dispatch_performed']
+          print('DOLPHIN_OMEGA_OFFLINE_GATE=PASS; no external nodes or production deployment')
+          PY

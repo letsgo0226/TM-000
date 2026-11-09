@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "notice": "FICTIONAL reviewers and a MANUALLY AUTHORED snapshot; no reviewer identity, origin, or scientific fact is authenticated.",
+  "snapshots": [
+    {
+      "candidate_id": "ai-basic-archive",
+      "source_id": "github-registry-readme",
+      "snapshot_path": "dolphin_omega/review_snapshots/synthetic-context.txt",
+      "sha256": "5c4fc20cbbe6339e9854d1ebb54bd0cbcd89d88ff042e6d7f80f3ae7b8804bce"
+    }
+  ],
+  "reviews": [
+    {
+      "review_id": "synthetic-review-a",
+      "candidate_id": "ai-basic-archive",
+      "source_id": "github-registry-readme",
+      "reviewer_id": "fictional-methods-reviewer",
+      "team_id": "fictional-team-a",
+      "role": "methods",
+      "verdict": "context",
+      "conflict_declared": false,
+      "synthetic": true,
+      "checked_excerpt": "This text was authored for a test",
+      "reasoning": "This is a fixture and cannot authenticate the linked README or the research claim."
+    },
+    {
+      "review_id": "synthetic-review-b",
+      "candidate_id": "ai-basic-archive",
+      "source_id": "github-registry-readme",
+      "reviewer_id": "fictional-replication-reviewer",
+      "team_id": "fictional-team-b",
+      "role": "replication",
+      "verdict": "inconclusive",
+      "conflict_declared": false,
+      "synthetic": true,
+      "checked_excerpt": "does not establish the persistence of subjective identity",
+      "reasoning": "Byte preservation is distinct from a validated continuity-of-consciousness theory."
+    }
+  ]
+}

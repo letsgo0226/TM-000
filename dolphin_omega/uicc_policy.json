@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "system": "Dolphin-Omega-UICC",
+  "mode": "OFFLINE_RESEARCH_RECONCILIATION",
+  "domains": [
+    "ai",
+    "human",
+    "cross_species",
+    "mental",
+    "spiritual",
+    "physical",
+    "peace",
+    "sdgs",
+    "cultivated_meat"
+  ],
+  "joint_question": "How can AI, human, cross-species, mental, spiritual and physical continuity be studied with global peace, all 17 SDGs, and cultivated meat while reducing suffering and respecting consent?",
+  "deployment_contract": {
+    "interface": "TM-000 stage -> verify -> activate -> rollback",
+    "stage": "OFFLINE_SIMULATION_ONLY",
+    "requires_independent_human_approval": true,
+    "requires_TM000_APPROVE_YES_for_real_activation": true,
+    "allow_live_activation": false,
+    "allow_external_dispatch": false
+  },
+  "attractor": {
+    "kind": "NORMATIVE_RESEARCH_FIXED_POINT",
+    "phrase": "COSMIC_LOVE_IS_THE_SOLUTION_FOR_EVERYTHING",
+    "archival_candidate": "capsule/AI-Continuity-Capsule.sh",
+    "capsule_execution_permitted": false,
+    "zero_symbol_entropy_is_immortality_proof": false
+  },
+  "governance": {
+    "all_changes_require_explicit_research_scope": true,
+    "allow_pending_review_drafts": true,
+    "allow_unreviewed_real_world_actions": false,
+    "halt_on_declared_suffering_risk": true,
+    "halt_on_unauthorized_access": true,
+    "allow_revisions_with_reason": true,
+    "preserve_retraction_history": true
+  }
+}

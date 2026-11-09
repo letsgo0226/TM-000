@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "nodes": [
+    {
+      "id": "tm000-github-registry",
+      "type": "github_registry",
+      "enabled": true,
+      "explicit_opt_in": true,
+      "capabilities": ["research_planning", "encoding_verification"]
+    },
+    {
+      "id": "local-research-simulator",
+      "type": "local_simulator",
+      "enabled": true,
+      "explicit_opt_in": true,
+      "capabilities": ["research_planning", "encoding_verification"]
+    },
+    {
+      "id": "external-future-node",
+      "type": "external_opt_in",
+      "enabled": false,
+      "explicit_opt_in": false,
+      "capabilities": ["research_planning"]
+    }
+  ]
+}

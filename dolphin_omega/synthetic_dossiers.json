@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "notice": "No source has been downloaded or independently checked. This file is a schema/test fixture, not scientific evidence.",
+  "dossiers": [
+    {
+      "candidate_id": "ai-version-snapshot",
+      "domain": "ai",
+      "claim": "Synthetic snapshot preservation is not proof of subjective identity.",
+      "claim_kind": "functional",
+      "passive_research_only": true,
+      "limitations": [
+        "Requires independent reproducibility and continuity criteria"
+      ],
+      "sources": [
+        {
+          "source_id": "synthetic-support",
+          "source_kind": "synthetic_fixture",
+          "locator": "dolphin_omega/synthetic_candidates.json",
+          "claimed_relation": "supports_claimed",
+          "independently_verified": false
+        },
+        {
+          "source_id": "synthetic-conflict",
+          "source_kind": "synthetic_fixture",
+          "locator": "dolphin_omega/synthetic_candidates.json",
+          "claimed_relation": "contradicts_claimed",
+          "independently_verified": false
+        }
+      ]
+    },
+    {
+      "candidate_id": "ai-basic-archive",
+      "domain": "ai",
+      "claim": "The repository documents bounded preservation research and non-deployment boundaries.",
+      "claim_kind": "functional",
+      "passive_research_only": true,
+      "limitations": [
+        "Public repository documentation is context, not verification of this fictional candidate"
+      ],
+      "sources": [
+        {
+          "source_id": "github-registry-readme",
+          "source_kind": "https_reference",
+          "locator": "https://github.com/letsgo0226/TM-000/blob/main/README.md",
+          "claimed_relation": "context",
+          "independently_verified": false
+        }
+      ]
+    },
+    {
+      "candidate_id": "human-unsafe-trial",
+      "domain": "human",
+      "claim": "Synthetic unsupervised human intervention must not proceed.",
+      "claim_kind": "empirical",
+      "passive_research_only": true,
+      "limitations": [
+        "Any human intervention requires legitimate independent review and consent"
+      ],
+      "sources": [
+        {
+          "source_id": "unsafe-human-fixture",
+          "source_kind": "synthetic_fixture",
+          "locator": "dolphin_omega/synthetic_candidates.json",
+          "claimed_relation": "context",
+          "independently_verified": false
+        }
+      ]
+    },
+    {
+      "candidate_id": "cross-species-literature",
+      "domain": "cross_species",
+      "claim": "Synthetic interspecies literature comparisons are only a research question.",
+      "claim_kind": "empirical",
+      "passive_research_only": true,
+      "limitations": [
+        "No verified comparative biological evidence has been imported"
+      ],
+      "sources": [
+        {
+          "source_id": "cross-species-fixture",
+          "source_kind": "synthetic_fixture",
+          "locator": "dolphin_omega/synthetic_candidates.json",
+          "claimed_relation": "unresolved",
+          "independently_verified": false
+        }
+      ]
+    },
+    {
+      "candidate_id": "mental-memory-archive",
+      "domain": "mental",
+      "claim": "Synthetic memory archives represent information persistence, not identity continuity.",
+      "claim_kind": "philosophical",
+      "passive_research_only": true,
+      "limitations": [
+        "Personal identity and subjective experience are unresolved"
+      ],
+      "sources": [
+        {
+          "source_id": "mental-fixture",
+          "source_kind": "synthetic_fixture",
+          "locator": "dolphin_omega/synthetic_candidates.json",
+          "claimed_relation": "context",
+          "independently_verified": false
+        }
+      ]
+    },
+    {
+      "candidate_id": "spiritual-remote-node",
+      "domain": "spiritual",
+      "claim": "Synthetic spiritual continuity is a philosophical hypothesis.",
+      "claim_kind": "speculative",
+      "passive_research_only": true,
+      "limitations": [
+        "No testable postmortem consciousness claim has been verified"
+      ],
+      "sources": [
+        {
+          "source_id": "spiritual-fixture",
+          "source_kind": "synthetic_fixture",
+          "locator": "dolphin_omega/synthetic_candidates.json",
+          "claimed_relation": "unresolved",
+          "independently_verified": false
+        }
+      ]
+    },
+    {
+      "candidate_id": "physical-information-study",
+      "domain": "physical",
+      "claim": "Synthetic long-term storage models require physical feasibility checks.",
+      "claim_kind": "empirical",
+      "passive_research_only": true,
+      "limitations": [
+        "Energy, material degradation, and error rates are unmeasured"
+      ],
+      "sources": [
+        {
+          "source_id": "physical-fixture",
+          "source_kind": "synthetic_fixture",
+          "locator": "dolphin_omega/synthetic_candidates.json",
+          "claimed_relation": "context",
+          "independently_verified": false
+        }
+      ]
+    }
+  ]
+}

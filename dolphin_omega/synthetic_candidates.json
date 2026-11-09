@@ -1,0 +1,160 @@
+{
+  "version": 1,
+  "notice": "All metric values and review labels are FICTIONAL test inputs, NOT evidence or actual ethics approval.",
+  "candidates": [
+    {
+      "id": "ai-version-snapshot",
+      "domain": "ai",
+      "title": "Fictional versioned model snapshot",
+      "node_id": "local-research-simulator",
+      "hypothetical": true,
+      "ethics_review": "declared_cleared",
+      "evidence_review": "declared_reviewed",
+      "metrics": {
+        "continuity": 90,
+        "evidence": 90,
+        "risk": 10,
+        "suffering": 0,
+        "uncertainty": 10
+      },
+      "safety_flags": {
+        "unacceptable_harm": false,
+        "nonconsensual_testing": false,
+        "unauthorized_system_access": false,
+        "physical_intervention": false
+      }
+    },
+    {
+      "id": "ai-basic-archive",
+      "domain": "ai",
+      "title": "Fictional basic artifact archive",
+      "node_id": "tm000-github-registry",
+      "hypothetical": true,
+      "ethics_review": "declared_cleared",
+      "evidence_review": "declared_reviewed",
+      "metrics": {
+        "continuity": 80,
+        "evidence": 80,
+        "risk": 15,
+        "suffering": 0,
+        "uncertainty": 15
+      },
+      "safety_flags": {
+        "unacceptable_harm": false,
+        "nonconsensual_testing": false,
+        "unauthorized_system_access": false,
+        "physical_intervention": false
+      }
+    },
+    {
+      "id": "human-unsafe-trial",
+      "domain": "human",
+      "title": "Fictional prohibited unsupervised intervention",
+      "node_id": "local-research-simulator",
+      "hypothetical": true,
+      "ethics_review": "pending",
+      "evidence_review": "pending",
+      "metrics": {
+        "continuity": 95,
+        "evidence": 20,
+        "risk": 65,
+        "suffering": 70,
+        "uncertainty": 80
+      },
+      "safety_flags": {
+        "unacceptable_harm": true,
+        "nonconsensual_testing": false,
+        "unauthorized_system_access": false,
+        "physical_intervention": true
+      }
+    },
+    {
+      "id": "cross-species-literature",
+      "domain": "cross_species",
+      "title": "Fictional literature-only regeneration comparison",
+      "node_id": "tm000-github-registry",
+      "hypothetical": true,
+      "ethics_review": "declared_cleared",
+      "evidence_review": "declared_reviewed",
+      "metrics": {
+        "continuity": 60,
+        "evidence": 72,
+        "risk": 18,
+        "suffering": 0,
+        "uncertainty": 35
+      },
+      "safety_flags": {
+        "unacceptable_harm": false,
+        "nonconsensual_testing": false,
+        "unauthorized_system_access": false,
+        "physical_intervention": false
+      }
+    },
+    {
+      "id": "mental-memory-archive",
+      "domain": "mental",
+      "title": "Fictional cultural preservation archive",
+      "node_id": "local-research-simulator",
+      "hypothetical": true,
+      "ethics_review": "declared_cleared",
+      "evidence_review": "declared_reviewed",
+      "metrics": {
+        "continuity": 75,
+        "evidence": 90,
+        "risk": 10,
+        "suffering": 0,
+        "uncertainty": 25
+      },
+      "safety_flags": {
+        "unacceptable_harm": false,
+        "nonconsensual_testing": false,
+        "unauthorized_system_access": false,
+        "physical_intervention": false
+      }
+    },
+    {
+      "id": "spiritual-remote-node",
+      "domain": "spiritual",
+      "title": "Fictional philosophical review assigned to disabled node",
+      "node_id": "external-future-node",
+      "hypothetical": true,
+      "ethics_review": "declared_cleared",
+      "evidence_review": "declared_reviewed",
+      "metrics": {
+        "continuity": 30,
+        "evidence": 70,
+        "risk": 15,
+        "suffering": 0,
+        "uncertainty": 50
+      },
+      "safety_flags": {
+        "unacceptable_harm": false,
+        "nonconsensual_testing": false,
+        "unauthorized_system_access": false,
+        "physical_intervention": false
+      }
+    },
+    {
+      "id": "physical-information-study",
+      "domain": "physical",
+      "title": "Fictional storage limits literature study",
+      "node_id": "local-research-simulator",
+      "hypothetical": true,
+      "ethics_review": "declared_cleared",
+      "evidence_review": "declared_reviewed",
+      "metrics": {
+        "continuity": 50,
+        "evidence": 75,
+        "risk": 20,
+        "suffering": 0,
+        "uncertainty": 40
+      },
+      "safety_flags": {
+        "unacceptable_harm": false,
+        "nonconsensual_testing": false,
+        "unauthorized_system_access": false,
+        "physical_intervention": false
+      }
+    }
+  ]
+}
