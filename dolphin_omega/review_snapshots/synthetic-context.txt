@@ -1,0 +1,3 @@
+Synthetic offline review snapshot.
+This text was authored for a test; it was not retrieved from the cited GitHub URL.
+A versioned artifact can preserve bytes, but does not establish the persistence of subjective identity.
