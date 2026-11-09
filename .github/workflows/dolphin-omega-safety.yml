@@ -21,6 +21,24 @@ jobs:
         run: python3 tools/test_dolphin_omega_optimizer.py
       - name: Offline provenance firewall / evidence metadata tests
         run: python3 tools/test_dolphin_omega_dossier.py
+      - name: Offline reviewer interface / unverified draft tests
+        run: python3 tools/test_dolphin_omega_reviewer_ui.py
+      - name: Confirm exported reviewer interface cannot auto-approve or transmit
+        run: |
+          python3 tools/dolphin_omega_reviewer_ui.py --render-html > /tmp/dolphin-omega-reviewer.html
+          python3 - <<'PY'
+          from pathlib import Path
+          html = Path('/tmp/dolphin-omega-reviewer.html').read_text(encoding='utf-8')
+          assert 'connect-src &#x27;none&#x27;' in html or "connect-src 'none'" in html
+          assert 'form-action &#x27;none&#x27;' in html or "form-action 'none'" in html
+          assert 'UNVERIFIED_REVIEW_DRAFT' in html
+          assert 'URL.createObjectURL(blob)' in html
+          assert 'production_deployed: false' in html
+          assert 'approved: false' in html
+          assert 'https://pubmed.ncbi.nlm.nih.gov/36599349/' in html
+          assert 'https://pubmed.ncbi.nlm.nih.gov/41642075/' in html
+          print('DOLPHIN_OMEGA_V07_REVIEWER_HTML=PASS; offline draft export only')
+          PY
       - name: Offline falsifiability and provenance graph tests
         run: python3 tools/test_dolphin_omega_graph.py
       - name: Confirm cross-domain graph contains no inferred immortality or deployment claims
