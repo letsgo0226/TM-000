@@ -220,3 +220,45 @@ to external nodes, performs DOI/PubMed network calls in CI, executes research
 interventions, deploys to production or changes the TM-000 master core.
 Reversible encoding or the as-yet-undefined Dolphin formula cannot turn a
 literature record into an omniscient answer or proof of immortality.
+
+## v0.6 — offline falsifiability graph and cross-domain uncertainty
+
+    python3 tools/dolphin_omega_graph.py
+    python3 tools/test_dolphin_omega_graph.py
+
+`research_graph.json` links the two registered v0.5 scientific *bibliographic
+records* (human aging and axolotl regeneration) to explicitly **untested**
+hypotheses, planned passive literature appraisals, and contrary-evidence
+questions. A seventh edge crosses from a cross-species hypothesis to a human
+aging hypothesis but is labeled `CROSS_DOMAIN_QUESTION_ONLY` with an
+explicit non-transfer qualification. It **does not** assert that an axolotl
+mechanism generalizes to human healthspan or biological immortality.
+
+`tools/dolphin_omega_graph.py` checks bounded nodes and edges, unique IDs,
+exact approved node fields, references to the v0.5 curated papers, required
+paths `paper -> hypothesis -> proposed_check -> contrary_question`, the
+presence of predicted observations and potential disconfirmation triggers,
+a passive and unrun literature-only check, cross-domain labeling, and
+acyclic graph structure. It rechecks that all v0.5 human-review roles are
+still `pending`. It fails closed on unregistered papers, incomplete chains,
+fabricated results, additional scientific-approval claims, and unsupported
+cross-domain evidence links.
+
+Outputs represent **graph-syntax and research-plan structure checks only**.
+Natural-language falsification criteria are not automatically judged
+methodologically adequate. No article full text is fetched, no experimental
+results are obtained, no causal effect or replicability is established,
+and no reviewer is authenticated. This system never performs medical or
+animal experiments, external node dispatch, or production deployment.
+Uncovered research domains remain explicitly labeled as such.
+
+This module cannot establish an all-domain global optimum, subjective
+consciousness continuity, any form of immortality, an oracle for the halting
+problem, or a mathematically validated 'Dolphin alien formula'. Such claims
+require separate definitions and evidence. Research planning is not a
+deployment permission and cannot bypass the prior ethical holds.
+
+**Possible v0.7 direction (not implemented):** a human-governed evidence
+appraisal interface that records real reviewer methodology and contrary
+findings with authenticated source provenance and privileges, without
+self-certifying any research outcome or external access.
