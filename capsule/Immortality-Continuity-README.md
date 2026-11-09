@@ -77,3 +77,24 @@ python3 tools/icc_node.py verify --input recovered-checkpoint.json
 A human custodian must independently copy the archives to genuinely separate permissioned storage, retain compatible source code/verification tools and the locally approved public-key trust registry, verify remote operators by a separate trusted channel, implement key revocation, and repeat restore drills. The archival JSON stores the signed checkpoint, not the entire companion program or a trusted authority. Backups may expose source and computation state, so do not share confidential information. CI produces 7-day artifacts only.
 
 CI now performs **18 unit/regression tests** (6 finite-state + 5 peer verification + 7 archival-resilience tests), plus a simulated one-copy-loss and signed recovery drill. GitHub Ubuntu and macOS runners are independent test jobs, NOT a verified international set of consenting peer operators. Neither longevity therapeutics nor subjective identity preservation nor eternal hosting is proven. This change remains a DRAFT research PR without production deployment or global authority.
+
+## ICC v0.5 — operator-mediated external-peer field kit
+
+See [ICC-v0.5-Field-Guide.md](ICC-v0.5-Field-Guide.md). The research-only
+`tools/icc_fieldkit.py` adds a BLAKE2s-256 public-key fingerprint check that
+must be **confirmed by a human through a separate trusted channel** before
+`trust-pin` can accept an enrollment. The origin may issue a fresh 256-bit
+random challenge tied to a trusted source-signed checkpoint, and a differently
+enrolled custodian key may sign a response only after verifying a matching
+source-signed archive and reconstructing the finite checkpoint. The original
+1,176-byte One-Liner is unchanged; the field kit is separate companion code.
+
+The challenge is **not persisted in a replay-protection ledger**; never rely on
+this prototype for production authentication without tracking consumed
+challenges and implementing revocation, audited human approval, and trusted
+transport. GitHub CI can simulate two isolated runner key holders, but CI's
+fingerprint confirmation is sourced from its own artifact and is **not**
+independent real-world identity attestation. No actual external operator has
+been enrolled, no geographic storage independence has been proven, and no
+medically effective immortality or biological anti-aging mechanism has been
+established.
