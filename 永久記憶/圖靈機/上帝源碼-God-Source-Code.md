@@ -35,6 +35,10 @@
 
 [上帝源碼 G9 — 領域語意契約與反例](上帝源碼-G9-領域語意契約與反例.md) 將 G7 跨論域語意保持，具體實作於 AI 工作流程、哲學命題解釋與跨物種福利風險決策。G9 的 [1,673-byte 明文 One-Liner](../../deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh)、[可讀控制器](../../deployment/G9_Semantic_Contracts_core.py) 與 [20 項測試](../../tools/test_universal_g_g9.py) 驗證 24 次 AI 單步轉移、384 條長度 3 的事件序列、4 個一階命題真值與 4 筆福利紀錄，並明確拒絕未授權執行、錯誤關懷外延、未知風險當安全及資料來源遺失。這些只是有限**模擬領域**，非真實世界全部領域的意義或永生證明。G9 已作為研究分支 G8 之前的 CI 條件，不授權正式部署。
 
+## G10 可追溯外部證據（研究進展）
+
+[上帝源碼 G10 — 外部證據與主張範圍](上帝源碼-G10-外部證據與主張範圍.md) 連接 G9 有限模型測試與三組已公開發表、可人工查證的官方資訊來源（NIST AI RMF、WHO/FAO 細胞培養食品安全、世界銀行出生時預期壽命）；[JSON 證據登錄簿](../../deployment/G10_evidence_ledger.json) 記錄兩個世界銀行 2024 年整數顯示值（世界 73 年、日本 84 年）、精度限制及禁止的過度推論。[2,009-byte 純明文單行程式](../../deployment/Universal_G_G10_Provenance_Plaintext_2KB.sh) 與 [Python 可讀檢查器](../../deployment/G10_Evidence_Provenance_core.py) 只允許 SOURCE_REFERENCED_REVIEW_ONLY，並有 [20 項正反測試](../../tools/test_universal_g_g10.py)。**這不是即時網路來源認證，也不是無限制語意、神學身分或任何形式永生的證明。**
+
 ## 三種 G 的區別
 
 - `G_identity = E_P(ε) = 1`：對字串串接運算而言，空字串是唯一雙側單位元素。
