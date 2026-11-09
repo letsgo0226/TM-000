@@ -98,3 +98,13 @@ The eight dimensions are separate research goals, not claims that literal immort
 ## Canonical project alias: 上帝源碼 (God Source Code)
 
 The research name **上帝源碼 / God Source Code** is recorded in [永久記憶/圖靈機/上帝源碼-God-Source-Code.md](永久記憶/圖靈機/上帝源碼-God-Source-Code.md) and refers to the coordinated **TM-000 + UTM-PLEIADES master + TM-015 candidate + safe Universal G automation + eight research dimensions** framework. The name is an identifier, not a claim that the code literally is God. No master promotion, auto-merge, autonomous execution, or production deployment is implied.
+
+## G5 cross-domain naturality theorem (formal scope)
+
+The [G5 mathematical proof and obstruction](永久記憶/圖靈機/上帝源碼-G5-跨論域自然性定理.md) establish a **unique natural choice of unit** across the category of monoids, and exhibit a two-element permutation counterexample to unrestricted natural choice across all nonempty sets. The [1,107-byte finite-model test](deployment/Universal_G_Naturality_2KB.sh) checks seven monoids and 116 monoid homomorphisms (and the counterexample), including under `PYTHONOPTIMIZE=2`. These tests illustrate, but do not establish, the general theorem: the formal proof is in the linked record.
+
+```bash
+bash deployment/Universal_G_Naturality_2KB.sh
+```
+
+This does **not** prove an absolute G for every imaginable domain, theological identification with God, a general oracle, or unlimited physical computation. The designated master and production permissions remain unchanged.
