@@ -316,3 +316,61 @@ qualified human reviewers, disclosure/verification of affiliations
 and conflicts, institutionally authorized evidence assessment,
 privacy protection, and a separately approved process for any
 real-world deployment. This proof-of-workflow does none of those.
+
+## v0.8 — revocable, scoped, offline collaboration policy simulation
+
+    python3 tools/dolphin_omega_collaboration.py
+    python3 tools/test_dolphin_omega_collaboration.py
+
+This phase adds a *policy-event simulator*, **not** actual external-node
+authorization. It reads the existing local nodes.json manifest and the
+fictional synthetic_collaboration_events.json. All event actors are
+fictional, all permissions are simulated, and owner declarations are
+**not authenticated**. No OAuth flow, credentials, SSH, workload runner,
+webhook, remote API, blockchain, or production deployment is implemented.
+
+The event protocol is bounded (1–128 events), sequential and strictly
+time-ordered in UTC. Each simulated grant is tied to an individual
+declared grantee, one known node, exactly one permitted **read-only
+research action**, and an explicit UTC expiry. Only these two abstract
+actions are recognized:
+
+- read_registered_bibliography
+- prepare_unverified_review_draft
+
+A simulated grant is rejected for absent declared consent, unknown or
+disabled node, unsupported action or invalid validity window. External
+nodes are always rejected by v0.8 **even if a fixture changes the manifest
+to enabled and opt-in**. Requests by another grantee, out-of-scope
+actions, unknown grants, expired grants or revoked grants are denied.
+A declared issuer can record an irreversible simulated revocation;
+the same grant ID cannot be reused or resurrected.
+
+Every event produces an audit decision marked executed=false,
+identity_authenticated=false and real_authorization_granted=false.
+An SHA-256 audit digest is chained deterministically to the previous
+event and decision. This may detect accidental differences between
+independently preserved *copies*, but does **not** make the local log
+immutable, cryptographically signed, tamperproof, or externally anchored.
+Using SHA for optional audit digests does not modify the user's previously
+designated no-SHA UTM-PLEIADES core. Audit timestamps are fixture inputs,
+not authenticated wall-clock timestamps.
+
+The included 15 fictional events cover a nominal simulated allow, scope
+violation, wrong actor/issuer, revocation, expiry, blocked external
+node, absent consent, unsupported action and unknown grant.
+A recorded simulated ALLOW is **never permission to run a real process**.
+No real consent is recorded here, and no third-party machine or account
+is contacted or controlled. This example is not an access-control
+security product and must never be put in front of real live systems.
+
+Before a future production authorization design (NOT done here), require
+institutionally authorized node owners, independently authenticated
+identities and signed short-lived credentials, precise scopes,
+revocation enforcement at the actual enforcement point, privacy and
+audit-log retention policy, restricted network egress, rollback,
+security review and human oversight. No automated PR merging or
+account-wide permissions can be inferred from this proof of concept.
+
+The undefined Dolphin formula remains unexecuted; no globally optimal
+immortality, consciousness continuity or physical immortality is proven.
