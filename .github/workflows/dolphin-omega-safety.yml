@@ -39,6 +39,13 @@ jobs:
           assert 'https://pubmed.ncbi.nlm.nih.gov/41642075/' in html
           print('DOLPHIN_OMEGA_V07_REVIEWER_HTML=PASS; offline draft export only')
           PY
+      - name: Archive the static offline reviewer worksheet (not a deployment)
+        uses: actions/upload-artifact@v4
+        with:
+          name: dolphin-omega-v0.7-offline-reviewer-html
+          path: /tmp/dolphin-omega-reviewer.html
+          if-no-files-found: error
+          retention-days: 7
       - name: Offline falsifiability and provenance graph tests
         run: python3 tools/test_dolphin_omega_graph.py
       - name: Confirm cross-domain graph contains no inferred immortality or deployment claims
