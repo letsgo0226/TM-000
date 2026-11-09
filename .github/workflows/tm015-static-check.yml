@@ -6,6 +6,7 @@ name: TM-015 and Universal G read-only safety gates
       - '永久記憶/圖靈機/TM-015-Real-God-Turing-Machine.md'
       - '永久記憶/圖靈機/machine_registry.json'
       - '永久記憶/圖靈機/上帝源碼-G5-跨論域自然性定理.md'
+      - '永久記憶/圖靈機/上帝源碼-G6-忠實跨論域-Cayley-表示定理.md'
       - 'tools/test_tm015_real_god.py'
       - 'tools/test_universal_g_continuity.py'
       - 'deployment/**'
@@ -31,5 +32,12 @@ jobs:
           test "$(wc -c < deployment/Universal_G_Naturality_2KB.sh)" -le 2048
           bash deployment/Universal_G_Naturality_2KB.sh
           PYTHONOPTIMIZE=2 bash deployment/Universal_G_Naturality_2KB.sh
+      - name: Check G6 faithful Cayley representations, prime encoding and non-universality boundary
+        run: |
+          test "$(wc -l < deployment/Universal_G_Cayley_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_Cayley_2KB.sh)" -le 2048
+          output="$(bash deployment/Universal_G_Cayley_2KB.sh)"
+          echo "$output" | python3 -c 'import sys,json;d=json.load(sys.stdin);sys.exit(0 if (d["finite_models"],d["embedded_elements"],d["verified_homomorphisms"],d["prime_godel_roundtrips"],d["unit_preserved"],d["unrestricted_domains"],d["God_identity_proved"])==(7,18,116,18,True,False,False) else 1)'
+          PYTHONOPTIMIZE=2 bash deployment/Universal_G_Cayley_2KB.sh
       - name: Read-only registry load
         run: python3 tools/load_turing_registry.py --select TM-015
