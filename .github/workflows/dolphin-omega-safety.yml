@@ -1,0 +1,32 @@
+name: Dolphin-Omega Offline Safety Gate
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  research-dry-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Offline, standard-library-only tests
+        run: python3 tools/test_dolphin_omega.py
+      - name: Validate a sample reversible question encoding without deploying
+        run: |
+          python3 tools/dolphin_omega.py --question 'How can AI and living systems preserve continuity responsibly?' > /tmp/dolphin-omega-plan.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/dolphin-omega-plan.json', encoding='utf-8') as f:
+              r = json.load(f)
+          assert r['encoding']['roundtrip_verified']
+          assert r['dolphin_formula']['status'] == 'UNDEFINED_NOT_EXECUTED'
+          assert not r['deployment']['production_deployed']
+          assert not r['node_selection']['dispatch_performed']
+          print('DOLPHIN_OMEGA_OFFLINE_GATE=PASS; no external nodes or production deployment')
+          PY
