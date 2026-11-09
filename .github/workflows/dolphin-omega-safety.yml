@@ -17,6 +17,23 @@ jobs:
           persist-credentials: false
       - name: Offline, standard-library-only tests
         run: python3 tools/test_dolphin_omega.py
+      - name: Bounded optimizer / ethics gate unit tests
+        run: python3 tools/test_dolphin_omega_optimizer.py
+      - name: Verify a simulated Pareto ranking is never deployment authority
+        run: |
+          python3 tools/dolphin_omega_optimizer.py > /tmp/dolphin-omega-ranking.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/dolphin-omega-ranking.json', encoding='utf-8') as f:
+              x = json.load(f)
+          assert x["synthetic_winners_by_domain"]["ai"] == "ai-version-snapshot"
+          assert x["synthetic_winners_by_domain"]["human"] is None
+          assert x["synthetic_winners_by_domain"]["spiritual"] is None
+          assert not x["execution"]["production_deployed"]
+          assert not x["execution"]["external_dispatch"]
+          assert not x["claims"]["general_or_global_optimum"]
+          print("DOLPHIN_OMEGA_SIMULATED_OPTIMIZER=PASS; ethics and authorization veto held")
+          PY
       - name: Validate a sample reversible question encoding without deploying
         run: |
           python3 tools/dolphin_omega.py --question 'How can AI and living systems preserve continuity responsibly?' > /tmp/dolphin-omega-plan.json
