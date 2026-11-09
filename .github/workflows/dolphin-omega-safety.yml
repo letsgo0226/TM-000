@@ -21,6 +21,25 @@ jobs:
         run: python3 tools/test_dolphin_omega_optimizer.py
       - name: Offline provenance firewall / evidence metadata tests
         run: python3 tools/test_dolphin_omega_dossier.py
+      - name: Offline evidence packet / reviewer attestation tests
+        run: python3 tools/test_dolphin_omega_review.py
+      - name: Fail-closed synthetic review packet audit
+        run: |
+          python3 tools/dolphin_omega_review.py > /tmp/dolphin-omega-review.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/dolphin-omega-review.json', encoding='utf-8') as f:
+              x = json.load(f)
+          assert x['version'] == '0.4-offline-review-packet'
+          assert x['packet_results'][0]['snapshot_byte_integrity']
+          assert x['packet_results'][0]['review_state'] == 'MULTIPLE_SYNTHETIC_ATTESTATIONS_RECORDED'
+          assert not x['packet_results'][0]['reviewer_identities_authenticated']
+          assert not x['verification']['scientific_claims_verified']
+          assert not x['verification']['source_content_fetched']
+          assert not x['execution']['production_deployed']
+          assert not x['execution']['external_dispatch']
+          print('DOLPHIN_OMEGA_SYNTHETIC_REVIEW=PASS; no provenance or science authenticity claimed')
+          PY
       - name: Verify provenance dossier is unverified and never deploys
         run: |
           python3 tools/dolphin_omega_dossier.py > /tmp/dolphin-omega-dossier.json
