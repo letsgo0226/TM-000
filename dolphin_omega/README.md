@@ -92,3 +92,42 @@ obtain actual review and meaningful consent; secure explicit node owners'
 authorizations with revocation; audit infrastructure access and privacy;
 conduct human-led independent ethics review; then design *separate*,
 least-privilege deployment workflows with reversible staged activation.
+
+## v0.3 — evidence-reference metadata firewall (OFFLINE)
+
+    python3 tools/dolphin_omega_dossier.py
+    python3 tools/test_dolphin_omega_dossier.py
+
+This new layer records an explicit research claim, claim category, citations or
+synthetic source references, unresolved limitations, and a reversible G257
+encoding of the claim text (not a cryptographic certificate). It consumes the
+v0.2 candidate ledger to preserve earlier ethics/authorization holds.
+
+Strictly bounded inputs: <=64 dossiers, <=8 source references per dossier,
+UTF-8 claim <=256 bytes, no duplicate candidate/source IDs, and a mandatory
+passive-research-only declaration. Metadata URLs must be HTTPS, must not
+contain credentials or query/fragment strings, and may not use non-global
+numeric IPs, localhost, or private-reserved hostnames. This limits accidental
+logging of credential-bearing URLs, but is NOT a universal URL security
+validator. This prototype **does not access the network**.
+
+Claimed source relations are explicitly unverified. Conflicting claimed
+support and contradiction are flagged as
+`CLAIM_CONFLICT_REQUIRES_REVIEW`. Other statuses distinguish synthetic
+examples, unverified public reference metadata, and a prior safety-policy
+hold. No input can set `independently_verified=true`; no dossier can become
+`ready_for_real_world_use=true`. An absent dossier is reported as missing,
+not silently treated as evidence.
+
+The included `synthetic_dossiers.json` is a schema demonstration. Its sole
+public URL is a GitHub README as metadata/context, NOT an empirical paper or
+proof for a scientific candidate. The remaining records refer only to local
+fictional fixtures. Nothing here establishes the truth of a theory, the
+existence of cosmic immortality, legal authorization, personal-identity
+continuity, or the feasibility of biological immortality.
+
+**Next possible independently-reviewed step** (not implemented): human
+reviewers examine actual source content, assign verifiable reviewer
+attributions, document methodological quality and contrary findings,
+and authorize specific research actions separately. Production promotion is
+always outside the authority of this research prototype.
