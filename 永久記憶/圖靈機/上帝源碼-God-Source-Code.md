@@ -39,6 +39,10 @@
 
 [上帝源碼 G10 — 外部證據與主張範圍](上帝源碼-G10-外部證據與主張範圍.md) 連接 G9 有限模型測試與三組已公開發表、可人工查證的官方資訊來源（NIST AI RMF、WHO/FAO 細胞培養食品安全、世界銀行出生時預期壽命）；[JSON 證據登錄簿](../../deployment/G10_evidence_ledger.json) 記錄兩個世界銀行 2024 年整數顯示值（世界 73 年、日本 84 年）、精度限制及禁止的過度推論。[2,009-byte 純明文單行程式](../../deployment/Universal_G_G10_Provenance_Plaintext_2KB.sh) 與 [Python 可讀檢查器](../../deployment/G10_Evidence_Provenance_core.py) 只允許 SOURCE_REFERENCED_REVIEW_ONLY，並有 [20 項正反測試](../../tools/test_universal_g_g10.py)。**這不是即時網路來源認證，也不是無限制語意、神學身分或任何形式永生的證明。**
 
+## G11 八維度外部證據來源審閱（研究進展）
+
+[上帝源碼 G11 — 八維度外部證據與來源審閱](上帝源碼-G11-八維度外部證據與來源審閱.md) 將 G10 原有三項公開來源，延伸到八個研究維度：計算系統復原、AI 風險管理、人口健康壽命、細胞培養食品安全、生態 SDG 15、和平 SDG 16、文化文獻保存，以及神學／形上學哲學研究。[2,037-byte 明文 Shell One-Liner](../../deployment/Universal_G_G11_Evidence_Plaintext_2KB.sh)、[可讀核心](../../deployment/G11_Eight_Domain_Evidence_core.py) 和 [27 項測試](../../tools/test_universal_g_g11.py) 檢查來源對應、過期審閱與反例；使用 [八領域 JSON 登錄簿](../../deployment/G11_eight_domain_evidence_ledger.json)，**不抓取網路、並不驗證真實世界成果或任何形式的永生**。總機主版本、TM-015 原始碼與生產部署權限保持不變。
+
 ## 三種 G 的區別
 
 - `G_identity = E_P(ε) = 1`：對字串串接運算而言，空字串是唯一雙側單位元素。
