@@ -1,0 +1,198 @@
+name: Immortality Continuity Capsule (offline opt-in peer research)
+
+on:
+  pull_request:
+    paths:
+      - 'capsule/Immortality-Continuity-Capsule.sh'
+      - 'capsule/Immortality-Continuity-README.md'
+      - 'capsule/ICC-v0.5-Field-Guide.md'
+      - 'tools/icc_node.py'
+      - 'tools/icc_peer.py'
+      - 'tools/icc_archive.py'
+      - 'tools/icc_fieldkit.py'
+      - 'tools/test_icc_fieldkit.py'
+      - 'tools/test_icc_archive.py'
+      - 'tools/test_icc_node.py'
+      - 'tools/test_icc_peer.py'
+      - '.github/workflows/immortality-continuity-dryrun.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install cryptography==46.0.4
+      - run: python3 tools/test_icc_node.py
+      - run: python3 tools/test_icc_peer.py
+      - run: python3 tools/test_icc_archive.py
+      - run: python3 tools/test_icc_fieldkit.py
+
+  independent-runners:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-15]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install cryptography==46.0.4
+      - name: Create opt-in simulation and privately held ephemeral key
+        shell: bash
+        run: |
+          python3 tools/icc_node.py init --output genesis.json
+          python3 tools/icc_node.py advance --input genesis.json --steps 1024 --output checkpoint.json
+          python3 tools/icc_node.py verify --input checkpoint.json
+          python3 tools/icc_peer.py keygen --private "$RUNNER_TEMP/icc.key" --public "public-${{ matrix.os }}.pem"
+          python3 tools/icc_peer.py enroll --private "$RUNNER_TEMP/icc.key" --node '${{ matrix.os }}' --output 'enrollment-${{ matrix.os }}.json'
+          python3 tools/icc_peer.py sign --private "$RUNNER_TEMP/icc.key" --node '${{ matrix.os }}' --checkpoint checkpoint.json --output 'signed-${{ matrix.os }}.json'
+          cp checkpoint.json 'checkpoint-${{ matrix.os }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: icc-optin-${{ matrix.os }}
+          path: |
+            enrollment-${{ matrix.os }}.json
+            public-${{ matrix.os }}.pem
+            signed-${{ matrix.os }}.json
+            checkpoint-${{ matrix.os }}.json
+          if-no-files-found: error
+          retention-days: 7
+
+  cross-node-compare:
+    needs: [unit-tests, independent-runners]
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install cryptography==46.0.4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: icc-optin-*
+          path: witnesses
+          merge-multiple: true
+      - name: Simulate local trust decisions and compare signed artifacts
+        shell: bash
+        run: |
+          python3 tools/icc_peer.py trust --enrollment witnesses/enrollment-ubuntu-latest.json --expected-public-key witnesses/public-ubuntu-latest.pem --registry trusted0.json --output trusted1.json
+          python3 tools/icc_peer.py trust --enrollment witnesses/enrollment-macos-15.json --expected-public-key witnesses/public-macos-15.pem --registry trusted1.json --output trusted2.json
+          python3 tools/icc_peer.py verify --registry trusted2.json --witness witnesses/signed-ubuntu-latest.json
+          python3 tools/icc_peer.py verify --registry trusted2.json --witness witnesses/signed-macos-15.json
+          python3 tools/icc_peer.py compare --registry trusted2.json --left witnesses/signed-ubuntu-latest.json --right witnesses/signed-macos-15.json
+          python3 tools/icc_peer.py recover --registry trusted2.json --witness witnesses/signed-ubuntu-latest.json --output restored-checkpoint.json
+          cmp restored-checkpoint.json witnesses/checkpoint-ubuntu-latest.json
+          cmp restored-checkpoint.json witnesses/checkpoint-macos-15.json
+
+      - name: Verify redundant local backup and simulated single-copy loss
+        shell: bash
+        run: |
+          mkdir -p site-one site-two
+          python3 tools/icc_archive.py create --witness witnesses/signed-ubuntu-latest.json --registry trusted2.json --dest site-one --dest site-two
+          python3 tools/icc_archive.py audit --registry trusted2.json --source site-one/icc-backup.json --source site-two/icc-backup.json --min-valid 2
+          echo CORRUPTED > site-one/icc-backup.json
+          python3 tools/icc_archive.py recover --registry trusted2.json --source site-one/icc-backup.json --source site-two/icc-backup.json --min-valid 1 --output disaster-recovered.json
+          cmp disaster-recovered.json witnesses/checkpoint-ubuntu-latest.json
+          if python3 tools/icc_archive.py recover --registry trusted2.json --source site-one/icc-backup.json --source site-two/icc-backup.json --min-valid 2 --output invalid-quorum.json; then
+            echo 'ERROR: incorrectly accepted single valid archive as two' >&2
+            exit 1
+          fi
+
+      - name: Prepare public checkpoint handoff and fresh challenge
+        shell: bash
+        run: |
+          python3 tools/icc_fieldkit.py challenge --witness witnesses/signed-ubuntu-latest.json --registry trusted2.json --output challenge.json
+          cp witnesses/signed-ubuntu-latest.json origin-witness.json
+          cp site-two/icc-backup.json origin-archive.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: icc-fieldkit-public-handoff
+          path: |
+            trusted2.json
+            challenge.json
+            origin-witness.json
+            origin-archive.json
+          if-no-files-found: error
+          retention-days: 7
+
+  fieldkit-custodian:
+    needs: [cross-node-compare]
+    runs-on: macos-15
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install cryptography==46.0.4
+      - uses: actions/download-artifact@v4
+        with:
+          name: icc-fieldkit-public-handoff
+          path: handoff
+      - name: Simulate opt-in custodian, keep key private to this runner
+        shell: bash
+        run: |
+          python3 tools/icc_peer.py keygen --private "$RUNNER_TEMP/custodian.key" --public custodian.pub
+          python3 tools/icc_peer.py enroll --private "$RUNNER_TEMP/custodian.key" --node mac-offline-custodian --output custodian.enroll.json
+          python3 tools/icc_fieldkit.py fingerprint --public custodian.pub > fingerprint-info.json
+          fp=$(python3 -c 'import json;print(json.load(open("fingerprint-info.json"))["fingerprint"])')
+          python3 tools/icc_fieldkit.py trust-pin --enrollment custodian.enroll.json --public custodian.pub --approved-fingerprint "$fp" --registry handoff/trusted2.json --output custodian-registry.json
+          python3 tools/icc_fieldkit.py respond --challenge handoff/challenge.json --archive handoff/origin-archive.json --registry custodian-registry.json --private "$RUNNER_TEMP/custodian.key" --custodian mac-offline-custodian --output custodian.response.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: icc-fieldkit-mac-response
+          path: |
+            custodian.pub
+            custodian.enroll.json
+            custodian.response.json
+          if-no-files-found: error
+          retention-days: 7
+
+  fieldkit-verifier:
+    needs: [fieldkit-custodian]
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install cryptography==46.0.4
+      - uses: actions/download-artifact@v4
+        with:
+          name: icc-fieldkit-public-handoff
+          path: origin
+      - uses: actions/download-artifact@v4
+        with:
+          name: icc-fieldkit-mac-response
+          path: custodian
+      - name: Simulate out-of-band key pin then verify Mac custody response
+        shell: bash
+        run: |
+          python3 tools/icc_fieldkit.py fingerprint --public custodian/custodian.pub > fingerprint-info.json
+          fp=$(python3 -c 'import json;print(json.load(open("fingerprint-info.json"))["fingerprint"])')
+          python3 tools/icc_fieldkit.py trust-pin --enrollment custodian/custodian.enroll.json --public custodian/custodian.pub --approved-fingerprint "$fp" --registry origin/trusted2.json --output verifier-registry.json
+          python3 tools/icc_fieldkit.py verify --challenge origin/challenge.json --response custodian/custodian.response.json --witness origin/origin-witness.json --registry verifier-registry.json
+          echo "PASS: independently signed Mac runner response matches the fresh source challenge"
