@@ -19,6 +19,23 @@ jobs:
         run: python3 tools/test_dolphin_omega.py
       - name: Bounded optimizer / ethics gate unit tests
         run: python3 tools/test_dolphin_omega_optimizer.py
+      - name: Offline provenance firewall / evidence metadata tests
+        run: python3 tools/test_dolphin_omega_dossier.py
+      - name: Verify provenance dossier is unverified and never deploys
+        run: |
+          python3 tools/dolphin_omega_dossier.py > /tmp/dolphin-omega-dossier.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/dolphin-omega-dossier.json', encoding='utf-8') as f:
+              x = json.load(f)
+          assert x['version'] == '0.3-epistemic-firewall'
+          assert not x['verification']['sources_downloaded']
+          assert not x['verification']['sources_independently_verified']
+          assert not x['execution']['production_deployed']
+          assert not x['execution']['external_dispatch']
+          assert all(not r['ready_for_real_world_use'] for r in x['dossiers'])
+          print('DOLPHIN_OMEGA_EPISTEMIC_FIREWALL=PASS')
+          PY
       - name: Verify a simulated Pareto ranking is never deployment authority
         run: |
           python3 tools/dolphin_omega_optimizer.py > /tmp/dolphin-omega-ranking.json
