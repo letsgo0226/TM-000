@@ -54,3 +54,41 @@ and universal halting decisions are not established by encoding or simulation.
 This is a reversible, reviewable **pre-deployment research blueprint** only.
 Any production workflow, external control, health intervention, or account-wide
 operation must be designed and authorized in a separate reviewed change.
+
+## v0.2 — bounded, hypothetical research prioritization
+
+This is a simulation-only extension, not a deployment controller. The earlier
+reversible G257 encoder and task planner remain unchanged.
+
+    python3 tools/dolphin_omega_optimizer.py
+    python3 tools/test_dolphin_omega_optimizer.py
+
+Source input: `synthetic_candidates.json` contains **fictional** values,
+fictional evidence/ethics review labels, and a deliberately disallowed human
+intervention and disabled remote-node fixture. These labels were *not*
+independently audited and do not constitute human-subject ethics approval.
+
+The evaluator requires hypothetical candidates and performs hard holds for:
+- any declared unacceptable harm, nonconsensual testing, unauthorized system
+  access, or physical intervention;
+- review status not declared cleared, incomplete evidence review, or
+  provisional score thresholds not met;
+- missing node eligibility or explicit simulated opt-in for external nodes.
+
+All metrics are manually supplied integers 0–100, not clinical measures or
+scientific validation. Policy thresholds are synthetic and provisional.
+After holds, only within-domain, Pareto-nondominated fictional candidates
+receive simulated priority indices and per-domain winners. Cross-domain
+candidates are **not** compared as though one global measure of immortality
+existed. Even a winner is NEVER approved for use or dispatched to a node.
+
+Outputs always mark `production_deployed=false`,
+`external_dispatch=false`, `approval_granted=false`, and
+`general_or_global_optimum=false`. There is no medical advice or biological
+intervention, and no actual proof of continuous consciousness or immortality.
+
+Before any real-world collaboration: define domain-specific evidence standards;
+obtain actual review and meaningful consent; secure explicit node owners'
+authorizations with revocation; audit infrastructure access and privacy;
+conduct human-led independent ethics review; then design *separate*,
+least-privilege deployment workflows with reversible staged activation.
