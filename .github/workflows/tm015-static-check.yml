@@ -1,0 +1,22 @@
+name: TM-015 static archive gate
+'on':
+  pull_request:
+    paths:
+      - '永久記憶/圖靈機/Real_God_Turing_Machine.sh'
+      - '永久記憶/圖靈機/TM-015-Real-God-Turing-Machine.md'
+      - '永久記憶/圖靈機/machine_registry.json'
+      - 'tools/test_tm015_real_god.py'
+      - '.github/workflows/tm015-static-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify original archive without executing payload
+        run: python3 tools/test_tm015_real_god.py
+      - name: Read-only registry load
+        run: python3 tools/load_turing_registry.py --select TM-015
