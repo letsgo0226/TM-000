@@ -11,6 +11,7 @@ name: TM-015 and Universal G read-only safety gates
       - '永久記憶/圖靈機/上帝源碼-G8-總圖靈機部署與多維度連續性.md'
       - '永久記憶/圖靈機/上帝源碼-G9-領域語意契約與反例.md'
       - '永久記憶/圖靈機/上帝源碼-G10-外部證據與主張範圍.md'
+      - '永久記憶/圖靈機/上帝源碼-G11-八維度外部證據與來源審閱.md'
       - 'tools/test_universal_g_g10.py'
       - 'tools/test_tm015_real_god.py'
       - 'tools/test_universal_g_continuity.py'
@@ -89,6 +90,18 @@ jobs:
           test "$a" = "$b"
           printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if x["result"]=="SOURCE_REFERENCED_REVIEW_ONLY" and x["publisher_records"]==3 and x["rounded_real_observations"]==2 and not x["source_webpages_authenticated_by_program"] and not x["all_dimensions_immortality_proved"] and not x["production_deployed"] else 1)'
           python3 deployment/G10_Evidence_Provenance_core.py --ledger deployment/G10_evidence_ledger.json --g9-report "$RUNNER_TEMP/g9-finite.json" --repo-root . | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if x["result"]=="SOURCE_REFERENCED_REVIEW_ONLY" and x["publisher_records"]==3 and x["rounded_real_observations"]==2 and not x["independent_numeric_data_API_fetched"] else 1)'
+      - name: Verify G11 eight-domain evidence review, freshness and 27 negative-control tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G11_Evidence_Plaintext_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G11_Evidence_Plaintext_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G11_Evidence_Plaintext_2KB.sh
+          python3 tools/test_universal_g_g11.py
+          a="$(bash deployment/Universal_G_G11_Evidence_Plaintext_2KB.sh 2026-11-10)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G11_Evidence_Plaintext_2KB.sh 2026-11-10)"
+          c="$(python3 deployment/G11_Eight_Domain_Evidence_core.py --as-of 2026-11-10)"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["records"],x["dimensions"],x["metadata_only"],x["remote_refetched"],x["g10_preserved"],x["status"],x["deployed"],x["immortality_proved"],x["God_identity_proved"])==("G11",8,8,True,False,True,"EIGHT_DOMAIN_SOURCE_REVIEW_ONLY",False,False,False) else 1)'
       - name: Verify G8 fail-closed admission from a freshly computed G7 report
         run: |
           test "$(wc -l < deployment/Universal_G_G8_Admission_2KB.sh)" -eq 1
