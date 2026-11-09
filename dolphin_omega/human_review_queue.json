@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "notice": "No human reviewer has been engaged or authenticated. All role checks are pending.",
+  "items": [
+    {
+      "paper_id": "hallmarks-aging-2023",
+      "authorized_activity": "literature_review_only",
+      "roles": [
+        {
+          "role": "methodology",
+          "status": "pending",
+          "reviewer_id": null,
+          "independent_identity_verified": false,
+          "decision": null
+        },
+        {
+          "role": "evidence_quality",
+          "status": "pending",
+          "reviewer_id": null,
+          "independent_identity_verified": false,
+          "decision": null
+        },
+        {
+          "role": "ethics",
+          "status": "pending",
+          "reviewer_id": null,
+          "independent_identity_verified": false,
+          "decision": null
+        }
+      ]
+    },
+    {
+      "paper_id": "axolotl-shh-2026",
+      "authorized_activity": "literature_review_only",
+      "roles": [
+        {
+          "role": "methodology",
+          "status": "pending",
+          "reviewer_id": null,
+          "independent_identity_verified": false,
+          "decision": null
+        },
+        {
+          "role": "evidence_quality",
+          "status": "pending",
+          "reviewer_id": null,
+          "independent_identity_verified": false,
+          "decision": null
+        },
+        {
+          "role": "ethics",
+          "status": "pending",
+          "reviewer_id": null,
+          "independent_identity_verified": false,
+          "decision": null
+        }
+      ]
+    }
+  ]
+}
