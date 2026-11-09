@@ -262,3 +262,57 @@ deployment permission and cannot bypass the prior ethical holds.
 appraisal interface that records real reviewer methodology and contrary
 findings with authenticated source provenance and privileges, without
 self-certifying any research outcome or external access.
+
+## v0.7 — offline researcher-facing evidence appraisal interface
+
+From a checked-out copy of this draft branch, generate a local HTML
+worksheet, then open the HTML with a standard web browser:
+
+    python3 tools/dolphin_omega_reviewer_ui.py --render-html > reviewer-worksheet.html
+
+The self-contained HTML displays the two v0.5 registered papers, the
+v0.6 untested hypotheses, predictions, disconfirmation triggers, appraisal
+criteria, limitations, and contrary-evidence questions. It clearly labels
+the four uncovered domains. External PubMed references are regular links
+that are opened only if a reviewer chooses to visit them. The page itself
+contains no remote scripts/assets, has a Content Security Policy that
+forbids network connections and form submission, and makes no account API
+calls.
+
+The form lets a person choose a paper and research-review focus; record
+the provisional, nonbinding assessment and structured observations on
+methods, limitations and counterevidence; self-declare whether a source
+was read and whether a conflict exists; and export an unverified JSON
+draft to their local device using the browser's download function.
+An optional short pseudonym can appear inside the downloaded file.
+Do not enter private records, medical secrets or credentials; drafts
+remain unencrypted local files and should be shared only intentionally.
+
+To check a downloaded file's structure offline (does not upload it):
+
+    python3 tools/dolphin_omega_reviewer_ui.py --validate-draft path/to/draft.json
+    python3 tools/test_dolphin_omega_reviewer_ui.py
+
+Validation allows only a narrowly scoped UNVERIFIED_REVIEW_DRAFT:
+known paper, methodology/evidence-quality/ethics focus, nonempty notes,
+a provisional assessment and boolean self-declarations. It rejects
+unexpected fields, any attempt to claim identity authentication,
+source-provenance authentication, scientific verification,
+review approval or production deployment. Declared conflicts force
+DECLARED_CONFLICT_HOLD; otherwise, the state remains
+DRAFT_REQUIRES_INDEPENDENT_REVIEW even if every text field is filled.
+
+No researcher's credentials or qualifications are authenticated.
+No person has been solicited or approved to participate and the v0.5
+queue remains entirely pending. A JSON draft is not an actual
+independent review, scientific endorsement, clinical intervention,
+authorization for other computational nodes, or evidence of
+biological/spiritual immortality. All former ethics vetoes remain
+outside the reach of this read-only interface. The existing
+Dolphin formula is still undefined and never invoked.
+
+A future real review workflow would require source authenticity,
+qualified human reviewers, disclosure/verification of affiliations
+and conflicts, institutionally authorized evidence assessment,
+privacy protection, and a separately approved process for any
+real-world deployment. This proof-of-workflow does none of those.
