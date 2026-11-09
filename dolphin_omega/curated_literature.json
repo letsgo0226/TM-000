@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "notice": "Manually checked against public PubMed metadata on 2026-11-09. Existence and bibliographic identifiers are not scientific efficacy validation. CI is offline.",
+  "papers": [
+    {
+      "paper_id": "hallmarks-aging-2023",
+      "domain": "human",
+      "title": "Hallmarks of aging: An expanding universe",
+      "first_author": "López-Otín",
+      "year": 2023,
+      "doi": "10.1016/j.cell.2022.11.001",
+      "pmid": "36599349",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/36599349/",
+      "doi_url": "https://doi.org/10.1016/j.cell.2022.11.001",
+      "study_type": "review",
+      "evidence_scope": "mechanistic_background",
+      "curation_date": "2026-11-09",
+      "curation_method": "public_pubmed_metadata_inspection",
+      "claim_summary": "Review proposes twelve interconnected hallmarks of aging; this is not evidence of achieved human immortality.",
+      "limitations": [
+        "Review and conceptual synthesis, not a trial demonstrating human immortality.",
+        "Mechanistic and species-specific findings must not be translated directly to clinical use."
+      ],
+      "contrary_evidence_question": "What human controlled studies support clinically meaningful outcomes for any proposed intervention?"
+    },
+    {
+      "paper_id": "axolotl-shh-2026",
+      "domain": "cross_species",
+      "title": "Dorsoventral-mediated Shh induction is required for axolotl limb regeneration",
+      "first_author": "Yamamoto",
+      "year": 2026,
+      "doi": "10.7554/eLife.106917",
+      "pmid": "41642075",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41642075/",
+      "doi_url": "https://doi.org/10.7554/eLife.106917",
+      "study_type": "original_research",
+      "evidence_scope": "nonhuman_regeneration",
+      "curation_date": "2026-11-09",
+      "curation_method": "public_pubmed_metadata_inspection",
+      "claim_summary": "Axolotl limb patterning experiments investigate dorsoventral contact and Shh induction; they do not establish human regeneration or immortality.",
+      "limitations": [
+        "Findings concern axolotl limb patterning, not longevity in humans.",
+        "Translation to other species is an unanswered research question."
+      ],
+      "contrary_evidence_question": "What independent replications test this mechanism, and what limitations emerge in other species?"
+    }
+  ]
+}
