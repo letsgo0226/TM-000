@@ -1,4 +1,4 @@
-# Immortality-Continuity-Capsule — v0.3 opt-in peer research
+# Immortality-Continuity-Capsule — v0.4 offline continuity research
 
 This is a **bounded, finite digital reproducibility and recovery experiment**, not an immortality treatment, global Turing machine, distributed consensus system, or AI self-preservation mechanism. The core `Immortality-Continuity-Capsule.sh` remains the original **1,176-byte** One-Liner in this PR; opt-in proof is deliberately implemented in separate companion software.
 
@@ -50,3 +50,30 @@ The local trust operation **does not connect to or enroll anyone globally**. `tr
 `tools/test_icc_node.py` executes six finite-state regression tests; `tools/test_icc_peer.py` adds five opt-in signature/key tests. CI runs two separate GitHub-managed Ubuntu/macOS runners, generates throwaway private keys under runner-private temporary directories, uploads only signed material and public keys, and restores matching checkpoints. **The CI comparator simulates trust by reading both public keys from these artifacts; this is not independent out-of-band identity authentication**. It establishes correct protocol wiring under controlled conditions, not active participation by real external volunteer nodes.
 
 The workflow is read-only (`permissions: contents: read`), PR/manual only; no automatic merge, production deployment, external-device control, medicine, 3D printing, or global account access is implemented. Existing `AI-Continuity-Capsule.sh` and UTM-PLEIADES master are preserved. Digital recurrence does not demonstrate reduced biological aging, preserved consciousness, eternal hosting, or immortality.
+
+## Layer 4 — signed backups and simulated disaster recovery (v0.4)
+
+The new companion program `tools/icc_archive.py` accepts only signed checkpoints verified against locally trusted public keys. It writes two byte-identical canonical JSON backups to two EXISTING directories that the operator explicitly supplies. It never uploads, provisions, discovers, or controls another host, and it will not overwrite an existing backup. It rejects corrupted/tampered records, unsigned or untrusted nodes, duplicate paths, hard links counted as two independent copies, and conflicting valid signed checkpoint states. Two separate directories do NOT prove physically or geographically independent storage.
+
+After generating `signed-A.json` and approved `trusted2.json` through Layers 1–2:
+
+```bash
+mkdir -p local-copy-1 local-copy-2
+python3 tools/icc_archive.py create --witness signed-A.json --registry trusted2.json --dest local-copy-1 --dest local-copy-2
+python3 tools/icc_archive.py audit --registry trusted2.json --source local-copy-1/icc-backup.json --source local-copy-2/icc-backup.json --min-valid 2
+```
+
+To test restoration WITHOUT damaging any real backup, make disposable copies in separate temporary test directories, deliberately corrupt one *test copy*, and run:
+
+```bash
+python3 tools/icc_archive.py recover --registry trusted2.json --source bad-test-copy/icc-backup.json --source good-test-copy/icc-backup.json --min-valid 1 --output recovered-checkpoint.json
+python3 tools/icc_node.py verify --input recovered-checkpoint.json
+```
+
+`RECOVERED_DEGRADED` indicates a valid signed copy was recovered but another supplied copy failed validation. Set `--min-valid 2` to require two distinct valid copies. Conflicting *valid* states are always rejected; they require human review. Writing can fail midway; independently audit backups after creation. Output paths must not already exist.
+
+### Actual off-site durability is NOT completed
+
+A human custodian must independently copy the archives to genuinely separate permissioned storage, retain compatible source code/verification tools and the locally approved public-key trust registry, verify remote operators by a separate trusted channel, implement key revocation, and repeat restore drills. The archival JSON stores the signed checkpoint, not the entire companion program or a trusted authority. Backups may expose source and computation state, so do not share confidential information. CI produces 7-day artifacts only.
+
+CI now performs **18 unit/regression tests** (6 finite-state + 5 peer verification + 7 archival-resilience tests), plus a simulated one-copy-loss and signed recovery drill. GitHub Ubuntu and macOS runners are independent test jobs, NOT a verified international set of consenting peer operators. Neither longevity therapeutics nor subjective identity preservation nor eternal hosting is proven. This change remains a DRAFT research PR without production deployment or global authority.
