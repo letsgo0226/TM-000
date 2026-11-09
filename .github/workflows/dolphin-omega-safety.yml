@@ -21,6 +21,27 @@ jobs:
         run: python3 tools/test_dolphin_omega_optimizer.py
       - name: Offline provenance firewall / evidence metadata tests
         run: python3 tools/test_dolphin_omega_dossier.py
+      - name: Offline real-literature metadata and pending review tests
+        run: python3 tools/test_dolphin_omega_literature.py
+      - name: Verify bibliography does not imply scientific validation or approval
+        run: |
+          python3 tools/dolphin_omega_literature.py > /tmp/dolphin-omega-literature.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/dolphin-omega-literature.json', encoding='utf-8') as f:
+              r = json.load(f)
+          assert r['version'] == '0.5-literature-triage'
+          assert r['curated_bibliography_count'] == 2
+          assert set(r['recorded_domains']) == {'human', 'cross_species'}
+          assert len(r['uncovered_domains']) == 4
+          assert not r['verification']['metadata_verified_live_by_ci']
+          assert not r['verification']['clinical_efficacy_verified']
+          assert not r['verification']['immortality_verified']
+          assert not r['execution']['production_deployed']
+          assert not r['execution']['external_dispatch']
+          assert all(p['human_review_state'] == 'AWAITING_INDEPENDENT_HUMAN_REVIEW' for p in r['papers'])
+          print('DOLPHIN_OMEGA_REAL_BIBLIOGRAPHY_TRIAGE=PASS; no science or deployment approval')
+          PY
       - name: Offline evidence packet / reviewer attestation tests
         run: python3 tools/test_dolphin_omega_review.py
       - name: Fail-closed synthetic review packet audit
