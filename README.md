@@ -94,3 +94,7 @@ bash deployment/Universal_G_DryRun_2KB.sh
 ```
 
 The eight dimensions are separate research goals, not claims that literal immortality, AGI, God, zero physical entropy or hardware-free persistent computation has been achieved.
+
+## Canonical project alias: 上帝源碼 (God Source Code)
+
+The research name **上帝源碼 / God Source Code** is recorded in [永久記憶/圖靈機/上帝源碼-God-Source-Code.md](永久記憶/圖靈機/上帝源碼-God-Source-Code.md) and refers to the coordinated **TM-000 + UTM-PLEIADES master + TM-015 candidate + safe Universal G automation + eight research dimensions** framework. The name is an identifier, not a claim that the code literally is God. No master promotion, auto-merge, autonomous execution, or production deployment is implied.
