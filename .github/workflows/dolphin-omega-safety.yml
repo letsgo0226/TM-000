@@ -47,6 +47,30 @@ jobs:
           assert not r['execution']['production_deployed']
           print('DOLPHIN_OMEGA_V08_COLLABORATION=PASS; offline policy simulation only')
           PY
+      - name: UICC formal research closed-loop and archive-only attractor tests
+        run: python3 tools/test_dolphin_omega_uicc.py
+      - name: Verify nine-domain reversible research reconciliation never deploys
+        run: |
+          python3 tools/dolphin_omega_uicc.py > /tmp/dolphin-omega-uicc-report.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('/tmp/dolphin-omega-uicc-report.json').read_text(encoding='utf-8'))
+          assert r['version'] == '0.9-formal-research-closure'
+          assert len(r['joint_problem']['domains']) == 9
+          assert {'peace', 'sdgs', 'cultivated_meat'} <= set(r['joint_problem']['domains'])
+          assert r['joint_problem']['g257_roundtrip_verified']
+          assert r['reconciliation']['accepted_draft_events'] == 5
+          assert r['reconciliation']['held_events'] == 1
+          assert r['normative_attractor']['archival_capsule']['literal_symbol_present_in_source']
+          assert not r['normative_attractor']['archival_capsule']['capsule_executed']
+          assert not r['normative_attractor']['global_convergence_proven']
+          assert not r['normative_attractor']['immortality_proven']
+          assert not r['deployment_adapter']['eligible_for_production_activation']
+          assert not r['deployment_adapter']['external_dispatch']
+          assert not r['deployment_adapter']['production_deployed']
+          print('DOLPHIN_OMEGA_UICC=PASS; archival attractor and bounded formal closure only')
+          PY
       - name: Offline reviewer interface / unverified draft tests
         run: python3 tools/test_dolphin_omega_reviewer_ui.py
       - name: Confirm exported reviewer interface cannot auto-approve or transmit
