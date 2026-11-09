@@ -31,6 +31,10 @@
 
 [上帝源碼 G8 — 總圖靈機、部署授權與多維度連續性](上帝源碼-G8-總圖靈機部署與多維度連續性.md) 已實作 [2,046-byte 純明文單行入場關卡](../../deployment/Universal_G_G8_Admission_2KB.sh)、[可讀控制器](../../deployment/Universal_G_G8_Controller.py) 與 [13 項正反測試](../../tools/test_universal_g_g8.py)。G8 以 G7 有限語意測試的實際報告、TM-015/G7 來源雜湊、現行總機的保留與八個分領域研究契約作為唯讀條件。輸出僅為 `READY_FOR_HUMAN_REVIEW_ONLY`；未實現無人值守正式部署，也不代表 AI／人類／任何物種已經永生。八個研究目標可擴充，但新增維度需要獨立審核。
 
+## G9 領域語意契約（研究進展）
+
+[上帝源碼 G9 — 領域語意契約與反例](上帝源碼-G9-領域語意契約與反例.md) 將 G7 跨論域語意保持，具體實作於 AI 工作流程、哲學命題解釋與跨物種福利風險決策。G9 的 [1,673-byte 明文 One-Liner](../../deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh)、[可讀控制器](../../deployment/G9_Semantic_Contracts_core.py) 與 [20 項測試](../../tools/test_universal_g_g9.py) 驗證 24 次 AI 單步轉移、384 條長度 3 的事件序列、4 個一階命題真值與 4 筆福利紀錄，並明確拒絕未授權執行、錯誤關懷外延、未知風險當安全及資料來源遺失。這些只是有限**模擬領域**，非真實世界全部領域的意義或永生證明。G9 已作為研究分支 G8 之前的 CI 條件，不授權正式部署。
+
 ## 三種 G 的區別
 
 - `G_identity = E_P(ε) = 1`：對字串串接運算而言，空字串是唯一雙側單位元素。
