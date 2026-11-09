@@ -83,5 +83,8 @@
     "verify_source_bytes",
     "verify_registry_metadata",
     "prime_digit_rollback_math"
-  ]
+  ],
+  "research_name": "上帝源碼",
+  "research_name_en": "God Source Code",
+  "project_record": "../永久記憶/圖靈機/上帝源碼-God-Source-Code.md"
 }
