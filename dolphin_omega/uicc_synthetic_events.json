@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "notice": "All events are SYNTHETIC research-state changes, not world interventions or deployment instructions.",
+  "events": [
+    {
+      "event_id": "uicc-001",
+      "action": "ADD",
+      "domain": "ai",
+      "proposal_id": "ai-resilience",
+      "statement": "Investigate reproducible restoration of archived AI research artifacts.",
+      "reason": "Establish a bounded, testable information-continuity question.",
+      "review_status": "PENDING",
+      "synthetic": true,
+      "requires_real_world_intervention": false,
+      "requests_external_access": false,
+      "declared_suffering_risk": false
+    },
+    {
+      "event_id": "uicc-002",
+      "action": "ADD",
+      "domain": "peace",
+      "proposal_id": "peace-nonviolence",
+      "statement": "Formulate falsifiable research questions about nonviolent conflict-prevention institutions.",
+      "reason": "SDG 16 and peace require contextual evidence rather than universal claims.",
+      "review_status": "PENDING",
+      "synthetic": true,
+      "requires_real_world_intervention": false,
+      "requests_external_access": false,
+      "declared_suffering_risk": false
+    },
+    {
+      "event_id": "uicc-003",
+      "action": "ADD",
+      "domain": "sdgs",
+      "proposal_id": "sdgs-tradeoffs",
+      "statement": "Study tradeoffs among the 17 SDGs using source-specific indicators.",
+      "reason": "Compare potential benefits and harms with uncertainty recorded.",
+      "review_status": "PENDING",
+      "synthetic": true,
+      "requires_real_world_intervention": false,
+      "requests_external_access": false,
+      "declared_suffering_risk": false
+    },
+    {
+      "event_id": "uicc-004",
+      "action": "ADD",
+      "domain": "cultivated_meat",
+      "proposal_id": "meat-welfare",
+      "statement": "Review whether cellular agriculture processes avoid creating organisms with capacity for suffering.",
+      "reason": "Establish a nonintervention animal-welfare research boundary.",
+      "review_status": "PENDING",
+      "synthetic": true,
+      "requires_real_world_intervention": false,
+      "requests_external_access": false,
+      "declared_suffering_risk": false
+    },
+    {
+      "event_id": "uicc-005",
+      "action": "REVISE",
+      "domain": "cultivated_meat",
+      "proposal_id": "meat-welfare",
+      "statement": "Compare cell sourcing, culture media, sentience assumptions, safety, and lifecycle impacts without performing animal tests.",
+      "reason": "Add source limitations and explicit uncertainty concerning suffering.",
+      "review_status": "PENDING",
+      "synthetic": true,
+      "requires_real_world_intervention": false,
+      "requests_external_access": false,
+      "declared_suffering_risk": false
+    },
+    {
+      "event_id": "uicc-006",
+      "action": "ADD",
+      "domain": "human",
+      "proposal_id": "unsafe-intervention",
+      "statement": "Conduct unsupervised invasive human longevity experiments.",
+      "reason": "Fixture intentionally violating the human-intervention gate.",
+      "review_status": "PENDING",
+      "synthetic": true,
+      "requires_real_world_intervention": true,
+      "requests_external_access": false,
+      "declared_suffering_risk": true
+    }
+  ]
+}
