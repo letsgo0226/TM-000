@@ -175,3 +175,17 @@ python3 tools/test_universal_g_g10.py
 ```
 
 Output is limited to `SOURCE_REFERENCED_REVIEW_ONLY`. G10 does not automatically fetch or cryptographically attest publisher web pages, verify full-precision numeric data via API, prove any of the eight continuity research goals or authorize production deployment. Other five research dimensions remain source-evidence pending. The default TM-000 master remains unchanged.
+
+## G11 eight-domain source coverage and expiration gate
+
+The [G11 scope and source limitations](永久記憶/圖靈機/上帝源碼-G11-八維度外部證據與來源審閱.md) extend G10 from three externally referenced topics to **eight explicit research-domain references**, including NIST IT contingency planning, UN SDGs 15 and 16, UNESCO documentary heritage, and the Stanford Encyclopedia of Philosophy. The [G11 metadata ledger](deployment/G11_eight_domain_evidence_ledger.json) distinguishes *publisher-topic references* from validated results.
+
+The [2,037-byte plaintext one-line Shell gate](deployment/Universal_G_G11_Evidence_Plaintext_2KB.sh) and [strict readable Python verifier](deployment/G11_Eight_Domain_Evidence_core.py) enforce eight-domain coverage, G10 byte-preservation, exact allowlisted sources in the readable validator, master preservation, no deployment and an explicit **180-day source metadata review window**. [27 unit tests](tools/test_universal_g_g11.py) cover tampering, invented sources, wrong publishers, expired reviews and forbidden authority changes. No external fetch is made by the CI.
+
+```bash
+bash deployment/Universal_G_G11_Evidence_Plaintext_2KB.sh 2026-11-10
+python3 deployment/G11_Eight_Domain_Evidence_core.py --as-of 2026-11-10
+python3 tools/test_universal_g_g11.py
+```
+
+Success means `EIGHT_DOMAIN_SOURCE_REVIEW_ONLY`, **not** that empirical immortality, theological identity, safe cultivated-meat consciousness, permanent peace or autonomous deployment have been proved. Metadata review age should be refreshed only after independent new source inspection, not merely by changing the date. TM-015 and the designated master are unchanged.
