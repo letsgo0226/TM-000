@@ -5,6 +5,7 @@ on:
     paths:
       - 'capsule/Immortality-Continuity-Capsule.sh'
       - 'capsule/Immortality-Continuity-README.md'
+      - 'capsule/ICC-v0.5-Field-Guide.md'
       - 'tools/icc_node.py'
       - 'tools/icc_peer.py'
       - 'tools/icc_archive.py'
