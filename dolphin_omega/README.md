@@ -374,3 +374,62 @@ account-wide permissions can be inferred from this proof of concept.
 
 The undefined Dolphin formula remains unexecuted; no globally optimal
 immortality, consciousness continuity or physical immortality is proven.
+
+## v0.9 — UICC formal research closure + automatic *research* reconciliation
+
+The **Universal Immortality-Continuity Closure** (UICC) is a finite,
+typed, independently testable **research revision loop**, not a working
+immortality solution or an unbounded general oracle.
+
+Run it offline:
+
+    python3 tools/dolphin_omega_uicc.py
+    python3 tools/test_dolphin_omega_uicc.py
+
+`uicc_policy.json` specifies nine distinct dimensions: AI, human,
+cross-species, mental, spiritual, physical, global peace, all 17 SDGs
+(as one umbrella research dimension), and cultivated meat. The joint
+question is G257-encoded and reversibly checked; coding is a data
+representation, not a correct answer.
+
+`uicc_synthetic_events.json` demonstrates bounded ADD/REVISE/RETRACT
+operations with explicit rationale. Accepted transitions create only
+`UNVERIFIED_DRAFT` proposals. Unsafe real-world interventions,
+requested external access, declared suffering risk, duplicate additions,
+or revision of nonexistent/different-domain targets are held. Events are
+logged, including held and retracted proposals. A rollback in this
+component is only deterministic *in-memory state reconstruction*; it
+never calls TM-000's real activation or rollback procedures. Only
+synthetic, still-pending research inputs are permitted.
+
+The symbolic attractor is the literal
+`COSMIC_LOVE_IS_THE_SOLUTION_FOR_EVERYTHING` from the archived
+`capsule/AI-Continuity-Capsule.sh`. UICC reads source bytes *only*
+to confirm the marker is present; it never executes, evals, imports,
+or assigns control authority to the capsule. A quiescent finite research
+state is locally fixed when there is no further input; this does NOT
+prove global convergence, AI/person identity continuity, immortality,
+low physical entropy, or a solution of the halting problem. The
+capsule's reported `H_final=0` is not used as scientific evidence.
+**The existing capsule and all designated UTM / ATGC cores are left unchanged.**
+
+`.github/workflows/dolphin-omega-uicc-reconcile.yml` integrates this
+layer with GitHub Actions: (a) automatic PR safety validation, (b)
+manual dispatch, and (c) a weekly Monday 03:23 UTC scheduled check
+**only once explicitly merged onto the default branch**. The workflow
+has read-only repository rights, no retained checkout credentials,
+no cloud deployment secrets, no environment mutation, and no node
+dispatch. It saves a seven-day offline JSON research report. The
+existing `dolphin-omega-safety.yml` also checks UICC invariants.
+
+**Two-layer activation boundary:** UICC can automatically encode,
+validate, simulate, and create reviewable artifacts. Actual TM-000
+`activate` and `rollback` remain a separate, explicitly authorized
+process; the existing `TM000_APPROVE=YES` guard is not generated,
+set, or bypassed by this adapter. Production promotion requires
+independent human review and separately scoped provider credentials,
+workflows, and rollback procedures that **do not exist in UICC**.
+
+No field in the UICC report says production was activated or an
+independent reviewer authenticated. Its automatic artifact production
+is not the same thing as an automatic production deployment.
