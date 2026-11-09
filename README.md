@@ -83,3 +83,14 @@ The user-supplied [AI-Continuity-Capsule.sh](capsule/AI-Continuity-Capsule.sh) i
 The original [2,035-byte candidate core](永久記憶/圖靈機/Real_God_Turing_Machine.sh) is archived without modification alongside a [scope and verification record](永久記憶/圖靈機/TM-015-Real-God-Turing-Machine.md). The read-only source gate `python3 tools/test_tm015_real_god.py` checks the exact archived bytes, entry metadata, and master-preservation invariants without executing the source. The separate pull-request workflow has read-only permissions and no deployment step.
 
 **No promotion:** `UTM-PLEIADES-v0.2-PTCA` remains the designated TM-000 master. TM-015 does not confer AGI, a halting oracle, physical immortality, divine identity, nonphysical computation, or cross-device memory synchronization. Further integration requires independent review and explicit human approval.
+
+## Universal G — automation and multidimensional continuity proposal
+
+The [automation and continuity research specification](deployment/UNIVERSAL_G_AUTOMATION_AND_CONTINUITY.md) and [8-domain manifest](deployment/universal_g_continuity_manifest.json) extend TM-015 as a **candidate** component without altering the designated master. A [2 KB dry-run core](deployment/Universal_G_DryRun_2KB.sh) and [read-only policy gate](tools/test_universal_g_continuity.py) check archived-source integrity, master protection and a finite prime-digit reversal. The CI workflow remains pull-request-only and read-only; no candidate core execution or production deployment is enabled.
+
+```bash
+python3 tools/test_universal_g_continuity.py
+bash deployment/Universal_G_DryRun_2KB.sh
+```
+
+The eight dimensions are separate research goals, not claims that literal immortality, AGI, God, zero physical entropy or hardware-free persistent computation has been achieved.
