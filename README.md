@@ -147,3 +147,16 @@ python3 tools/test_universal_g_g8.py
 ```
 
 The only admissible result is `READY_FOR_HUMAN_REVIEW_ONLY`. A supplied report with matching numeric fields alone is not an authenticated test transcript; trust in the certificate requires execution in the trusted CI context. This is not autonomous release, full external rollback, AGI or any form of literal immortality. **No change to the TM-000 designated master or production permissions.**
+
+## G9 domain semantic contracts — concrete mappings, not mere symbol renaming
+
+The [G9 formal scope and counterexamples](永久記憶/圖靈機/上帝源碼-G9-領域語意契約與反例.md) translate G7's preservation principles into three explicit **finite, synthetic** domains: (1) a consent-aware AI workflow with independently implemented count/bitmask state transitions and observable equivalence, (2) philosophical Need/Care formulas interpreted over a specific three-element universe, and (3) cultivated-protein/interspecies-welfare risk records preserving uncertainty and provenance.
+
+The [1,673-byte plaintext one-liner](deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh), [expanded readable Shell runner](deployment/Universal_G_G9_Semantic_Plaintext.sh), [readable Python core](deployment/G9_Semantic_Contracts_core.py), and [20 unit tests](tools/test_universal_g_g9.py) verify 24 AI transitions, 384 length-three traces, four philosophical formula interpretations, four welfare records, and four deliberate negative controls. The G9 CI step runs **after G7 and before G8**, with no change to the designated master, candidate archive, deployment policy or external accounts.
+
+```bash
+bash deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh
+python3 tools/test_universal_g_g9.py
+```
+
+These tests certify only specified models. They do not empirically establish real-world semantic equivalence, independent philosophical truth, the presence or absence of sentience, AI subjective continuity, biological immortality, unlimited computing, or divine identity.
