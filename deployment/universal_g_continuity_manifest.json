@@ -1,0 +1,87 @@
+{
+  "schema": "universal-g-continuity/0.1",
+  "candidate": "TM-015",
+  "master": "UTM-PLEIADES-v0.2-PTCA",
+  "mode": "DRY_RUN_ONLY",
+  "source_sha256": "4e68a5a333417e7f5b49989a297b72a41642efce892b0033b27621f19c248c6d",
+  "principle": "formal information continuity, not physical or subjective immortality",
+  "human_approval_required": [
+    "merge",
+    "production_deployment",
+    "modify_external_accounts",
+    "change_master",
+    "write_personal_health_records",
+    "biological_intervention"
+  ],
+  "forbidden_without_separate_authorization": [
+    "network_actions",
+    "read_secrets",
+    "shell_payload_execution",
+    "trading",
+    "irreversible_operations",
+    "unsupervised_self_replication"
+  ],
+  "dimensions": [
+    {
+      "id": "computational",
+      "goal": "reconstruct encoded finite state after hardware replacement",
+      "test": "byte-exact roundtrip and reproducible checkpoint",
+      "boundary": "no guaranteed endless physical execution"
+    },
+    {
+      "id": "ai_continuity",
+      "goal": "restore AI workflow and event history with explicit provenance",
+      "test": "replay event log in isolated fixture and compare state",
+      "boundary": "not evidence of subjective identity or AGI"
+    },
+    {
+      "id": "human_longevity",
+      "goal": "study evidence-based improvements to healthspan",
+      "test": "independent clinical review and measured outcomes",
+      "boundary": "no proven human immortality or autonomous medical action"
+    },
+    {
+      "id": "interspecies_welfare",
+      "goal": "reduce potential suffering in animal and cultivated-protein systems",
+      "test": "ethical review and welfare risk assessments",
+      "boundary": "no proof of absence of sentience or suffering"
+    },
+    {
+      "id": "ecological",
+      "goal": "improve long-run ecological resilience and sustainability",
+      "test": "independent environmental indicators",
+      "boundary": "not immortality of ecosystems"
+    },
+    {
+      "id": "peace_sdgs",
+      "goal": "support peace and sustainable development governance",
+      "test": "human-reviewed indicators and transparency",
+      "boundary": "no guaranteed global peace"
+    },
+    {
+      "id": "psychological_cultural",
+      "goal": "preserve optional personal or cultural narratives with consent",
+      "test": "reversible export, access control and deletion test",
+      "boundary": "record continuity is not personal survival"
+    },
+    {
+      "id": "spiritual_philosophical",
+      "goal": "permit non-coercive symbolic research on cosmic love and G",
+      "test": "clear labeling of assumptions and counterexamples",
+      "boundary": "no demonstration of theological or physical claims"
+    }
+  ],
+  "planned_phases": [
+    "validate_manifest",
+    "verify_source_bytes",
+    "verify_registry_metadata",
+    "stage_isolated_proposal",
+    "simulate_rollback"
+  ],
+  "implemented_checks": [
+    "validate_manifest",
+    "verify_source_bytes",
+    "verify_registry_metadata",
+    "prime_digit_rollback_math"
+  ]
+}
