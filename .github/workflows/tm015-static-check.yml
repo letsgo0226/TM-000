@@ -50,6 +50,12 @@ jobs:
           c="$(python3 deployment/Universal_G_Semantic_core.py)"
           d="$(bash deployment/Universal_G_Semantic_Plaintext.sh)"
           test "$a" = "$d"
+          test "$(wc -l < deployment/Universal_G_Semantic_Plaintext_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_Semantic_Plaintext_2KB.sh)" -le 2048
+          e="$(bash deployment/Universal_G_Semantic_Plaintext_2KB.sh)"
+          f="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_Semantic_Plaintext_2KB.sh)"
+          test "$a" = "$e"
+          test "$a" = "$f"
           test "$a" = "$b"
           test "$a" = "$c"
           printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["finite_models"],x["homomorphisms"],x["positive_preservation_tests"],x["isomorphisms"],x["full_truth_equivalences"],x["arbitrary_rename_counterexample"],x["all_domains_proved"],x["God_identity_proved"]) == ("G7",5,38,1566,9,602,True,False,False) else 1)'
