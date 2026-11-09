@@ -174,3 +174,49 @@ capabilities have NOT been claimed or deployed. Every execution output keeps
 `production_deployed=false`, `external_dispatch=false`, and
 `approval_granted=false`; nothing upgrades a research claim to a validated
 immortality result or global optimum.
+
+## v0.5 — real scientific bibliography, offline triage, human-review queue
+
+    python3 tools/dolphin_omega_literature.py
+    python3 tools/test_dolphin_omega_literature.py
+
+This phase introduces a *small, manually curated, bibliographically checked*
+set of real papers. A curator inspected two publicly accessible PubMed metadata
+records on 2026-11-09. These bibliographic checks are not independently
+repeated by CI, and the papers' clinical/scientific claims are **not**
+independently verified, replicated or peer-reviewed by Dolphin-Omega.
+
+Example bibliography in `curated_literature.json`:
+
+- López-Otín et al. (2023), *Hallmarks of aging: An expanding universe*,
+  Cell, DOI 10.1016/j.cell.2022.11.001, PMID 36599349.
+  Evidence scope: aging-mechanism *review/background*, not human immortality
+  or a controlled clinical trial showing indefinite lifespan.
+- Yamamoto et al. (2026), *Dorsoventral-mediated Shh induction is required
+  for axolotl limb regeneration*, eLife, DOI 10.7554/eLife.106917,
+  PMID 41642075. Evidence scope: *nonhuman* regeneration research;
+  no implied proof of human limb regeneration, longevity, or immortality.
+
+The offline parser enforces bounded records, unique DOI/PMID/paper IDs,
+consistent DOI and PubMed URL formatting, constrained study-type/evidence
+scope, explicit limitations, contrary-evidence questions and a declared
+public-metadata curation method. These are **metadata consistency checks**,
+not authenticated retrieval, paper-quality certification or clinical advice.
+
+`human_review_queue.json` has mandatory methodology, evidence-quality,
+and ethics roles for each paper. Every role has a **null reviewer ID**,
+`pending` status, no signed/verified identity and no decision. It is
+deliberately impossible to fill in an 'approved' review through the v0.5
+research-only parser; such records are rejected. Actual qualified reviewers,
+methodological assessment and real-world authorization would require a
+separate, human-governed process. No reviewer is contacted by this code.
+
+Uncovered domains (AI, mental, physical, spiritual) remain **uncovered**
+by these first two papers; no fabricated citation or extrapolation is made
+across domains.
+
+The earlier v0.1–v0.4 components are preserved. This stage never connects
+to external nodes, performs DOI/PubMed network calls in CI, executes research
+interventions, deploys to production or changes the TM-000 master core.
+Reversible encoding or the as-yet-undefined Dolphin formula cannot turn a
+literature record into an omniscient answer or proof of immortality.
