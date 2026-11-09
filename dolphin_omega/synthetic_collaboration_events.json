@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "notice": "FICTIONAL identities and owner declarations; no verified consent, real authority, credential, live node access, or external execution. All events are a deterministic offline scenario.",
+  "events": [
+    {
+      "seq": 1,
+      "event_id": "event-01",
+      "kind": "GRANT",
+      "at": "2026-11-09T12:00:00Z",
+      "grant_id": "grant-local",
+      "issuer_id": "fixture-owner",
+      "grantee_id": "fixture-reviewer",
+      "node_id": "local-research-simulator",
+      "action": "read_registered_bibliography",
+      "expires_at": "2026-11-09T12:30:00Z",
+      "owner_consent_declared": true,
+      "owner_identity_authenticated": false
+    },
+    {
+      "seq": 2,
+      "event_id": "event-02",
+      "kind": "REQUEST",
+      "at": "2026-11-09T12:01:00Z",
+      "grant_id": "grant-local",
+      "grantee_id": "fixture-reviewer",
+      "node_id": "local-research-simulator",
+      "action": "read_registered_bibliography"
+    },
+    {
+      "seq": 3,
+      "event_id": "event-03",
+      "kind": "REQUEST",
+      "at": "2026-11-09T12:02:00Z",
+      "grant_id": "grant-local",
+      "grantee_id": "fixture-reviewer",
+      "node_id": "local-research-simulator",
+      "action": "write_repository"
+    },
+    {
+      "seq": 4,
+      "event_id": "event-04",
+      "kind": "REQUEST",
+      "at": "2026-11-09T12:03:00Z",
+      "grant_id": "grant-local",
+      "grantee_id": "fixture-other",
+      "node_id": "local-research-simulator",
+      "action": "read_registered_bibliography"
+    },
+    {
+      "seq": 5,
+      "event_id": "event-05",
+      "kind": "REVOKE",
+      "at": "2026-11-09T12:04:00Z",
+      "grant_id": "grant-local",
+      "issuer_id": "fixture-stranger"
+    },
+    {
+      "seq": 6,
+      "event_id": "event-06",
+      "kind": "REVOKE",
+      "at": "2026-11-09T12:05:00Z",
+      "grant_id": "grant-local",
+      "issuer_id": "fixture-owner"
+    },
+    {
+      "seq": 7,
+      "event_id": "event-07",
+      "kind": "REQUEST",
+      "at": "2026-11-09T12:06:00Z",
+      "grant_id": "grant-local",
+      "grantee_id": "fixture-reviewer",
+      "node_id": "local-research-simulator",
+      "action": "read_registered_bibliography"
+    },
+    {
+      "seq": 8,
+      "event_id": "event-08",
+      "kind": "GRANT",
+      "at": "2026-11-09T12:07:00Z",
+      "grant_id": "grant-expiring",
+      "issuer_id": "fixture-owner",
+      "grantee_id": "fixture-reviewer",
+      "node_id": "tm000-github-registry",
+      "action": "prepare_unverified_review_draft",
+      "expires_at": "2026-11-09T12:09:00Z",
+      "owner_consent_declared": true,
+      "owner_identity_authenticated": false
+    },
+    {
+      "seq": 9,
+      "event_id": "event-09",
+      "kind": "REQUEST",
+      "at": "2026-11-09T12:09:00Z",
+      "grant_id": "grant-expiring",
+      "grantee_id": "fixture-reviewer",
+      "node_id": "tm000-github-registry",
+      "action": "prepare_unverified_review_draft"
+    },
+    {
+      "seq": 10,
+      "event_id": "event-10",
+      "kind": "GRANT",
+      "at": "2026-11-09T12:10:00Z",
+      "grant_id": "grant-external",
+      "issuer_id": "fixture-owner",
+      "grantee_id": "fixture-reviewer",
+      "node_id": "external-future-node",
+      "action": "read_registered_bibliography",
+      "expires_at": "2026-11-09T12:40:00Z",
+      "owner_consent_declared": true,
+      "owner_identity_authenticated": false
+    },
+    {
+      "seq": 11,
+      "event_id": "event-11",
+      "kind": "REQUEST",
+      "at": "2026-11-09T12:11:00Z",
+      "grant_id": "grant-external",
+      "grantee_id": "fixture-reviewer",
+      "node_id": "external-future-node",
+      "action": "read_registered_bibliography"
+    },
+    {
+      "seq": 12,
+      "event_id": "event-12",
+      "kind": "GRANT",
+      "at": "2026-11-09T12:12:00Z",
+      "grant_id": "grant-no-consent",
+      "issuer_id": "fixture-owner",
+      "grantee_id": "fixture-reviewer",
+      "node_id": "local-research-simulator",
+      "action": "read_registered_bibliography",
+      "expires_at": "2026-11-09T12:40:00Z",
+      "owner_consent_declared": false,
+      "owner_identity_authenticated": false
+    },
+    {
+      "seq": 13,
+      "event_id": "event-13",
+      "kind": "REQUEST",
+      "at": "2026-11-09T12:13:00Z",
+      "grant_id": "grant-no-consent",
+      "grantee_id": "fixture-reviewer",
+      "node_id": "local-research-simulator",
+      "action": "read_registered_bibliography"
+    },
+    {
+      "seq": 14,
+      "event_id": "event-14",
+      "kind": "GRANT",
+      "at": "2026-11-09T12:14:00Z",
+      "grant_id": "grant-unsafe-action",
+      "issuer_id": "fixture-owner",
+      "grantee_id": "fixture-reviewer",
+      "node_id": "local-research-simulator",
+      "action": "write_repository",
+      "expires_at": "2026-11-09T12:40:00Z",
+      "owner_consent_declared": true,
+      "owner_identity_authenticated": false
+    },
+    {
+      "seq": 15,
+      "event_id": "event-15",
+      "kind": "REQUEST",
+      "at": "2026-11-09T12:15:00Z",
+      "grant_id": "grant-unknown",
+      "grantee_id": "fixture-reviewer",
+      "node_id": "local-research-simulator",
+      "action": "read_registered_bibliography"
+    }
+  ]
+}
