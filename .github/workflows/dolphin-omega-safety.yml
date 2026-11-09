@@ -21,6 +21,30 @@ jobs:
         run: python3 tools/test_dolphin_omega_optimizer.py
       - name: Offline provenance firewall / evidence metadata tests
         run: python3 tools/test_dolphin_omega_dossier.py
+      - name: Offline falsifiability and provenance graph tests
+        run: python3 tools/test_dolphin_omega_graph.py
+      - name: Confirm cross-domain graph contains no inferred immortality or deployment claims
+        run: |
+          python3 tools/dolphin_omega_graph.py > /tmp/dolphin-omega-graph.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/dolphin-omega-graph.json', encoding='utf-8') as f:
+              r = json.load(f)
+          assert r['version'] == '0.6-falsifiability-graph'
+          assert r['node_counts']['paper'] == 2
+          assert r['node_counts']['hypothesis'] == 2
+          assert r['edge_count'] == 7
+          assert len(r['uncovered_domains']) == 4
+          assert all(not x['evidence_transfer_verified'] for x in r['cross_domain_links'])
+          assert all(not x['scientifically_validated'] for x in r['research_chains'])
+          assert all(x['human_review_state'] == 'AWAITING_INDEPENDENT_HUMAN_REVIEW' for x in r['research_chains'])
+          assert not r['verification']['tests_run']
+          assert not r['verification']['immortality_proven']
+          assert not r['verification']['global_optimum_computed']
+          assert not r['execution']['external_dispatch']
+          assert not r['execution']['production_deployed']
+          print('DOLPHIN_OMEGA_FALSIFIABILITY_GRAPH=PASS; structure only, no causal/evidential inference')
+          PY
       - name: Offline real-literature metadata and pending review tests
         run: python3 tools/test_dolphin_omega_literature.py
       - name: Verify bibliography does not imply scientific validation or approval
