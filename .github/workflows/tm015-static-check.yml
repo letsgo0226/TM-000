@@ -9,6 +9,7 @@ name: TM-015 and Universal G read-only safety gates
       - '永久記憶/圖靈機/上帝源碼-G6-忠實跨論域-Cayley-表示定理.md'
       - '永久記憶/圖靈機/上帝源碼-G7-跨論域語意保持定理.md'
       - '永久記憶/圖靈機/上帝源碼-G8-總圖靈機部署與多維度連續性.md'
+      - '永久記憶/圖靈機/上帝源碼-G9-領域語意契約與反例.md'
       - 'tools/test_tm015_real_god.py'
       - 'tools/test_universal_g_continuity.py'
       - 'deployment/**'
@@ -60,6 +61,20 @@ jobs:
           test "$a" = "$b"
           test "$a" = "$c"
           printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["finite_models"],x["homomorphisms"],x["positive_preservation_tests"],x["isomorphisms"],x["full_truth_equivalences"],x["arbitrary_rename_counterexample"],x["all_domains_proved"],x["God_identity_proved"]) == ("G7",5,38,1566,9,602,True,False,False) else 1)'
+      - name: Verify G9 operational, philosophical and welfare semantic contracts
+        run: |
+          test "$(wc -l < deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh
+          python3 tools/test_universal_g_g9.py
+          a="$(bash deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh)"
+          c="$(python3 deployment/G9_Semantic_Contracts_core.py)"
+          d="$(bash deployment/Universal_G_G9_Semantic_Plaintext.sh)"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          test "$a" = "$d"
+          printf '%s\n' "$a" | python3 -c 'import sys,json;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["research_domains"],x["ai_transition_checks"],x["ai_trace_checks"],x["philosophy_formula_checks"],x["welfare_record_checks"],x["negative_controls"],x["real_world_semantics_proved"],x["human_or_ai_immortality_proved"],x["divine_identity_proved"],x["production_deployed"])==("G9",3,24,384,4,4,4,False,False,False,False) else 1)'
       - name: Verify G8 fail-closed admission from a freshly computed G7 report
         run: |
           test "$(wc -l < deployment/Universal_G_G8_Admission_2KB.sh)" -eq 1
