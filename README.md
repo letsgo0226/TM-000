@@ -221,3 +221,17 @@ python3 tools/test_universal_g_g13.py
 ```
 
 Expected status is `TRIAD_RESEARCH_REVIEW_ONLY`, never permission to deploy, merge, make production food, claim a jurisdiction-specific approval, claim zero suffering, or claim world peace. The repo's existing designated master and original candidate core remain unchanged. Sources were manually reviewed; this check does not independently fetch web pages, import real measurements, or prove an outcome. Reviews are due again after the configured 180-day interval.
+
+## G14 Trader_42 trading principles: paper-only, fail-closed verification
+
+The [G14 research scope](永久記憶/圖靈機/上帝源碼-G14-Trader42-交易原理與風控研究.md) references, but **never executes or mutates**, the `letsgo0226/Trader_42.sh` source. The existing 5/20 SMA candidate logic, TM/kernel transition gate, KILL/cooldown, exchange reconciliation, decrease-only sizing and guarded risk envelope are preserved.
+
+A [2,038-byte plaintext One-Liner](deployment/Universal_G_G14_Trader42_Plaintext_2KB.sh), [strict readable core and synthetic SMA simulator](deployment/G14_Trader42_Principle_core.py), [research policy with eight upstream Git blob SHA references](deployment/G14_trader42_principle_contract.json) and [55 automated tests](tools/test_universal_g_g14.py) validate a **nonexecuting** research gate. The extra 2 USDT realized daily-loss review level is a **new conservative research cap in addition to**, not a replacement for, the Trader_42 source's daily equity percentage constraint. The research overlay does not relax source defaults: 10 USDT per order, 50 USDT total quote exposure, 0.001 BTC maximum base exposure, 30 seconds cooldown and 1% daily equity limit.
+
+```bash
+bash deployment/Universal_G_G14_Trader42_Plaintext_2KB.sh 2026-11-10
+python3 deployment/G14_Trader42_Principle_core.py --as-of 2026-11-10
+python3 tools/test_universal_g_g14.py
+```
+
+Status is strictly `PAPER_SIGNAL_REVIEW_ONLY`. The simulator returns only simulated proposals, HOLD or HALT, never an order payload or live activation. This repository does not run Trader_42's self-modifying `42u.sh`, contact market/exchange APIs, read credentials or change Railway. The eight Git blob SHAs represent **reviewed source version references**, not a cryptographically authenticated upstream snapshot in this offline CI. Profitability, positive alpha and future returns remain unverified. G14 does not authorize production deployment, trading, or master promotion.
