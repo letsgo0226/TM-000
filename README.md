@@ -377,3 +377,17 @@ python3 deployment/G24S_policy_core.py --as-of 2026-11-10
 ```
 
 The historical G24 14-domain controller and G23 unchanged finite TM remain available and independently CI-gated. No SHA/hashlib calls are used for G24-S execution, and no production, exchange, medical, food approval or network permission is granted. This is research only on draft PR #20.
+
+## G25: synthetic evidence-metadata intake, not external evidence authentication
+
+The [G25 evidence packet safety specification](永久記憶/圖靈機/上帝源碼-G25-跨領域證據封包與審查閘門.md) extends G24's 14-domain prime-power research ledger to **bounded evidence-metadata admission**. Each of G24's 43 field-specific evidence topics is indexed. G25 accepts only **SYNTHETIC/offline** packets with exact permissions all false, at most 56 records, unique provider/topic and record labels, distinct (self-reported) provider/reviewer names, strictly ordered ISO date fields, and review dates no older than 180 days **relative to the user's supplied as_of date**.
+
+The reversible integer is the product of each domain prime raised to **min(2, count of different synthetic topic indices listed)**. An exponent of 2 **does not certify independently verified evidence**. The six-row sample for peace, SDGs, cultivated meat and Trader_42 yields exactly **1463339159** and a fully reversible 14-exponent state; source authenticity, independent corroboration, real-world effects, trading alpha, clinical safety and deployment permissions remain **false** regardless of input content.
+
+Files: [2,046-byte self-contained single-line Bash/Python3 checker](deployment/Universal_G_G25_Evidence_2KB.sh), [readable core and structural parent check](deployment/G25_Evidence_Core.py), [literal generator](deployment/G25_Oneliner_Builder.py), [six fully synthetic example records](deployment/G25_evidence_example.json), [research scope contract](deployment/G25_evidence_contract.json) and [130 offline negative/positive tests](tools/test_universal_g_g25.py). No G25 cryptographic digest calls, network, actual orders, authenticated sources or production deployment.
+
+    python3 tools/test_universal_g_g25.py
+    bash deployment/Universal_G_G25_Evidence_2KB.sh < deployment/G25_evidence_example.json
+    python3 deployment/G25_Evidence_Core.py --check-parent
+
+**G25 is not yet a system that acquires or verifies independent external evidence.** That requires separate provider records, content capture, independent verification, consent, provenance and domain-specific scientific checks. It cannot prove immortality, peace, the SDGs, cultivated-meat welfare/safety, trading returns or a halting oracle. The existing designated master UTM-PLEIADES-v0.2-PTCA and original TM-015/G24/Trader_42 are untouched; unmerged research-only draft PR #20 remains the sole integration target.
