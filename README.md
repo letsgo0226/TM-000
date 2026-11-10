@@ -203,3 +203,21 @@ Run in the repository root:
     python3 tools/test_universal_g_g12.py
 
 Status **CLAIM_SCOPE_REVIEW_ONLY** means suitable for further human research review, never production authorization or proof of divine identity, an AGI halting oracle, or immortality. G11/G12 source reviews dated 2026-11-10 must be independently refreshed after 2027-05-09. TM-015 and designated UTM-PLEIADES master remain unchanged.
+
+## G13 peace, SDGs and cultivated-meat ethics: evidence-specific review gates
+
+The [G13 research scope and sources](永久記憶/圖靈機/上帝源碼-G13-全球和平-SDGs-培養肉倫理與技術.md) develop three distinct **research tracks**, not a single "global optimum" or claims of achieved outcomes:
+
+1. **Peace:** UN SDG 16.1.2 conflict-related deaths and 16.3.3 access to dispute-resolution mechanisms; official source-topic metadata, without imported outcome time series.
+2. **SDGs:** 2.1.2 food insecurity; 12.3.1 food loss/waste; 13.2.2 greenhouse-gas emissions; 16.1.2 conflict fatalities. Each needs comparable, independently vetted measurements.
+3. **Cultivated meat:** WHO/FAO cell-food safety hazard review; Singapore Food Agency novel-food guidance (Singapore jurisdiction only); scientific review of serum/FBS animal-welfare challenges. Independent animal-input and cell-source provenance, sentience/suffering uncertainty, food safety/regulation and LCA must be kept separate.
+
+G13 includes a [1,999-byte true plaintext one-line Shell gate](deployment/Universal_G_G13_Peace_SDG_CellFood_Plaintext_2KB.sh), [readable Python controller and synthetic candidate ethical review](deployment/G13_Peace_SDG_CellFood_core.py), [7-source/3-track review ledger](deployment/G13_peace_sdgs_cultivated_meat_contract.json), and [49 tests](tools/test_universal_g_g13.py). CI executes both implementations after G12 and before G8, checks their equal results and verifies the 2 KB limit.
+
+```bash
+bash deployment/Universal_G_G13_Peace_SDG_CellFood_Plaintext_2KB.sh 2026-11-10
+python3 deployment/G13_Peace_SDG_CellFood_core.py --as-of 2026-11-10
+python3 tools/test_universal_g_g13.py
+```
+
+Expected status is `TRIAD_RESEARCH_REVIEW_ONLY`, never permission to deploy, merge, make production food, claim a jurisdiction-specific approval, claim zero suffering, or claim world peace. The repo's existing designated master and original candidate core remain unchanged. Sources were manually reviewed; this check does not independently fetch web pages, import real measurements, or prove an outcome. Reviews are due again after the configured 180-day interval.
