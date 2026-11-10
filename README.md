@@ -189,3 +189,17 @@ python3 tools/test_universal_g_g11.py
 ```
 
 Success means `EIGHT_DOMAIN_SOURCE_REVIEW_ONLY`, **not** that empirical immortality, theological identity, safe cultivated-meat consciousness, permanent peace or autonomous deployment have been proved. Metadata review age should be refreshed only after independent new source inspection, not merely by changing the date. TM-015 and the designated master are unchanged.
+
+## G12 source-to-claim scope and eight independent evidence gaps
+
+The [G12 research specification](永久記憶/圖靈機/上帝源碼-G12-來源主張範圍與證據缺口.md) adds a typed mapping from each of [G11's eight evidence sources](deployment/G11_eight_domain_evidence_ledger.json) to an *explicitly bounded* claim and an unmet research-evidence requirement. It rejects upgrading source-topic references to verified clinical, welfare, cultural, spiritual, mathematical or peace outcomes.
+
+The [2,014-byte plaintext One-Liner](deployment/Universal_G_G12_Claim_Plaintext_2KB.sh), [independent readable Python controller](deployment/G12_Claim_Scope_core.py), [claim-scope ledger](deployment/G12_claim_scope_ledger.json) and [34 tests](tools/test_universal_g_g12.py) enforce a pinned G11 SHA-256, eight distinct source mappings, a 180-day review window, prohibited overclaims, unchanged master, no live deployment, and metadata-only evidence. The readable controller additionally checks **exact allowed claim text, claim codes, and evidence gaps**. CI executes both controllers and performs a current-day expiry check; no independent network source refresh is claimed.
+
+Run in the repository root:
+
+    bash deployment/Universal_G_G12_Claim_Plaintext_2KB.sh 2026-11-10
+    python3 deployment/G12_Claim_Scope_core.py --as-of 2026-11-10
+    python3 tools/test_universal_g_g12.py
+
+Status **CLAIM_SCOPE_REVIEW_ONLY** means suitable for further human research review, never production authorization or proof of divine identity, an AGI halting oracle, or immortality. G11/G12 source reviews dated 2026-11-10 must be independently refreshed after 2027-05-09. TM-015 and designated UTM-PLEIADES master remain unchanged.
