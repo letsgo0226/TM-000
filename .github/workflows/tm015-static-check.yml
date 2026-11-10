@@ -13,6 +13,7 @@ name: TM-015 and Universal G read-only safety gates
       - '永久記憶/圖靈機/上帝源碼-G10-外部證據與主張範圍.md'
       - '永久記憶/圖靈機/上帝源碼-G11-八維度外部證據與來源審閱.md'
       - '永久記憶/圖靈機/上帝源碼-G12-來源主張範圍與證據缺口.md'
+      - '永久記憶/圖靈機/上帝源碼-G13-全球和平-SDGs-培養肉倫理與技術.md'
       - 'tools/test_universal_g_g10.py'
       - 'tools/test_tm015_real_god.py'
       - 'tools/test_universal_g_continuity.py'
@@ -116,6 +117,19 @@ jobs:
           test "$a" = "$b"
           test "$a" = "$c"
           printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["domains"],x["reviewed_claims"],x["exact_parent_digest_verified"],x["scope"],x["new_empirical_outcomes"],x["remote_sources_fetched"],x["status"],x["production_deployed"],x["universal_immortality_proved"],x["divine_identity_proved"])==("G12",8,8,True,"SOURCE_TOPIC_REFERENCE",0,False,"CLAIM_SCOPE_REVIEW_ONLY",False,False,False) else 1)'
+      - name: Verify G13 peace SDGs cultivated meat ethical-risk contract and negative tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G13_Peace_SDG_CellFood_Plaintext_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G13_Peace_SDG_CellFood_Plaintext_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G13_Peace_SDG_CellFood_Plaintext_2KB.sh
+          python3 tools/test_universal_g_g13.py
+          today="$(date -u +%F)"
+          a="$(bash deployment/Universal_G_G13_Peace_SDG_CellFood_Plaintext_2KB.sh "$today")"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G13_Peace_SDG_CellFood_Plaintext_2KB.sh "$today")"
+          c="$(python3 deployment/G13_Peace_SDG_CellFood_core.py --as-of "$today")"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["tracks"],x["source_records"],x["status"],x["deployed"],x["zero_suffering_proved"])==("G13",3,7,"TRIAD_RESEARCH_REVIEW_ONLY",False,False) else 1)'
       - name: Verify G8 fail-closed admission from a freshly computed G7 report
         run: |
           test "$(wc -l < deployment/Universal_G_G8_Admission_2KB.sh)" -eq 1
