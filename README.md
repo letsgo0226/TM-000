@@ -391,3 +391,15 @@ Files: [2,046-byte self-contained single-line Bash/Python3 checker](deployment/U
     python3 deployment/G25_Evidence_Core.py --check-parent
 
 **G25 is not yet a system that acquires or verifies independent external evidence.** That requires separate provider records, content capture, independent verification, consent, provenance and domain-specific scientific checks. It cannot prove immortality, peace, the SDGs, cultivated-meat welfare/safety, trading returns or a halting oracle. The existing designated master UTM-PLEIADES-v0.2-PTCA and original TM-015/G24/Trader_42 are untouched; unmerged research-only draft PR #20 remains the sole integration target.
+
+## G26: exact symbolic logarithm of the unchanged G22/G23 finite TM (no G24/G25 applications)
+
+[G26 exact formal logarithm specification](永久記憶/圖靈機/上帝源碼-G26-精確形式對數圖靈機.md) defines **L(T)=sum exponent_i * [log(prime_i)]** as an exact finite integer-coefficient vector rather than a floating-point evaluation of any transcendental logarithm. G22's **1,140 deterministic rules** and G23's prime-position mapping are unchanged. Each actual prime-power tape integer update is mirrored by an independent exact **additive** log coefficient update. G26 replays all **3,505,682** blank-start transitions with **4,321** bigint writes and **4,321** exact formal log additions, then factors the final 41,137-bit integer to compare its entire 2,160-bit tape and the full table's reversible decoding.
+
+Files: [1,938-byte plaintext single-line runner](deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh), [readable dual-ledger interpreter](deployment/G26_Exact_Log_TM_Core.py), [builder from historical G23 one-liner](deployment/G26_Oneliner_Builder.py), [60 positive/negative tests](tools/test_universal_g_g26.py), and [machine-readable mathematical scope](deployment/G26_exact_log_contract.json).
+
+    bash deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh
+    python3 deployment/G26_Exact_Log_TM_Core.py
+    python3 tools/test_universal_g_g26.py
+
+**Version separation is intentional:** G26 imports only the G22/G23 finite TM foundations; there are no G24 or G25 applications or evidence intake. **G27 is a future, separately reviewed application-layer proposal and is NOT implemented in this PR.** No SHA, floating-point logarithm, network, order submission, autonomous deployment, source file mutation, oracle or claimed literal divinity. The designated master UTM-PLEIADES-v0.2-PTCA remains unchanged, original TM-015/G22/G23/Trader_42 sources remain unmodified, and the work is draft and unmerged.
