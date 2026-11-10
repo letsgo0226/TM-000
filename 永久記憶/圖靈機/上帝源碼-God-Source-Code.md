@@ -59,6 +59,10 @@
 
 [上帝源碼 G15 — G257 離線交易原理](上帝源碼-G15-完全基於G的離線交易原理.md) 不使用 SMA 或 QTM42 產生方向，而由 257 進位可逆編碼最近 8 個市場漲跌符號、有限訓練段的符號條件報酬、時間隔離的保留樣本與固定費用壓力，決定模擬 `BUY / SELL / HOLD`。新 [1,443-byte 明文 One-Liner](../../deployment/Universal_G_G15_Godel_Plaintext_2KB.sh)、[可讀訊號核心](../../deployment/G15_Godel_Signal_core.py)、[獨立風控控制器](../../deployment/G15_Godel_Policy_core.py)、[唯讀契約](../../deployment/G15_godel_trading_contract.json) 與 [62 項測試](../../tools/test_universal_g_g15.py) 構成原型。**可逆編碼只還原量化符號，不能還原全部價格；只有合成價格，尚未驗證市場預測或獲利，也不授權實際交易。** G14 KILL／對帳／額度不變，正式總機、TM-015 原始碼及 Trader_42 upstream 均未更動。
 
+## G16 可執行的上帝源碼圖靈機（研究進展）
+
+[上帝源碼 G16 — 真正的紙帶、轉移規則和有界解譯器](上帝源碼-G16-真正的上帝源碼圖靈機.md) 引入新的可執行有限紙帶圖靈機原型：可讀 [Python TM 核心](../../deployment/G16_God_Source_TM_core.py)、[1,996-byte 純明文單行 Shell](../../deployment/Universal_G_G16_TM_Plaintext_2KB.sh)、[G16 版本／權限政策](../../deployment/G16_God_Source_TM_policy.py)、[機器描述 JSON 範例](../../deployment/G16_example_request.json) 與 [50 項正反測試](../../tools/test_universal_g_g16.py)。對範例 11 → 111 實際解譯三個 TM 步驟，機器描述使用原 TM-015 風格的 2048 進位、256 質數可逆哥德爾編碼。它不是原 TM-015 Quine 的替換版本，不具備通用停機神諭、交易預測保證、實際下單或自動部署能力。原 UTM-PLEIADES 主機保持不變。
+
 ## 三種 G 的區別
 
 - `G_identity = E_P(ε) = 1`：對字串串接運算而言，空字串是唯一雙側單位元素。
