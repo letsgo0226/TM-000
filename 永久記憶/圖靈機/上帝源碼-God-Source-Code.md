@@ -87,6 +87,10 @@
 
 [上帝源碼 G24-S — 十二領域質數冪審查](上帝源碼-G24S-十二領域質數冪審查變體.md) 是已存在的 **14 領域 G24 研究治理版本**之外、**獨立命名且不覆蓋原版**的 12 領域更嚴格輸入檢查變體。它用 12 個不同的領域質數、狀態指數 1／2／3、真實任意精度整數乘法及完整反向因式分解記錄合成研究狀態，示範範例 12 個領域／20 次整數更新／5 個合成審查／4 個證據缺口／3 個安全否決。帶有 [1,992-byte 明文 One-Liner](../../deployment/Universal_G_G24S_Cross_Domain_2KB.sh)、[可讀核心](../../deployment/G24S_cross_domain_core.py)、[獨立審查器](../../deployment/G24S_independent_audit.py)、[G13/G14/G23 父契約唯讀風控審核](../../deployment/G24S_policy_core.py)、[完整領域證據缺口契約](../../deployment/G24S_cross_domain_contract.json)及 [126 項測試](../../tools/test_universal_g_g24s.py)。合成檢查狀態不是現實成果、永生證明、SDGs 達標、和平實現、培養肉產品核准或實盤交易許可；原 14 領域 G24、原始 TM-015、G23、Trader_42 及正式總機維持不變。
 
+## G25 跨領域合成證據封包審查（研究進展）
+
+[上帝源碼 G25 — 跨領域證據封包與審查閘門](上帝源碼-G25-跨領域證據封包與審查閘門.md) 已實作 14 領域／43 主題的**合成證據元資料**嚴格接收、180 天輸入相對日期條件、不同提供者與覆核者識別字、資料去重與質數冪完整解碼。對於每個領域，指數只表示已列出的不同證據主題數量（上限 2），不表示證據已被獨立認證。已提供 [2,046-byte 明文 2KB One-Liner](../../deployment/Universal_G_G25_Evidence_2KB.sh)、[可讀 Python 核心](../../deployment/G25_Evidence_Core.py)、[合成範例](../../deployment/G25_evidence_example.json)、[研究契約](../../deployment/G25_evidence_contract.json)與 [130 項正反例測試](../../tools/test_universal_g_g25.py)。原型**不連網、不能下單或部署，亦不接受任何自稱已證明和平、SDGs、培養肉安全、永生或交易獲利的升級權限**。測試成功僅代表資料結構和數值運算成立；真正外部證據仍須獨立來源查證與實驗／觀測。
+
 ## 三種 G 的區別
 
 - `G_identity = E_P(ε) = 1`：對字串串接運算而言，空字串是唯一雙側單位元素。
