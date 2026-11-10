@@ -310,3 +310,17 @@ To replay the zero-input finite transition system:
     python3 deployment/G21_Independent_Audit.py
 
 A **complete table encoding** is not the same as printing the human-readable expanded JSON list directly on the simulated tape. This particular machine proves a chosen reversible fixed-point within a restricted TM encoding family; it does not prove an encoding-independent unique divine identity, a universal halting oracle, immortality, trading returns, or autonomous deployment. TM-015 original code and UTM-PLEIADES designated master are untouched, and PR #20 stays draft and unmerged.
+
+## G22: same blank-tape TM, zero SHA or digest calls
+
+The [G22 digest-free research specification](永久記憶/圖靈機/上帝源碼-G22-免SHA自我編碼圖靈機.md) retains the **exact same** G21 finite machine (1,140 deterministic single-tape rules, 3,505,682 steps, 2,160-bit complete reversible self-table code). Unlike the historical G21 audit, **G22 does not call any cryptographic digest function**. It checks the *whole reconstructed tape* against the exact complete binary table code, decodes back to all 1,140 rules, and requires the independent simulator to return the same full output.
+
+G22 includes a [1,255-byte plaintext one-line shell](deployment/Universal_G_G22_Blank_Tape_TM_2KB.sh), [readable finite TM controller](deployment/G22_Blank_Tape_TM_core.py), [independent expanded-table auditor](deployment/G22_Independent_Audit.py), [2,160-bit exact table code](deployment/G22_canonical_table_bits.txt), [all 1,140 explicit rules](deployment/G22_expanded_transition_table.json), a [reproducible builder](deployment/G22_Oneliner_Builder.py), a [machine-readable proof-scope contract](deployment/G22_bitwise_no_sha_contract.json) and [62 tests](tools/test_universal_g_g22.py). CI compares the checked-in G21/G22 reference data byte-for-byte and rejects tampering.
+
+```bash
+bash deployment/Universal_G_G22_Blank_Tape_TM_2KB.sh
+python3 deployment/G22_Independent_Audit.py
+python3 tools/test_universal_g_g22.py
+```
+
+Direct equality avoids *digest collision* ambiguity when comparing two available objects, but does **not** authenticate the author, source or supply chain. GitHub itself retains its own internal version control references; only this G22 verification path is digest-free. Historical G21 artifacts remain unchanged. This is neither a universal halting oracle nor evidence of literal God, immortality, trading profit, or an automatic production deployment right.
