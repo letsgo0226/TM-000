@@ -403,3 +403,23 @@ Files: [1,938-byte plaintext single-line runner](deployment/Universal_G_G26_Exac
     python3 tools/test_universal_g_g26.py
 
 **Version separation is intentional:** G26 imports only the G22/G23 finite TM foundations; there are no G24 or G25 applications or evidence intake. **G27 is a future, separately reviewed application-layer proposal and is NOT implemented in this PR.** No SHA, floating-point logarithm, network, order submission, autonomous deployment, source file mutation, oracle or claimed literal divinity. The designated master UTM-PLEIADES-v0.2-PTCA remains unchanged, original TM-015/G22/G23/Trader_42 sources remain unmodified, and the work is draft and unmerged.
+
+## G27: exact formal logarithm meets G24/G25 application research (no real-world authority)
+
+[G27 specification](永久記憶/圖靈機/上帝源碼-G27-精確形式對數跨領域應用橋接.md) introduces a separate **finite offline bridge** from G26's exact symbolic logarithm to G24's **14 synthetic research-state flags** and G25's **43 synthetic evidence-topic receipt flags**. These 57 slots use **disjoint prime bases** (5 through 277). For each accepted research-state change or first topic receipt, the G27 core performs an actual integer multiplication/exact division plus G26's exact formal-log coefficient addition. The resulting integer and all formal coefficients are independently factorized and compared with the G24/G25 validators. No floating-point logs or SHA.
+
+Sample: 14 research domains, 43 possible evidence topics, 6 synthetic receipt records covering 6 distinct topics yield the exact integer `120160600906782352207185858098135` and **20** formal-log terms. That certifies neither real-world effect nor provider independence, product approval, immortality, peace/SDGs, or trading profits. No external network, account, exchange order, clinical action, release or autonomous deployment.
+
+Files:
+- [Full G27 readable application bridge](deployment/G27_Exact_Log_Application_Bridge.py) — imports unchanged G24/G25 synthetic input validators and G26 formal-log algebra, requiring domain research status before admitting metadata
+- [1,639-byte plaintext one-line independent math report auditor](deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh) — **checks a produced G27 JSON report only; it does not parse raw evidence input or independently authenticate source identity/dates**
+- [Source generator for that limited auditor](deployment/G27_Oneliner_Builder.py)
+- [Sample synthetic request](deployment/G27_example_request.json), [research-only safety contract](deployment/G27_exact_log_application_contract.json), and [125 offline tests](tools/test_universal_g_g27.py)
+
+```bash
+python3 deployment/G27_Exact_Log_Application_Bridge.py < deployment/G27_example_request.json > /tmp/g27-report.json
+bash deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh < /tmp/g27-report.json
+python3 tools/test_universal_g_g27.py
+```
+
+This version **reuses G26's formal-log arithmetic**; it does not rerun the complete G22/G23 3.5-million-step TM on every application request and is not a new compiled universal TM or a halting oracle. Existing TM-015, G22-G26, Trader_42, and designated master `UTM-PLEIADES-v0.2-PTCA` are unchanged. Research branch and PR #20 remain draft/unmerged; no production operation was authorized or performed.
