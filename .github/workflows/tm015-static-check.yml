@@ -21,6 +21,8 @@ name: TM-015 and Universal G read-only safety gates
       - '永久記憶/圖靈機/上帝源碼-G21-空白紙帶自列印圖靈機.md'
       - '永久記憶/圖靈機/上帝源碼-G22-免SHA自我編碼圖靈機.md'
       - '永久記憶/圖靈機/上帝源碼-G23-質數冪哥德爾計算圖靈機.md'
+      - '永久記憶/圖靈機/上帝源碼-G26-精確形式對數圖靈機.md'
+      - 'tools/test_universal_g_g26.py'
       - '永久記憶/圖靈機/上帝源碼-G24-跨領域質數冪研究控制層.md'
       - '永久記憶/圖靈機/上帝源碼-G25-跨領域證據封包與審查閘門.md'
       - 'tools/test_universal_g_g25.py'
@@ -276,6 +278,19 @@ jobs:
           printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["status"],x["records"],x["prime_power_integer"],x["numeric_roundtrip"],x["authenticated"],x["review_verified"],x["outcomes_verified"],x["orders_submitted"],x["deployed"])==("G25","EVIDENCE_METADATA_REVIEW_ONLY",6,1463339159,True,False,False,False,0,False) else 1)'
           python3 deployment/G25_Evidence_Core.py --check-parent | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["status"],x["contracts_checked"],x["registry_topics_checked"],x["authenticated"],x["outcomes_verified"])==("G25","PARENT_METADATA_ALIGNED_NOT_AUTHENTICATED",4,43,False,False) else 1)'
           python3 -c 'from pathlib import Path;p=["deployment/G25_Evidence_Core.py","deployment/G25_Oneliner_Builder.py","deployment/Universal_G_G25_Evidence_2KB.sh"];assert all(not any(y in Path(z).read_text() for y in ("hashlib","sha256(","sha1(","socket","urllib","requests")) for z in p)'
+      - name: Verify G26 exact formal-log G22 G23 TM with 60 offline tests, no domain applications
+        run: |
+          test "$(wc -l < deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh)" -le 2048
+          test "$(wc -c < deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh)" -eq 1938
+          bash -n deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh
+          python3 tools/test_universal_g_g26.py
+          a="$(bash deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh)"
+          test "$a" = "$b"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["steps"],x["rules"],x["bits"],x["integer_bits"],x["full_configuration_integer_bits"],x["log_terms"],x["formal_log_exact"],x["application_layer"],x["g27_integrated"],x["sha_used"],x["orders"])==("G26",3505682,1140,2160,41137,44568,2160,True,False,False,False,0) else 1)'
+          python3 deployment/G26_Exact_Log_TM_Core.py | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["status"],x["original_rules"],x["steps"],x["prime_power_writes"],x["formal_log_additions"],x["exact_log_integer_roundtrip"],x["g22_output_equal"],x["numerical_floating_logs_used"],x["applications_integrated"],x["future_g27_applications_integrated"],x["network_access"],x["live_trades"])==("EXACT_FORMAL_LOG_G22_G23_TM_VERIFIED",1140,3505682,4321,4321,True,True,False,False,False,False,0) else 1)'
+          python3 -c 'from pathlib import Path;files=["deployment/G26_Exact_Log_TM_Core.py","deployment/G26_Oneliner_Builder.py","deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh"];denied=("G24_", "G25_", "hashlib", "sha256(", "sha1(", "math.log(", "log10(", "urllib", "socket");assert all(all(t not in Path(p).read_text() for t in denied) for p in files)'
       - name: Verify G8 fail-closed admission from a freshly computed G7 report
         run: |
           test "$(wc -l < deployment/Universal_G_G8_Admission_2KB.sh)" -eq 1
