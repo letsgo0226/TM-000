@@ -1,0 +1,142 @@
+{
+  "schema": "G24S-prime-power-cross-domain-governance/1",
+  "created_on": "2026-11-10",
+  "status": "CROSS_DOMAIN_SYNTHETIC_REVIEW_ONLY",
+  "designated_master": "UTM-PLEIADES-v0.2-PTCA",
+  "parent_g23_contract_path": "deployment/G23_prime_power_godel_contract.json",
+  "parent_g13_contract_path": "deployment/G13_peace_sdgs_cultivated_meat_contract.json",
+  "parent_g14_contract_path": "deployment/G14_trader42_principle_contract.json",
+  "baseline_G23_model": "G22 fixed finite machine; 1140 transitions and 3505682 steps",
+  "relation_to_G23": "Uses the same prime-power register idea; a NEW finite registry state machine, not a verified replacement for G23 or the designated master.",
+  "execution_policy": {
+    "source": "SYNTHETIC",
+    "mode": "offline",
+    "human_review": true,
+    "network": false,
+    "deployment": false,
+    "trading": false,
+    "credentials": false,
+    "external_action": false,
+    "external_authority": false,
+    "source_authenticity_proved": false,
+    "real_outcomes_proved": false,
+    "immortality_proved": false
+  },
+  "domain_state_codes": {
+    "0": "UNREGISTERED",
+    "1": "EVIDENCE_GAP",
+    "2": "SYNTHETIC_REVIEW_ONLY",
+    "3": "VETOED"
+  },
+  "allowed_transitions": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ]
+  ],
+  "check_threshold": 3,
+  "state_numbering_is_an_encoding_not_a_ranking": true,
+  "prime_encoding": "p_1=2 and p_2=3 reserved; domain i in fixed order uses prime p_(i+3) and exponent state code 0..3",
+  "configuration_encoding": "2^(control_state+1)*3^(head+1)*domain_register_bigint",
+  "domains": [
+    {
+      "id": "universal_tm",
+      "research_goal": "G23 finite-machine and state-transition reproduction",
+      "independent_evidence_needed": "Require exact finite baseline output, machine encoding roundtrip and no universal-halting claim",
+      "prohibited_inference": "Does not prove universal computability beyond standard TM or special oracle"
+    },
+    {
+      "id": "automated_deployment",
+      "research_goal": "Offline lifecycle & rollback planning",
+      "independent_evidence_needed": "Require independent human approval, staging, rollback, credentials isolation, least privilege",
+      "prohibited_inference": "No deploy, no release, no web credentials, no service execution"
+    },
+    {
+      "id": "ai_continuity",
+      "research_goal": "AI checkpoint and restore research",
+      "independent_evidence_needed": "Require permission, independent restore evaluations and specific measurable continuity criteria",
+      "prohibited_inference": "No demonstrated subjective awareness, immortality or personal identity persistence"
+    },
+    {
+      "id": "human_longevity",
+      "research_goal": "Human health and lifespan research",
+      "independent_evidence_needed": "Require ethical approval, appropriate clinical evidence and safety endpoints",
+      "prohibited_inference": "No immortal human, treatment claim or autonomous medical use"
+    },
+    {
+      "id": "interspecies_welfare",
+      "research_goal": "Possible sentience and suffering minimization",
+      "independent_evidence_needed": "Require sentience-risk audit, traceable animal-free inputs and harm assessment",
+      "prohibited_inference": "No zero suffering proof or universal species welfare outcome"
+    },
+    {
+      "id": "ecological_continuity",
+      "research_goal": "Ecosystem and resource sustainability",
+      "independent_evidence_needed": "Require audited boundaries, lifecycle analysis and measured environmental outcomes",
+      "prohibited_inference": "No environmental benefit inferred from code"
+    },
+    {
+      "id": "global_peace",
+      "research_goal": "Nonviolence and peaceful society indicators",
+      "independent_evidence_needed": "Require independent conflict deaths / safety / justice time series and specified baselines",
+      "prohibited_inference": "No world peace achievement certificate"
+    },
+    {
+      "id": "sdgs",
+      "research_goal": "UN SDG indicators and time-bounded monitoring",
+      "independent_evidence_needed": "Require official indicator IDs, geography, baseline period and external measurements",
+      "prohibited_inference": "No claimed SDG completion or impact without field outcomes"
+    },
+    {
+      "id": "cultivated_meat",
+      "research_goal": "Cell-based food ethical and technical R&D",
+      "independent_evidence_needed": "Require source-cell sentience analysis, input tracing, food-safety and regulatory evaluation and LCA",
+      "prohibited_inference": "No product approval, commercial readiness or suffering-free certification"
+    },
+    {
+      "id": "psychosocial",
+      "research_goal": "Mind and social-cultural research",
+      "independent_evidence_needed": "Require voluntary consent, predeclared validated metrics and measured adverse effects",
+      "prohibited_inference": "No universal mental health or social benefit proof"
+    },
+    {
+      "id": "philosophical",
+      "research_goal": "Formal self-reference and metaphysical interpretations",
+      "independent_evidence_needed": "Require exact axioms, proof checker and separation between formal/empirical assertions",
+      "prohibited_inference": "No ontological proof of divinity or metaphysical immortality"
+    },
+    {
+      "id": "trader42",
+      "research_goal": "Research-only paper-trade monitoring",
+      "independent_evidence_needed": "Require G14 risk limits, KILL switch, order-state reconciliation, costs and genuine out-of-sample evaluation",
+      "prohibited_inference": "No live orders, no forecast alpha or guaranteed return"
+    }
+  ],
+  "no_sha_or_digest_calls_in_execution": true,
+  "completed_real_world_outcomes": 0,
+  "authorized_external_actions": 0,
+  "prohibited_claims": [
+    "universal_oracle",
+    "autonomous_deployment",
+    "conscious_immortality",
+    "human_immortality",
+    "global_peace_achieved",
+    "sdgs_achieved",
+    "suffering_free_cells_proved",
+    "cultivated_meat_product_approved",
+    "trading_alpha_proved"
+  ],
+  "notes": "Synthetic-check count is a test-fixture property only, not evidence of any real-world claim."
+}
