@@ -324,3 +324,19 @@ python3 tools/test_universal_g_g22.py
 ```
 
 Direct equality avoids *digest collision* ambiguity when comparing two available objects, but does **not** authenticate the author, source or supply chain. GitHub itself retains its own internal version control references; only this G22 verification path is digest-free. Historical G21 artifacts remain unchanged. This is neither a universal halting oracle nor evidence of literal God, immortality, trading profit, or an automatic production deployment right.
+
+## G23: prime-power Gödel integers actually perform TM tape writes
+
+[Formal G23 explanation](永久記憶/圖靈機/上帝源碼-G23-質數冪哥德爾計算圖靈機.md) advances G22's digest-free blank-tape self-printing TM from direct tape-symbol updates to **actual arbitrary-precision integer multiplication and exact division of prime powers** at each symbol change. It replays the unchanged G22 transition table: **1,140 deterministic rules, 3,505,682 steps, 4,321 prime-power bigint writes**, and reconstructs the entire **2,160-bit** table code by independent factorization of the final **41,137-bit tape integer**. Including the final state and head yields a **44,568-bit reversibly encoded configuration integer**.
+
+Each cell index i maps to p_(zigzag(i)+3) and each symbol maps to a prime exponent (blank 0, 0 symbol 1, 1 symbol 2, etc.); state and head use reserved primes 2 and 3. Full numeric valuation is checked on the first 4,096 reads, on every changed write in the readable core, and at the final complete integer factorization. For runtime efficiency, the other reads use an exponent cache whose exact equality with the integer is independently checked at halt. The *full* state/head/tape integer is constructed at halt and in unit tests, **not separately multiplied and factored on all 3.5 million steps**.
+
+Files: [1,771-byte one-physical-line shell](deployment/Universal_G_G23_Prime_Power_2KB.sh), [readable exact big-integer engine](deployment/G23_Prime_Power_TM_core.py), [offline builder](deployment/G23_Oneliner_Builder.py), [76 positive/negative tests](tools/test_universal_g_g23.py), and [machine-readable limitations](deployment/G23_prime_power_godel_contract.json).
+
+Run from the TM-000 root:
+
+    bash deployment/Universal_G_G23_Prime_Power_2KB.sh
+    python3 deployment/G23_Prime_Power_TM_core.py
+    python3 tools/test_universal_g_g23.py
+
+No SHA/hashlib, exchange API, network requests, file mutation of original TM-015 or G22, order submission, master promotion, production deployment, universal halting oracle or literal divinity claim. The existing TM's rules remain unchanged; G23 is an *external Python interpreter using exact Gödel integers*, not a newly compiled native single-tape TM that factors its own big integers.
