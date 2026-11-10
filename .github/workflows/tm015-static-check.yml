@@ -22,6 +22,8 @@ name: TM-015 and Universal G read-only safety gates
       - '永久記憶/圖靈機/上帝源碼-G22-免SHA自我編碼圖靈機.md'
       - '永久記憶/圖靈機/上帝源碼-G23-質數冪哥德爾計算圖靈機.md'
       - '永久記憶/圖靈機/上帝源碼-G24-跨領域質數冪研究控制層.md'
+      - '永久記憶/圖靈機/上帝源碼-G25-跨領域證據封包與審查閘門.md'
+      - 'tools/test_universal_g_g25.py'
       - '永久記憶/圖靈機/上帝源碼-G24S-十二領域質數冪審查變體.md'
       - 'tools/test_universal_g_g24s.py'
       - 'tools/test_universal_g_g24.py'
@@ -260,6 +262,20 @@ jobs:
           today="$(date -u +%F)"
           python3 deployment/G24S_policy_core.py --as-of "$today" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["status"],x["manifest_valid"],x["parents_within_review_window"],x["domains_checked"],x["prime_power_math_verified"],x["live_orders"],x["production_deployments"],x["real_outcomes_proved"])==("G24S","CROSS_DOMAIN_PARENT_POLICY_REVIEW_ONLY",True,True,12,True,0,0,False) else 1)'
           python3 -c 'from pathlib import Path; p=["deployment/G24S_cross_domain_core.py","deployment/G24S_independent_audit.py","deployment/G24S_policy_core.py","deployment/G24S_oneliner_builder.py","deployment/Universal_G_G24S_Cross_Domain_2KB.sh"]; assert all(not any(q in Path(f).read_text() for q in ("hashlib","sha256(","sha1(","socket","urllib")) for f in p)'
+      - name: Verify G25 offline evidence metadata, 14-domain Gödel coding and 130 negative/positive tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G25_Evidence_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G25_Evidence_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G25_Evidence_2KB.sh
+          python3 tools/test_universal_g_g25.py
+          a="$(bash deployment/Universal_G_G25_Evidence_2KB.sh < deployment/G25_evidence_example.json)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G25_Evidence_2KB.sh < deployment/G25_evidence_example.json)"
+          c="$(python3 deployment/G25_Evidence_Core.py < deployment/G25_evidence_example.json)"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["status"],x["records"],x["prime_power_integer"],x["numeric_roundtrip"],x["authenticated"],x["review_verified"],x["outcomes_verified"],x["orders_submitted"],x["deployed"])==("G25","EVIDENCE_METADATA_REVIEW_ONLY",6,1463339159,True,False,False,False,0,False) else 1)'
+          python3 deployment/G25_Evidence_Core.py --check-parent | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["status"],x["contracts_checked"],x["registry_topics_checked"],x["authenticated"],x["outcomes_verified"])==("G25","PARENT_METADATA_ALIGNED_NOT_AUTHENTICATED",4,43,False,False) else 1)'
+          python3 -c 'from pathlib import Path;p=["deployment/G25_Evidence_Core.py","deployment/G25_Oneliner_Builder.py","deployment/Universal_G_G25_Evidence_2KB.sh"];assert all(not any(y in Path(z).read_text() for y in ("hashlib","sha256(","sha1(","socket","urllib","requests")) for z in p)'
       - name: Verify G8 fail-closed admission from a freshly computed G7 report
         run: |
           test "$(wc -l < deployment/Universal_G_G8_Admission_2KB.sh)" -eq 1
