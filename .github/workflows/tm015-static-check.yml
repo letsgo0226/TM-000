@@ -22,6 +22,8 @@ name: TM-015 and Universal G read-only safety gates
       - '永久記憶/圖靈機/上帝源碼-G22-免SHA自我編碼圖靈機.md'
       - '永久記憶/圖靈機/上帝源碼-G23-質數冪哥德爾計算圖靈機.md'
       - '永久記憶/圖靈機/上帝源碼-G24-跨領域質數冪研究控制層.md'
+      - '永久記憶/圖靈機/上帝源碼-G24S-十二領域質數冪審查變體.md'
+      - 'tools/test_universal_g_g24s.py'
       - 'tools/test_universal_g_g24.py'
       - 'tools/test_universal_g_g23.py'
       - 'tools/test_universal_g_g22.py'
@@ -242,6 +244,22 @@ jobs:
           printf '%s\n' "$a" | python3 -c 'import sys,json;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["domains"],x["events_replayed"],x["status"],x["prime_power_integer"],x["full_numeric_roundtrip"],x["orders_submitted"],x["deployment_executed"],x["world_peace_achieved"],x["all_sdgs_achieved"],x["all_dimensions_immortality_proved"])==("G24",14,14,"OFFLINE_CROSS_DOMAIN_RESEARCH_ONLY",5431526412865007455,True,0,False,False,False,False) else 1)'
           python3 deployment/G24_Cross_Domain_Godel_Core.py --check-parent | python3 -c 'import sys,json;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["status"],x["contracts_checked"],x["source_authenticity_proved"],x["trading_live_allowed"],x["deployment_allowed"])==("G24","PARENT_METADATA_COMPATIBLE_NOT_AUTHENTICATED",4,False,False,False) else 1)'
           python3 -c 'from pathlib import Path;p=["deployment/G24_Cross_Domain_Godel_Core.py","deployment/G24_Oneliner_Builder.py","deployment/Universal_G_G24_Cross_Domain_2KB.sh"];assert all(not any(y in Path(z).read_text() for y in ("hashlib","sha256(","sha1(","socket","urllib")) for z in p)'
+      - name: Verify G24S 12-domain independent prime-power review variant and 126 tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G24S_Cross_Domain_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G24S_Cross_Domain_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G24S_Cross_Domain_2KB.sh
+          python3 tools/test_universal_g_g24s.py
+          a="$(bash deployment/Universal_G_G24S_Cross_Domain_2KB.sh < deployment/G24S_example_request.json)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G24S_Cross_Domain_2KB.sh < deployment/G24S_example_request.json)"
+          c="$(python3 deployment/G24S_cross_domain_core.py < deployment/G24S_example_request.json)"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["domain_count"],x["registered"],x["synthetic_reviewed"],x["evidence_gaps"],x["vetoed"],x["prime_power_transition_count"],x["prime_power_integer_bits"],x["configuration_integer_bits"],x["exact_numeric_roundtrip"],x["deployment_allowed"],x["trading_allowed"],x["real_world_outcomes_proved"])==("G24S",12,12,5,4,3,20,98,122,True,False,False,False) else 1)'
+          python3 deployment/G24S_independent_audit.py | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["status"],x["domains_checked"],x["prime_power_writes"],x["integer_bits"],x["configuration_bits"],x["full_integer_factorization"],x["external_calls"])==("G24S","INDEPENDENT_PRIME_POWER_DOMAINS_VERIFIED",12,20,98,122,True,0) else 1)'
+          today="$(date -u +%F)"
+          python3 deployment/G24S_policy_core.py --as-of "$today" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["status"],x["manifest_valid"],x["parents_within_review_window"],x["domains_checked"],x["prime_power_math_verified"],x["live_orders"],x["production_deployments"],x["real_outcomes_proved"])==("G24S","CROSS_DOMAIN_PARENT_POLICY_REVIEW_ONLY",True,True,12,True,0,0,False) else 1)'
+          python3 -c 'from pathlib import Path; p=["deployment/G24S_cross_domain_core.py","deployment/G24S_independent_audit.py","deployment/G24S_policy_core.py","deployment/G24S_oneliner_builder.py","deployment/Universal_G_G24S_Cross_Domain_2KB.sh"]; assert all(not any(q in Path(f).read_text() for q in ("hashlib","sha256(","sha1(","socket","urllib")) for f in p)'
       - name: Verify G8 fail-closed admission from a freshly computed G7 report
         run: |
           test "$(wc -l < deployment/Universal_G_G8_Admission_2KB.sh)" -eq 1
