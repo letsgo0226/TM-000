@@ -251,3 +251,22 @@ python3 -c 'import json,sys;sys.path.insert(0,"tools");from test_universal_g_g15
 ```
 
 The prototype accepts **synthetic price series only** and outputs `SIMULATED_BUY_ONLY`, `SIMULATED_SELL_ONLY` or `HOLD` with `actual_orders=0`. Backtested additive basis points from a toy synthetic price sequence **are not live or compounded portfolio returns** and prove no trading alpha, God identity or ability to forecast market prices. No repo master promotion, Trader_42 source update, Binance use or actual deployment is permitted.
+
+## G16 God Source Turing Machine — genuine bounded tape interpreter
+
+The [G16 formal model and scope](永久記憶/圖靈機/上帝源碼-G16-真正的上帝源碼圖靈機.md) add an explicit **deterministic single-tape Turing machine interpreter** separate from G15's synthetic trading strategy and the original, byte-protected TM-015 Quine. The interpreter accepts a finite transition table, alphabet, blank, start and halt states, and a sparse two-sided tape. It performs at most 512 steps and distinguishes HALTED, STUCK and STEP_LIMIT; a timeout does **not** solve the halting problem.
+
+- [1,996-byte true plaintext Shell One-Liner](deployment/Universal_G_G16_TM_Plaintext_2KB.sh) — no Base64, zlib, eval or exec; accepts only JSON synthetic paper inputs from stdin.
+- [Readable TM core](deployment/G16_God_Source_TM_core.py) — simulates genuine rules and verifies reversible **TM-015 prime / base-2048 Gödel encoding** of the canonical machine descriptor.
+- [Example 11-to-111 machine](deployment/G16_example_request.json) — halts in exactly 3 simulated TM steps, with no trading or network actions.
+- [Read-only archive / policy validator](deployment/G16_God_Source_TM_policy.py) and [version-pinned contract](deployment/G16_god_source_tm_contract.json) — preserve original TM-015, G15 version and current UTM-PLEIADES master.
+- [50 offline finite-model and negative tests](tools/test_universal_g_g16.py), plus PR-only CI output comparisons.
+
+Run from the repository root:
+
+    bash deployment/Universal_G_G16_TM_Plaintext_2KB.sh < deployment/G16_example_request.json
+    python3 deployment/G16_God_Source_TM_core.py < deployment/G16_example_request.json
+    python3 deployment/G16_God_Source_TM_policy.py --as-of 2026-11-10
+    python3 tools/test_universal_g_g16.py
+
+G15 still uses **base-257 byte+1**, which differs from TM-015/G16's base-2048 prime-digit encoding. Neither coding scheme creates market predictive power, subjective continuity or a general computation oracle. G16 never executes the original TM-015 or Trader_42 source, never submits orders, and does not enable production deployment. Keep the upstream master and draft PR unchanged.
