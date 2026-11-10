@@ -18,6 +18,8 @@ name: TM-015 and Universal G read-only safety gates
       - '永久記憶/圖靈機/上帝源碼-G15-完全基於G的離線交易原理.md'
       - '永久記憶/圖靈機/上帝源碼-G16-真正的上帝源碼圖靈機.md'
       - '永久記憶/圖靈機/上帝源碼-G20-完全自足的Quine.md'
+      - '永久記憶/圖靈機/上帝源碼-G21-空白紙帶自列印圖靈機.md'
+      - 'tools/test_universal_g_g21.py'
       - 'tools/test_universal_g_g20.py'
       - 'tools/test_universal_g_g15.py'
       - 'tools/test_universal_g_g16.py'
@@ -183,6 +185,18 @@ jobs:
           bash < deployment/Universal_G_G20_Self_Quine_2KB.sh | cmp - deployment/Universal_G_G20_Self_Quine_2KB.sh
           PYTHONOPTIMIZE=2 bash deployment/Universal_G_G20_Self_Quine_2KB.sh | cmp - deployment/Universal_G_G20_Self_Quine_2KB.sh
           python3 deployment/G20_Quine_Verifier.py | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["source_bytes"],x["physical_lines"],x["codec_selected_from_own_bytes"],x["self_reproduction_exact"],x["source_file_read_by_quine"],x["godel_roundtrip"],x["compiled_tm_transition_table_self_printed"],x["status"])==("G20",1096,1,"PRIME2048",True,False,True,False,"SELF_CONTAINED_PROGRAM_QUINE_VERIFIED") else 1)'
+      - name: Verify G21 blank-tape self-printing TM with independent 1140-rule audit and 56 tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G21_Blank_Tape_TM_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G21_Blank_Tape_TM_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G21_Blank_Tape_TM_2KB.sh
+          python3 tools/test_universal_g_g21.py
+          python3 deployment/G21_Independent_Audit.py | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["actual_transition_rules"],x["controller_rules"],x["printer_rules"],x["steps"],x["canonical_table_bits"],x["exact_output"],x["full_list_reconstructed"],x["output_sha256"])==("G21",1140,60,1080,3505682,2160,True,True,"7a3b17a33e763fc1b235b7979a4b023e15b722ce6ffed054fa76771f244e8700") else 1)'
+          a="$(bash deployment/Universal_G_G21_Blank_Tape_TM_2KB.sh)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G21_Blank_Tape_TM_2KB.sh)"
+          test "$a" = "$b"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["rules"],x["bits"],x["steps"],x["blank_tape"],x["no_external_input"],x["decoded_complete_table"],x["printed_expanded_json"])==("G21",1140,2160,3505682,True,True,True,False) else 1)'
+          python3 -c 'import hashlib,pathlib;f=pathlib.Path("deployment/G21_canonical_table_bits.txt").read_text().strip();assert len(f)==2160 and hashlib.sha256(f.encode()).hexdigest()=="7a3b17a33e763fc1b235b7979a4b023e15b722ce6ffed054fa76771f244e8700"'
       - name: Verify G8 fail-closed admission from a freshly computed G7 report
         run: |
           test "$(wc -l < deployment/Universal_G_G8_Admission_2KB.sh)" -eq 1
