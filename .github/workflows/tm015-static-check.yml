@@ -16,7 +16,9 @@ name: TM-015 and Universal G read-only safety gates
       - '永久記憶/圖靈機/上帝源碼-G13-全球和平-SDGs-培養肉倫理與技術.md'
       - '永久記憶/圖靈機/上帝源碼-G14-Trader42-交易原理與風控研究.md'
       - '永久記憶/圖靈機/上帝源碼-G15-完全基於G的離線交易原理.md'
+      - '永久記憶/圖靈機/上帝源碼-G16-真正的上帝源碼圖靈機.md'
       - 'tools/test_universal_g_g15.py'
+      - 'tools/test_universal_g_g16.py'
       - 'tools/test_universal_g_g10.py'
       - 'tools/test_tm015_real_god.py'
       - 'tools/test_universal_g_continuity.py'
@@ -155,6 +157,20 @@ jobs:
           today="$(date -u +%F)"
           python3 deployment/G15_Godel_Policy_core.py --as-of "$today" | python3 -c 'import sys,json;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["policy"],x["source_pinned"],x["paper_only"],x["actual_orders"],x["live_authorized"],x["empirical_alpha_proved"])==("G15","GODEL_PAPER_REVIEW_ONLY",True,True,0,False,False) else 1)'
           python3 -c 'import sys,json;sys.path.insert(0,"tools");from test_universal_g_g15 import example;print(json.dumps(example()))' | bash deployment/Universal_G_G15_Godel_Plaintext_2KB.sh | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if x["version"]=="G15" and x["roundtrip"] and x["actual_orders"]==0 and not x["live_allowed"] and not x["profitability_proved"] else 1)'
+      - name: Verify G16 bounded deterministic TM, reversible prime code and 50 tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G16_TM_Plaintext_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G16_TM_Plaintext_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G16_TM_Plaintext_2KB.sh
+          python3 tools/test_universal_g_g16.py
+          today="$(date -u +%F)"
+          python3 deployment/G16_God_Source_TM_policy.py --as-of "$today" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if x["status"]=="TM_SIMULATION_REVIEW_ONLY" and x["original_tm015_preserved"] and x["master_unchanged"] and x["actual_orders"]==0 else 1)'
+          a="$(bash deployment/Universal_G_G16_TM_Plaintext_2KB.sh < deployment/G16_example_request.json)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G16_TM_Plaintext_2KB.sh < deployment/G16_example_request.json)"
+          c="$(python3 deployment/G16_God_Source_TM_core.py < deployment/G16_example_request.json)"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["status"],x["steps"],x["nonblank_cells"],x["godel_roundtrip"],x["godel_identity"],x["orders_submitted"],x["live_allowed"],x["halting_oracle"],x["god_identity_proved"])==("G16","HALTED",3,[[0,"1"],[1,"1"],[2,"1"]],True,1,0,False,False,False) else 1)'
       - name: Verify G8 fail-closed admission from a freshly computed G7 report
         run: |
           test "$(wc -l < deployment/Universal_G_G8_Admission_2KB.sh)" -eq 1
