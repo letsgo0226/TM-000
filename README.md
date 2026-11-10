@@ -354,3 +354,26 @@ Files: [1,837-byte single-physical-line Shell/Python3 source](deployment/Univers
     python3 deployment/G24_Cross_Domain_Godel_Core.py --check-parent
 
 All real-world actions remain prohibited: no release, autonomous deploy, credentials, live orders, food/clinical approval, network calls or human-override route. The current designated master UTM-PLEIADES-v0.2-PTCA and the original TM-015/G23/Trader_42 sources remain unchanged; this research stays solely in unmerged draft PR #20. No halting oracle, literal deity, immortality, SDGs/peace achievements or trading alpha is implied by an exact Gödel code.
+
+## G24-S: independent 12-domain stricter synthetic prime-power review alternative
+
+The [G24-S research design](永久記憶/圖靈機/上帝源碼-G24S-十二領域質數冪審查變體.md) is a **separate and intentionally noncanonical variant**, NOT a replacement of the existing 14-domain G24 controller. It uses 12 explicitly scoped research domains: universal TM, offline deployment planning, AI continuity, human longevity, interspecies welfare, ecology, peace, SDGs, cultivated meat, psychosocial well-being, philosophy, and Trader_42.
+
+For each domain i, two actual arbitrary-precision integer updates encode a registration and (if applicable) a simulated-review or veto transition. The fixed example has **12 registered domains, 20 prime-power updates**, with **5 synthetic-review flags, 4 missing-evidence flags, 3 vetoes**. The *entire* 98-bit register is factorized into 12 prime exponents, and a 122-bit state/head/register configuration is also roundtrip-checked. These are **synthetic bookkeeping outcomes, not proof of real results**, successful deployment, global peace, immortality, SDG completion, product safety or trading profitability.
+
+- [1,992-byte single-physical-line G24-S shell](deployment/Universal_G_G24S_Cross_Domain_2KB.sh)
+- [Readable mathematical engine](deployment/G24S_cross_domain_core.py), [offline example](deployment/G24S_example_request.json), [source-reproducible builder](deployment/G24S_oneliner_builder.py)
+- [Independent prime-power and report audit](deployment/G24S_independent_audit.py)
+- [Local parent safety guard](deployment/G24S_policy_core.py): fail-closed review of original G13, G14, and G23 metadata, 180-day metadata freshness, and Trader_42 risk ceilings
+- [Independent domain evidence requirements and veto contract](deployment/G24S_cross_domain_contract.json)
+- [126 tests](tools/test_universal_g_g24s.py) with domain-by-domain mutations, unsafe authorization rejection, arithmetic reversal, independent replay and optimized interpreter agreement
+
+```bash
+bash deployment/Universal_G_G24S_Cross_Domain_2KB.sh < deployment/G24S_example_request.json
+python3 deployment/G24S_cross_domain_core.py < deployment/G24S_example_request.json
+python3 deployment/G24S_independent_audit.py
+python3 tools/test_universal_g_g24s.py
+python3 deployment/G24S_policy_core.py --as-of 2026-11-10
+```
+
+The historical G24 14-domain controller and G23 unchanged finite TM remain available and independently CI-gated. No SHA/hashlib calls are used for G24-S execution, and no production, exchange, medical, food approval or network permission is granted. This is research only on draft PR #20.
