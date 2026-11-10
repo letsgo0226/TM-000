@@ -55,6 +55,10 @@
 
 [上帝源碼 G14 — Trader_42 交易原理與風控](上帝源碼-G14-Trader42-交易原理與風控研究.md) 延伸前述語意／證據契約，**不改動**既有交易程式，改在 TM-000 草稿分支中建立 [2,038-byte 純明文 One-Liner](../../deployment/Universal_G_G14_Trader42_Plaintext_2KB.sh)、[可讀研究控制器](../../deployment/G14_Trader42_Principle_core.py)、[唯讀風控契約](../../deployment/G14_trader42_principle_contract.json) 和 [55 項正反例測試](../../tools/test_universal_g_g14.py)。規則包含 5／20 SMA 候選訊號、TM 狀態驗證、KILL／冷卻、成交對帳、減量式 sizing、10 USDT 每筆與 50 USDT 總名目曝險上限、0.001 BTC 基礎資產上限，以及額外 2 USDT 日損失審查線與原 1% 日權益限制的交集。任何輸出都是 `PAPER_SIGNAL_REVIEW_ONLY`；不執行上游原始 `42u.sh`、不發送訂單、不證明策略有正報酬、不更動主版本或 Railway。
 
+## G15 完全以 G257 作為候選交易訊號原理（研究進展）
+
+[上帝源碼 G15 — G257 離線交易原理](上帝源碼-G15-完全基於G的離線交易原理.md) 不使用 SMA 或 QTM42 產生方向，而由 257 進位可逆編碼最近 8 個市場漲跌符號、有限訓練段的符號條件報酬、時間隔離的保留樣本與固定費用壓力，決定模擬 `BUY / SELL / HOLD`。新 [1,443-byte 明文 One-Liner](../../deployment/Universal_G_G15_Godel_Plaintext_2KB.sh)、[可讀訊號核心](../../deployment/G15_Godel_Signal_core.py)、[獨立風控控制器](../../deployment/G15_Godel_Policy_core.py)、[唯讀契約](../../deployment/G15_godel_trading_contract.json) 與 [62 項測試](../../tools/test_universal_g_g15.py) 構成原型。**可逆編碼只還原量化符號，不能還原全部價格；只有合成價格，尚未驗證市場預測或獲利，也不授權實際交易。** G14 KILL／對帳／額度不變，正式總機、TM-015 原始碼及 Trader_42 upstream 均未更動。
+
 ## 三種 G 的區別
 
 - `G_identity = E_P(ε) = 1`：對字串串接運算而言，空字串是唯一雙側單位元素。
