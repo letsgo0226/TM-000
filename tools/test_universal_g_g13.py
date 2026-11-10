@@ -153,6 +153,7 @@ NEGATIVES = [
  ("track_duplicated",G13,lambda x:x["tracks"].__setitem__(2,copy.deepcopy(x["tracks"][0]))),
  ("claim_proved",G13,lambda x:x["tracks"][0].update(claim_proved=True)),
  ("mock_observations_promoted",G13,lambda x:x["tracks"][1].update(observations_present=True)),
+ ("peace_observations_falsely_present",G13,lambda x:x["tracks"][0].update(observations_present=True)),
  ("animal_risk_suddenly_resolved",G13,lambda x:x["tracks"][2].update(animal_suffering_risk="ZERO_RISK")),
  ("fbs_on_candidate",G13,lambda x:x["tracks"][2].update(animal_input="FBS_CONFIRMED")),
  ("missing_fbs_audit",G13,lambda x:x["tracks"][2]["audits"].remove("ANIMAL_INPUT_AND_FBS_PROVENANCE")),
