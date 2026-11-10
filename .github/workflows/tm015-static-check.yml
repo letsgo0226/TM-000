@@ -22,6 +22,8 @@ name: TM-015 and Universal G read-only safety gates
       - '永久記憶/圖靈機/上帝源碼-G22-免SHA自我編碼圖靈機.md'
       - '永久記憶/圖靈機/上帝源碼-G23-質數冪哥德爾計算圖靈機.md'
       - '永久記憶/圖靈機/上帝源碼-G26-精確形式對數圖靈機.md'
+      - '永久記憶/圖靈機/上帝源碼-G27-精確形式對數跨領域應用橋接.md'
+      - 'tools/test_universal_g_g27.py'
       - 'tools/test_universal_g_g26.py'
       - '永久記憶/圖靈機/上帝源碼-G24-跨領域質數冪研究控制層.md'
       - '永久記憶/圖靈機/上帝源碼-G25-跨領域證據封包與審查閘門.md'
@@ -291,6 +293,19 @@ jobs:
           printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["steps"],x["rules"],x["bits"],x["integer_bits"],x["full_configuration_integer_bits"],x["log_terms"],x["formal_log_exact"],x["application_layer"],x["g27_integrated"],x["sha_used"],x["orders"])==("G26",3505682,1140,2160,41137,44568,2160,True,False,False,False,0) else 1)'
           python3 deployment/G26_Exact_Log_TM_Core.py | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["status"],x["original_rules"],x["steps"],x["prime_power_writes"],x["formal_log_additions"],x["exact_log_integer_roundtrip"],x["g22_output_equal"],x["numerical_floating_logs_used"],x["applications_integrated"],x["future_g27_applications_integrated"],x["network_access"],x["live_trades"])==("EXACT_FORMAL_LOG_G22_G23_TM_VERIFIED",1140,3505682,4321,4321,True,True,False,False,False,False,0) else 1)'
           python3 -c 'from pathlib import Path;files=["deployment/G26_Exact_Log_TM_Core.py","deployment/G26_Oneliner_Builder.py","deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh"];denied=("G24_", "G25_", "hashlib", "sha256(", "sha1(", "math.log(", "log10(", "urllib", "socket");assert all(all(t not in Path(p).read_text() for t in denied) for p in files)'
+      - name: Verify G27 exact formal-log G24 G25 research and 125 offline tests without deployment
+        run: |
+          test "$(wc -l < deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh)" -eq 1639
+          bash -n deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh
+          python3 tools/test_universal_g_g27.py
+          python3 deployment/G27_Exact_Log_Application_Bridge.py < deployment/G27_example_request.json > "$RUNNER_TEMP/g27-core.json"
+          bash deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh < "$RUNNER_TEMP/g27-core.json" > "$RUNNER_TEMP/g27-audit.json"
+          PYTHONOPTIMIZE=2 bash deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh < "$RUNNER_TEMP/g27-core.json" | cmp - "$RUNNER_TEMP/g27-audit.json"
+          python3 -c 'import json,sys;r=json.load(open(sys.argv[1]));assert (r["version"],r["status"],r["domains"],r["evidence_topics"],r["events_replayed"],r["synthetic_records_received"],r["distinct_topics_received"],r["formal_log_terms"],r["exact_formal_log_additions"],r["combined_godel_integer"])==("G27","SYNTHETIC_METADATA_UNVERIFIED",14,43,14,6,6,20,20,120160600906782352207185858098135);assert r["independent_evidence_authenticated"] is False and r["world_peace_achieved"] is False and r["all_sdgs_achieved"] is False and r["production_deployed"] is False and r["orders_submitted"]==0' "$RUNNER_TEMP/g27-core.json"
+          python3 -c 'import json,sys;r=json.load(open(sys.argv[1]));assert r["version"]=="G27_AUDIT" and r["exact_formal_log_equal"] is True and r["external_authentication"] is False and r["deploy"] is False and r["orders"]==0' "$RUNNER_TEMP/g27-audit.json"
+          python3 -c 'from pathlib import Path;from importlib.util import spec_from_file_location,module_from_spec;s=spec_from_file_location("g27build","deployment/G27_Oneliner_Builder.py");m=module_from_spec(s);s.loader.exec_module(m);assert m.build()==Path("deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh").read_bytes()'
+          python3 -c 'from pathlib import Path;items=["deployment/G27_Exact_Log_Application_Bridge.py","deployment/G27_Oneliner_Builder.py","deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh"];assert all(not any(x in Path(p).read_text() for x in ("hashlib","sha256(","math.log(","urllib","socket")) for p in items)'
       - name: Verify G8 fail-closed admission from a freshly computed G7 report
         run: |
           test "$(wc -l < deployment/Universal_G_G8_Admission_2KB.sh)" -eq 1
