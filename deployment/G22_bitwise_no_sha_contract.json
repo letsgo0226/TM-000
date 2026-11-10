@@ -26,7 +26,6 @@
   ],
   "no_cryptographic_digest_functions": true,
   "no_hashlib_dependency": true,
-  "does_not_authenticate_external_author": false,
   "source_authenticity_verified": false,
   "external_deployment": false,
   "live_trading": false,
@@ -34,5 +33,6 @@
   "proves_universal_halting": false,
   "preserves_G21_historical_version": true,
   "preserves_TM015_original": true,
-  "remarks": "Direct equality detects any differing observed bit; does not prove who produced both copies nor provide a cryptographic signature."
+  "remarks": "Direct equality detects any differing observed bit; does not prove who produced both copies nor provide a cryptographic signature.",
+  "external_author_authenticated": false
 }
