@@ -63,6 +63,10 @@
 
 [上帝源碼 G16 — 真正的紙帶、轉移規則和有界解譯器](上帝源碼-G16-真正的上帝源碼圖靈機.md) 引入新的可執行有限紙帶圖靈機原型：可讀 [Python TM 核心](../../deployment/G16_God_Source_TM_core.py)、[1,996-byte 純明文單行 Shell](../../deployment/Universal_G_G16_TM_Plaintext_2KB.sh)、[G16 版本／權限政策](../../deployment/G16_God_Source_TM_policy.py)、[機器描述 JSON 範例](../../deployment/G16_example_request.json) 與 [50 項正反測試](../../tools/test_universal_g_g16.py)。對範例 11 → 111 實際解譯三個 TM 步驟，機器描述使用原 TM-015 風格的 2048 進位、256 質數可逆哥德爾編碼。它不是原 TM-015 Quine 的替換版本，不具備通用停機神諭、交易預測保證、實際下單或自動部署能力。原 UTM-PLEIADES 主機保持不變。
 
+## G20 完全自足的 Quine（研究進展）
+
+[上帝源碼 G20 — 完全自足的 Quine](上帝源碼-G20-完全自足的Quine.md) 已實作不從外部檔案或命令列載入自身原始碼的 **1,096-byte 程式 Quine**。它以自指模板產生完整 Bash/Python 程式，再根據**完整源碼位元組的模 3 條件**選擇 TM-015 風格的前 256 質數／2048 進位或 G15 風格的 257 進位，先確認數值編解碼完全還原，才輸出自己的全部原始位元組。[原始單行版](../../deployment/Universal_G_G20_Self_Quine_2KB.sh)、[開發用再生器](../../deployment/G20_Quine_Builder.py)、[獨立驗證器](../../deployment/G20_Quine_Verifier.py) 與 [36 項正反測試](../../tools/test_universal_g_g20.py) 都屬研究分支，**不修改原始 TM-015 或現行總機**。這是完整的程式層級 Quine，**不是**已經在空白紙帶上重現有限轉移表的圖靈機層級 Quine，不提供交易或生產部署權限。
+
 ## 三種 G 的區別
 
 - `G_identity = E_P(ε) = 1`：對字串串接運算而言，空字串是唯一雙側單位元素。
