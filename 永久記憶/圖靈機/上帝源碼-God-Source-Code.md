@@ -83,6 +83,10 @@
 
 [上帝源碼 G24 — 跨領域研究治理](上帝源碼-G24-跨領域質數冪研究控制層.md) 使用固定的 14 個研究領域與 14 個不同質數，精確記錄各自的 BLOCKED／RESEARCH_ONLY 旗標。對於每次由研究進入或返回封鎖，實際進行質數的整數乘除，並在最後完整因式分解還原、與事件紀錄逐欄核對。此研究原型有 [1,837-byte 明文 One-Liner](../../deployment/Universal_G_G24_Cross_Domain_2KB.sh)、[可讀數值核心](../../deployment/G24_Cross_Domain_Godel_Core.py)、[可重建原始碼的產生器](../../deployment/G24_Oneliner_Builder.py)、[研究契約](../../deployment/G24_cross_domain_contract.json)及 [112 項正反測試](../../tools/test_universal_g_g24.py)。涵蓋總圖靈機、部署、計算與 AI 連續性、人類健康、動物福利、生態、和平、SDGs、培養肉、Trader_42、音樂文化、靈性、糧食安全。**此整數只是治理狀態資料，沒有實際實現這些目標，也不具部署或下單權限**。沒有變更原始 TM-015、G23、Trader_42 或指定主版本。
 
+## G24-S 十二領域質數冪跨域審查變體（新增）
+
+[上帝源碼 G24-S — 十二領域質數冪審查](上帝源碼-G24S-十二領域質數冪審查變體.md) 是已存在的 **14 領域 G24 研究治理版本**之外、**獨立命名且不覆蓋原版**的 12 領域更嚴格輸入檢查變體。它用 12 個不同的領域質數、狀態指數 1／2／3、真實任意精度整數乘法及完整反向因式分解記錄合成研究狀態，示範範例 12 個領域／20 次整數更新／5 個合成審查／4 個證據缺口／3 個安全否決。帶有 [1,992-byte 明文 One-Liner](../../deployment/Universal_G_G24S_Cross_Domain_2KB.sh)、[可讀核心](../../deployment/G24S_cross_domain_core.py)、[獨立審查器](../../deployment/G24S_independent_audit.py)、[G13/G14/G23 父契約唯讀風控審核](../../deployment/G24S_policy_core.py)、[完整領域證據缺口契約](../../deployment/G24S_cross_domain_contract.json)及 [126 項測試](../../tools/test_universal_g_g24s.py)。合成檢查狀態不是現實成果、永生證明、SDGs 達標、和平實現、培養肉產品核准或實盤交易許可；原 14 領域 G24、原始 TM-015、G23、Trader_42 及正式總機維持不變。
+
 ## 三種 G 的區別
 
 - `G_identity = E_P(ε) = 1`：對字串串接運算而言，空字串是唯一雙側單位元素。
