@@ -15,6 +15,8 @@ name: TM-015 and Universal G read-only safety gates
       - '永久記憶/圖靈機/上帝源碼-G12-來源主張範圍與證據缺口.md'
       - '永久記憶/圖靈機/上帝源碼-G13-全球和平-SDGs-培養肉倫理與技術.md'
       - '永久記憶/圖靈機/上帝源碼-G14-Trader42-交易原理與風控研究.md'
+      - '永久記憶/圖靈機/上帝源碼-G15-完全基於G的離線交易原理.md'
+      - 'tools/test_universal_g_g15.py'
       - 'tools/test_universal_g_g10.py'
       - 'tools/test_tm015_real_god.py'
       - 'tools/test_universal_g_continuity.py'
@@ -144,6 +146,15 @@ jobs:
           test "$a" = "$b"
           test "$a" = "$c"
           printf '%s\n' "$a" | python3 -c 'import sys,json;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["reference_files"],x["strategy"],x["risk_policy_unchanged_or_tighter"],x["live_armed"],x["source_executed"],x["exchange_orders_submitted"],x["authenticated_upstream"],x["empirical_profit_verified"],x["status"])==("G14",8,"SMA_5_20",True,False,False,0,False,False,"PAPER_SIGNAL_REVIEW_ONLY") else 1)'
+      - name: Verify G15 G257-only synthetic trading without SMA QTM42 or order authority
+        run: |
+          test "$(wc -l < deployment/Universal_G_G15_Godel_Plaintext_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G15_Godel_Plaintext_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G15_Godel_Plaintext_2KB.sh
+          python3 tools/test_universal_g_g15.py
+          today="$(date -u +%F)"
+          python3 deployment/G15_Godel_Policy_core.py --as-of "$today" | python3 -c 'import sys,json;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["policy"],x["source_pinned"],x["paper_only"],x["actual_orders"],x["live_authorized"],x["empirical_alpha_proved"])==("G15","GODEL_PAPER_REVIEW_ONLY",True,True,0,False,False) else 1)'
+          python3 -c 'import sys,json;sys.path.insert(0,"tools");from test_universal_g_g15 import example;print(json.dumps(example()))' | bash deployment/Universal_G_G15_Godel_Plaintext_2KB.sh | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if x["version"]=="G15" and x["roundtrip"] and x["actual_orders"]==0 and not x["live_allowed"] and not x["profitability_proved"] else 1)'
       - name: Verify G8 fail-closed admission from a freshly computed G7 report
         run: |
           test "$(wc -l < deployment/Universal_G_G8_Admission_2KB.sh)" -eq 1
