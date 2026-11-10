@@ -340,3 +340,17 @@ Run from the TM-000 root:
     python3 tools/test_universal_g_g23.py
 
 No SHA/hashlib, exchange API, network requests, file mutation of original TM-015 or G22, order submission, master promotion, production deployment, universal halting oracle or literal divinity claim. The existing TM's rules remain unchanged; G23 is an *external Python interpreter using exact Gödel integers*, not a newly compiled native single-tape TM that factors its own big integers.
+
+## G24: fourteen-domain offline prime-power research governance
+
+[G24 Chinese research specification](永久記憶/圖靈機/上帝源碼-G24-跨領域質數冪研究控制層.md) extends G23's exact prime-power arithmetic **as a research-state representation**, not as proof that a real-world problem is solved. Fourteen fixed fields cover designated universal TM/master safety, automated deployment, computation and AI continuity, human longevity, animal welfare, ecology, world peace, SDGs, cultivated meat, Trader_42, culture/music, spirituality and food security. Each field has an independent prime factor and only two authorized states: BLOCKED=exponent 0 and RESEARCH_ONLY=exponent 1.
+
+For each synthetic, offline event, the [readable engine](deployment/G24_Cross_Domain_Godel_Core.py) **multiplies or exactly divides** the appropriate prime and ultimately decodes the *whole integer* to verify the entire state. [Sample 14-domain input](deployment/G24_example_request.json) yields exactly 5431526412865007455, encoding all fields as research-only; this number is **not** a peace, health, product safety, immortality, financial performance or deployment success metric. The output always disclaims real-world effectiveness, live trading, production deployment and outcome guarantees.
+
+Files: [1,837-byte single-physical-line Shell/Python3 source](deployment/Universal_G_G24_Cross_Domain_2KB.sh), [reference source builder](deployment/G24_Oneliner_Builder.py), [14-domain evidence and permission contract](deployment/G24_cross_domain_contract.json), [112 synthetic positive/negative tests](tools/test_universal_g_g24.py) and [research document](永久記憶/圖靈機/上帝源碼-G24-跨領域質數冪研究控制層.md). Runtime dependencies use no SHA or hashlib. G24 optionally checks *local parent contract fields* in G13/G14/G22/G23 for structural consistency; metadata pointers are **not independent authentication**.
+
+    python3 tools/test_universal_g_g24.py
+    bash deployment/Universal_G_G24_Cross_Domain_2KB.sh < deployment/G24_example_request.json
+    python3 deployment/G24_Cross_Domain_Godel_Core.py --check-parent
+
+All real-world actions remain prohibited: no release, autonomous deploy, credentials, live orders, food/clinical approval, network calls or human-override route. The current designated master UTM-PLEIADES-v0.2-PTCA and the original TM-015/G23/Trader_42 sources remain unchanged; this research stays solely in unmerged draft PR #20. No halting oracle, literal deity, immortality, SDGs/peace achievements or trading alpha is implied by an exact Gödel code.
