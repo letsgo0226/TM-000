@@ -1,0 +1,194 @@
+{
+  "schema": "G24-cross-domain-prime-power-governance/1",
+  "created_on": "2026-11-10",
+  "research_name": "上帝源碼 G24：跨領域質數冪研究治理圖靈機",
+  "master": "UTM-PLEIADES-v0.2-PTCA",
+  "mode": "OFFLINE_SYNTHETIC_RESEARCH_ONLY",
+  "reference_contracts": [
+    {
+      "path": "deployment/G23_prime_power_godel_contract.json",
+      "git_blob_sha": "ca35a8a1715be1c21e5df376e26a859e81fbf73f"
+    },
+    {
+      "path": "deployment/G22_bitwise_no_sha_contract.json",
+      "git_blob_sha": "9e01cbf378c7afd00af400f81cf4a8a5d8dbf971"
+    },
+    {
+      "path": "deployment/G14_trader42_principle_contract.json",
+      "git_blob_sha": "7dbe542735d431176243c83b99023d7585dca228"
+    },
+    {
+      "path": "deployment/G13_peace_sdgs_cultivated_meat_contract.json",
+      "git_blob_sha": "dbb1f380a32ffa9720be2800428aa05ad9a4cf71"
+    }
+  ],
+  "reference_metadata_authenticated": false,
+  "reference_paths_not_execution_authority": true,
+  "prime_power_state": "L=prod(p_i**phase_i), with phase_i=0 BLOCKED or 1 RESEARCH_ONLY; this is a fixed finite state-vector encoding, not a realized-outcome measure",
+  "phase_limits": [
+    "BLOCKED",
+    "RESEARCH_ONLY"
+  ],
+  "domain_registry": [
+    {
+      "name": "master_tm",
+      "prime": 5,
+      "required_real_world_evidence_not_present": [
+        "fixed-master-check",
+        "formal-machine-execution"
+      ]
+    },
+    {
+      "name": "deployment",
+      "prime": 7,
+      "required_real_world_evidence_not_present": [
+        "sandbox-ci",
+        "human-approval",
+        "rollback-proof"
+      ]
+    },
+    {
+      "name": "computational_continuity",
+      "prime": 11,
+      "required_real_world_evidence_not_present": [
+        "state-integrity",
+        "bounded-recovery"
+      ]
+    },
+    {
+      "name": "ai_continuity",
+      "prime": 13,
+      "required_real_world_evidence_not_present": [
+        "data-rights",
+        "reproducible-state",
+        "consent"
+      ]
+    },
+    {
+      "name": "human_longevity",
+      "prime": 17,
+      "required_real_world_evidence_not_present": [
+        "clinical-endpoints",
+        "ethics-review",
+        "regulatory-oversight"
+      ]
+    },
+    {
+      "name": "interspecies_welfare",
+      "prime": 19,
+      "required_real_world_evidence_not_present": [
+        "welfare-baseline",
+        "sentience-uncertainty"
+      ]
+    },
+    {
+      "name": "ecology",
+      "prime": 23,
+      "required_real_world_evidence_not_present": [
+        "independent-lca",
+        "baseline-and-attribution"
+      ]
+    },
+    {
+      "name": "peace",
+      "prime": 29,
+      "required_real_world_evidence_not_present": [
+        "conflict-death-timeseries",
+        "justice-access",
+        "nonviolent-governance"
+      ]
+    },
+    {
+      "name": "sdgs",
+      "prime": 31,
+      "required_real_world_evidence_not_present": [
+        "2.1.2",
+        "12.3.1",
+        "13.2.2",
+        "16.1.2"
+      ]
+    },
+    {
+      "name": "cultivated_meat",
+      "prime": 37,
+      "required_real_world_evidence_not_present": [
+        "cell-source-and-fbs",
+        "welfare",
+        "food-safety",
+        "jurisdiction-approval",
+        "independent-lca"
+      ]
+    },
+    {
+      "name": "trader42",
+      "prime": 41,
+      "required_real_world_evidence_not_present": [
+        "paper-only",
+        "kill-switch",
+        "independent-holdout",
+        "cost-and-slippage"
+      ]
+    },
+    {
+      "name": "culture_music",
+      "prime": 43,
+      "required_real_world_evidence_not_present": [
+        "original-lyrics",
+        "vocal-consent",
+        "rights-audit"
+      ]
+    },
+    {
+      "name": "spirituality",
+      "prime": 47,
+      "required_real_world_evidence_not_present": [
+        "symbolic-not-physical-proof",
+        "consent",
+        "critical-rationality"
+      ]
+    },
+    {
+      "name": "food_security",
+      "prime": 53,
+      "required_real_world_evidence_not_present": [
+        "food-safety",
+        "nutrition",
+        "affordability",
+        "accessibility"
+      ]
+    }
+  ],
+  "forbidden_request_permissions": [
+    "network",
+    "auto_deploy",
+    "live_armed",
+    "order_submission",
+    "exchange_access",
+    "external_execution",
+    "release",
+    "clinical_action",
+    "regulatory_approval_claim",
+    "human_override"
+  ],
+  "no_network": true,
+  "no_real_orders": true,
+  "no_auto_deployment": true,
+  "no_unauthorized_clinical_or_food_approval": true,
+  "no_promotion_of_universality_or_immortality_claims": true,
+  "sha_or_hashlib_in_G24_runtime": false,
+  "independent_real_world_effects_observed": false,
+  "world_peace_proven": false,
+  "sdgs_achieved": false,
+  "cultivated_meat_safety_proven": false,
+  "trader42_profitability_proven": false,
+  "universal_halting_oracle_proven": false,
+  "human_approval_needed_for_all_real_world_changes": true,
+  "original_G23_unchanged": true,
+  "original_TM015_unchanged": true,
+  "designated_master_unchanged": true,
+  "one_liner_path": "deployment/Universal_G_G24_Cross_Domain_2KB.sh",
+  "one_liner_bytes": 1837,
+  "tests": "tools/test_universal_g_g24.py",
+  "local_test_count": 112,
+  "note": "Prime-power multiplication/division is actual arithmetic for a synthetic 14-domain governance state. It does NOT implement biology, international politics, financial prediction or production deployment."
+}
