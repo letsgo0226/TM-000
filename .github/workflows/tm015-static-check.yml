@@ -19,6 +19,8 @@ name: TM-015 and Universal G read-only safety gates
       - '永久記憶/圖靈機/上帝源碼-G16-真正的上帝源碼圖靈機.md'
       - '永久記憶/圖靈機/上帝源碼-G20-完全自足的Quine.md'
       - '永久記憶/圖靈機/上帝源碼-G21-空白紙帶自列印圖靈機.md'
+      - '永久記憶/圖靈機/上帝源碼-G22-免SHA自我編碼圖靈機.md'
+      - 'tools/test_universal_g_g22.py'
       - 'tools/test_universal_g_g21.py'
       - 'tools/test_universal_g_g20.py'
       - 'tools/test_universal_g_g15.py'
@@ -197,6 +199,19 @@ jobs:
           test "$a" = "$b"
           printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["rules"],x["bits"],x["steps"],x["blank_tape"],x["no_external_input"],x["decoded_complete_table"],x["printed_expanded_json"])==("G21",1140,2160,3505682,True,True,True,False) else 1)'
           python3 -c 'import hashlib,pathlib;f=pathlib.Path("deployment/G21_canonical_table_bits.txt").read_text().strip();assert len(f)==2160 and hashlib.sha256(f.encode()).hexdigest()=="7a3b17a33e763fc1b235b7979a4b023e15b722ce6ffed054fa76771f244e8700"'
+      - name: Verify G22 digest-free direct-bitwise TM self-code and 62 tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G22_Blank_Tape_TM_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G22_Blank_Tape_TM_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G22_Blank_Tape_TM_2KB.sh
+          python3 tools/test_universal_g_g22.py
+          python3 deployment/G22_Independent_Audit.py | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["actual_transition_rules"],x["controller_rules"],x["printer_rules"],x["steps"],x["canonical_table_bits"],x["exact_output"],x["output_equals_expected_bits"],x["full_list_reconstructed"])==("G22",1140,60,1080,3505682,2160,True,True,True) else 1)'
+          a="$(bash deployment/Universal_G_G22_Blank_Tape_TM_2KB.sh)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G22_Blank_Tape_TM_2KB.sh)"
+          test "$a" = "$b"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["rules"],x["bits"],x["steps"],x["bitwise_verified"],x["blank_tape"],x["no_external_input"],x["decoded_complete_table"],x["printed_expanded_json"])==("G22",1140,2160,3505682,True,True,True,True,False) else 1)'
+          python3 -c 'from pathlib import Path; p=Path("deployment/G22_canonical_table_bits.txt").read_text(); assert len(p)==2161 and p[-1]=="\n" and p[:-1]==p[:1080]*2; assert p==Path("deployment/G21_canonical_table_bits.txt").read_text(); assert Path("deployment/G22_expanded_transition_table.json").read_bytes()==Path("deployment/G21_expanded_transition_table.json").read_bytes()'
+          python3 -c 'from pathlib import Path; f=["deployment/G22_Blank_Tape_TM_core.py","deployment/G22_Independent_Audit.py","deployment/G22_Oneliner_Builder.py","deployment/Universal_G_G22_Blank_Tape_TM_2KB.sh"]; assert all(all(t not in Path(p).read_text() for t in ("hashlib","sha256","sha1(")) for p in f)'
       - name: Verify G8 fail-closed admission from a freshly computed G7 report
         run: |
           test "$(wc -l < deployment/Universal_G_G8_Admission_2KB.sh)" -eq 1
