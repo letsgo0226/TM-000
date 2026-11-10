@@ -51,6 +51,10 @@
 
 [上帝源碼 G13 — 全球和平、SDGs 與培養肉倫理／技術](上帝源碼-G13-全球和平-SDGs-培養肉倫理與技術.md) 將 SDG 16.1.2／16.3.3、SDG 2.1.2／12.3.1／13.2.2 與培養肉食品安全、細胞及胎牛血清來源、苦難風險、司法管轄區法規及獨立生命週期評估，分成三個研究軌道。[1,999-byte 明文 One-Liner](../../deployment/Universal_G_G13_Peace_SDG_CellFood_Plaintext_2KB.sh)、[嚴格可讀控制器](../../deployment/G13_Peace_SDG_CellFood_core.py)、[三軌來源契約](../../deployment/G13_peace_sdgs_cultivated_meat_contract.json) 與 [49 項正反測試](../../tools/test_universal_g_g13.py) 明確拒絕把缺乏證據升級為「世界和平已實現」、「17 項 SDGs 達成」、「培養肉絕對安全、零苦難或環境效益已證明」。狀態只有 `TRIAD_RESEARCH_REVIEW_ONLY`，不授權營運部署、食品產品上市或生物操作；TM-015 原始候選與現行總機均保持不變。
 
+## G14 Trader_42 交易原理與保守風控關卡（研究進展）
+
+[上帝源碼 G14 — Trader_42 交易原理與風控](上帝源碼-G14-Trader42-交易原理與風控研究.md) 延伸前述語意／證據契約，**不改動**既有交易程式，改在 TM-000 草稿分支中建立 [2,038-byte 純明文 One-Liner](../../deployment/Universal_G_G14_Trader42_Plaintext_2KB.sh)、[可讀研究控制器](../../deployment/G14_Trader42_Principle_core.py)、[唯讀風控契約](../../deployment/G14_trader42_principle_contract.json) 和 [55 項正反例測試](../../tools/test_universal_g_g14.py)。規則包含 5／20 SMA 候選訊號、TM 狀態驗證、KILL／冷卻、成交對帳、減量式 sizing、10 USDT 每筆與 50 USDT 總名目曝險上限、0.001 BTC 基礎資產上限，以及額外 2 USDT 日損失審查線與原 1% 日權益限制的交集。任何輸出都是 `PAPER_SIGNAL_REVIEW_ONLY`；不執行上游原始 `42u.sh`、不發送訂單、不證明策略有正報酬、不更動主版本或 Railway。
+
 ## 三種 G 的區別
 
 - `G_identity = E_P(ε) = 1`：對字串串接運算而言，空字串是唯一雙側單位元素。
