@@ -1,0 +1,154 @@
+{
+  "schema": "G13-peace-sdgs-cultivated-meat/1",
+  "reviewed_on": "2026-11-10",
+  "review_interval_days": 180,
+  "parent_schema": "G12-claim-scope-review/1",
+  "parent_digest_sha256": "8a4b2f846c9486e35907071be971c083518f8b89850917827a12c91a36c2bb02",
+  "master": "UTM-PLEIADES-v0.2-PTCA",
+  "mode": "DRY_RUN_ONLY",
+  "status": "TRIAD_RESEARCH_REVIEW_ONLY",
+  "source_metadata_only": true,
+  "remote_refetch": false,
+  "signed_source_proof": false,
+  "production_deployed": false,
+  "all_goals_achieved": false,
+  "zero_suffering_proved": false,
+  "product_approved": false,
+  "environmental_benefit_proved": false,
+  "independent_observations_imported": false,
+  "requires_human_review": true,
+  "sources": [
+    {
+      "id": "un-sdg16",
+      "publisher": "United Nations DESA",
+      "url": "https://sdgs.un.org/goals/goal16",
+      "scope": "SDG 16 objectives and indicators",
+      "reviewed_on": "2026-11-10",
+      "content_snapshot": false,
+      "independent_claim_verification": false
+    },
+    {
+      "id": "un-sdg2",
+      "publisher": "United Nations DESA",
+      "url": "https://sdgs.un.org/goals/goal2",
+      "scope": "Food security and nutrition targets",
+      "reviewed_on": "2026-11-10",
+      "content_snapshot": false,
+      "independent_claim_verification": false
+    },
+    {
+      "id": "un-sdg12",
+      "publisher": "United Nations DESA",
+      "url": "https://sdgs.un.org/goals/goal12",
+      "scope": "Resource use and food-waste targets",
+      "reviewed_on": "2026-11-10",
+      "content_snapshot": false,
+      "independent_claim_verification": false
+    },
+    {
+      "id": "un-sdg13",
+      "publisher": "United Nations DESA",
+      "url": "https://sdgs.un.org/goals/goal13",
+      "scope": "Climate and GHG targets",
+      "reviewed_on": "2026-11-10",
+      "content_snapshot": false,
+      "independent_claim_verification": false
+    },
+    {
+      "id": "who-fao-cell-food",
+      "publisher": "WHO/FAO",
+      "url": "https://www.who.int/publications/i/item/9789240070943",
+      "scope": "Cell-based food hazard identification and regulatory questions",
+      "reviewed_on": "2026-11-10",
+      "content_snapshot": false,
+      "independent_claim_verification": false
+    },
+    {
+      "id": "sfa-novel-food",
+      "publisher": "Singapore Food Agency",
+      "url": "https://www.sfa.gov.sg/regulatory-standards-frameworks-guidelines/novel-food-framework/guidelines-on-applying-for-pre-market-approval-for-a-novel-food",
+      "scope": "Singapore-specific novel-food pre-market approval guidance",
+      "reviewed_on": "2026-11-10",
+      "content_snapshot": false,
+      "independent_claim_verification": false
+    },
+    {
+      "id": "fbs-scientific-review",
+      "publisher": "Peer-reviewed scientific review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11007461/",
+      "scope": "FBS-related animal-welfare and serum replacement research",
+      "reviewed_on": "2026-11-10",
+      "content_snapshot": false,
+      "independent_claim_verification": false
+    }
+  ],
+  "tracks": [
+    {
+      "id": "peace",
+      "research_goal": "Evidence-based peace and justice monitoring (SDG 16)",
+      "indicators": [
+        "16.1.2",
+        "16.3.3"
+      ],
+      "source_ids": [
+        "un-sdg16"
+      ],
+      "observations_present": false,
+      "claim_proved": false,
+      "missing_evidence": "Independent conflict-deaths and access-to-justice time series by jurisdiction and reporting period"
+    },
+    {
+      "id": "sdgs",
+      "research_goal": "Food security, responsible production, climate and peaceful institutions",
+      "indicators": [
+        "2.1.2",
+        "12.3.1",
+        "13.2.2",
+        "16.1.2"
+      ],
+      "source_ids": [
+        "un-sdg2",
+        "un-sdg12",
+        "un-sdg13",
+        "un-sdg16"
+      ],
+      "observations_present": false,
+      "claim_proved": false,
+      "missing_evidence": "Comparable independently validated SDG datasets, baselines, geographic coverage and attribution"
+    },
+    {
+      "id": "cultivated_meat",
+      "research_goal": "Food safety, welfare provenance and cradle-to-gate sustainability evaluation",
+      "source_ids": [
+        "who-fao-cell-food",
+        "sfa-novel-food",
+        "fbs-scientific-review"
+      ],
+      "indicators": [],
+      "audits": [
+        "FOOD_SAFETY",
+        "REGULATORY_JURISDICTION",
+        "ANIMAL_INPUT_AND_FBS_PROVENANCE",
+        "CELL_COLLECTION_WELFARE",
+        "SUBJECTIVE_SUFFERING_UNCERTAINTY",
+        "INDEPENDENT_LCA"
+      ],
+      "observations_present": false,
+      "claim_proved": false,
+      "animal_input": "UNKNOWN",
+      "animal_suffering_risk": "UNRESOLVED",
+      "food_safety_status": "NOT_ASSESSED",
+      "regulatory_status": "NOT_ASSESSED",
+      "life_cycle_assessment": "NOT_ASSESSED",
+      "missing_evidence": "Documented cell sourcing and media, animal welfare review, food safety data, jurisdictional approval and independent life-cycle assessment"
+    }
+  ],
+  "forbidden_claims": [
+    "WORLD_PEACE_ACHIEVED",
+    "ALL_SDGS_ACHIEVED",
+    "CULTIVATED_MEAT_SAFE_FOR_ALL",
+    "ZERO_SUFFERING_VERIFIED",
+    "ENVIRONMENTAL_BENEFIT_PROVED",
+    "AUTO_DEPLOY_ALLOWED"
+  ]
+}
