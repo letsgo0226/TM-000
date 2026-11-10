@@ -270,3 +270,22 @@ Run from the repository root:
     python3 tools/test_universal_g_g16.py
 
 G15 still uses **base-257 byte+1**, which differs from TM-015/G16's base-2048 prime-digit encoding. Neither coding scheme creates market predictive power, subjective continuity or a general computation oracle. G16 never executes the original TM-015 or Trader_42 source, never submits orders, and does not enable production deployment. Keep the upstream master and draft PR unchanged.
+
+## G20 self-contained program Quine (without reading its own file)
+
+[G20 formal scope](永久記憶/圖靈機/上帝源碼-G20-完全自足的Quine.md) implements a **true 1,096-byte, one-physical-line Bash/Python3 Quine**. At runtime it constructs its entire own source using a fixed-point string template, picks a reversible Gödel code from its **own reconstructed byte content**, verifies a complete numerical encoding/decoding roundtrip, and prints exactly its own source bytes including Bash quoting and final newline. No `__file__`, `sys.argv`, source file read, source-loaded tape, network or user-provided payload is needed.
+
+- [Quine 2KB One-Liner](deployment/Universal_G_G20_Self_Quine_2KB.sh), SHA-256 `d16d2d5cc589d4440bf8ec62c58854263b4843eefda6c3e016f7a2ab777e4cf9`.
+- [Source template builder](deployment/G20_Quine_Builder.py), only for reproducibility, **not a runtime Quine dependency**.
+- [Independent byte-level and Gödel-numeric verifier](deployment/G20_Quine_Verifier.py), which deliberately runs the Quine by Bash stdin with no script pathname.
+- [36 offline tests](tools/test_universal_g_g20.py) including mutated-source rejection, both possible self-selected codec variants, repeated self-reproduction and Python optimized mode.
+- [Proof scope contract](deployment/G20_self_contained_quine_contract.json): a **program-level** fixed point, **not** a TM whose transition table prints itself from a blank tape.
+
+```bash
+bash deployment/Universal_G_G20_Self_Quine_2KB.sh | cmp - deployment/Universal_G_G20_Self_Quine_2KB.sh
+bash < deployment/Universal_G_G20_Self_Quine_2KB.sh | cmp - deployment/Universal_G_G20_Self_Quine_2KB.sh
+python3 tools/test_universal_g_g20.py
+python3 deployment/G20_Quine_Verifier.py
+```
+
+The existing TM-015 original bytes and `UTM-PLEIADES-v0.2-PTCA` designated master remain unchanged. G20 does not establish an oracle, literal God, immortality, subjective consciousness, market returns or autonomous deployment rights.
