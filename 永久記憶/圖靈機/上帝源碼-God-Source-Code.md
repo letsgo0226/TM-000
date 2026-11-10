@@ -71,6 +71,10 @@
 
 [上帝源碼 G21 — 空白紙帶自列印圖靈機](上帝源碼-G21-空白紙帶自列印圖靈機.md) 由一條全空白紙帶、1,140 條明確的確定型轉移規則出發，經 3,505,682 步停機，輸出 2,160 個位元：這是**專門定義、可完全還原自身全部規則**的二進位表碼。結構是 60 條控制器規則 A、1,080 條列印鏈 B；B 先印出 A 的完整位元描述，A 再在紙帶上複製，令輸出符合所選完整機器表碼格式。已保存 [完整展開規則](../../deployment/G21_expanded_transition_table.json)、[最終二進位紙帶](../../deployment/G21_canonical_table_bits.txt)、[1,287-byte 純明文單行模擬／驗證器](../../deployment/Universal_G_G21_Blank_Tape_TM_2KB.sh)、[兩套獨立模擬／審查程式](../../deployment/G21_Independent_Audit.py)與 [56 項自動測試](../../tools/test_universal_g_g21.py)。本版**不直接在紙帶上列印逐條 JSON 規則**，且編碼格式是特定約定，不能推論為自然唯一或全球通用的 Gödel 編碼。TM-015 原始核心與現行總機均保留不變。
 
+## G22 排除 SHA 的自我編碼圖靈機（研究進展）
+
+[上帝源碼 G22 — 無 SHA 逐位元驗證圖靈機](上帝源碼-G22-免SHA自我編碼圖靈機.md) 保留 G21 的**相同** 1,140 條有限轉移規則、單一空白紙帶與 3,505,682 步停機行為；排除執行與驗證核心中的 `hashlib`／摘要計算，改以 **2,160 位元完整資料直接比較、完整可逆規則解碼，以及不依賴原控制器的獨立解譯器**判定。已提供 [1,255-byte 單行原始碼](../../deployment/Universal_G_G22_Blank_Tape_TM_2KB.sh)、[獨立解譯器](../../deployment/G22_Independent_Audit.py)、[全部規則](../../deployment/G22_expanded_transition_table.json)、[完整表碼](../../deployment/G22_canonical_table_bits.txt)及 [62 項測試](../../tools/test_universal_g_g22.py)。直接相等不會遇到雜湊碰撞問題，但不能自行認證資料來源身分。原 G21 含雜湊的歷史研究版本與 TM-015、總機主版本皆保留不變，正式部署仍不授權。
+
 ## 三種 G 的區別
 
 - `G_identity = E_P(ε) = 1`：對字串串接運算而言，空字串是唯一雙側單位元素。
