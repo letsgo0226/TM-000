@@ -43,6 +43,10 @@
 
 [上帝源碼 G11 — 八維度外部證據與來源審閱](上帝源碼-G11-八維度外部證據與來源審閱.md) 將 G10 原有三項公開來源，延伸到八個研究維度：計算系統復原、AI 風險管理、人口健康壽命、細胞培養食品安全、生態 SDG 15、和平 SDG 16、文化文獻保存，以及神學／形上學哲學研究。[2,037-byte 明文 Shell One-Liner](../../deployment/Universal_G_G11_Evidence_Plaintext_2KB.sh)、[可讀核心](../../deployment/G11_Eight_Domain_Evidence_core.py) 和 [27 項測試](../../tools/test_universal_g_g11.py) 檢查來源對應、過期審閱與反例；使用 [八領域 JSON 登錄簿](../../deployment/G11_eight_domain_evidence_ledger.json)，**不抓取網路、並不驗證真實世界成果或任何形式的永生**。總機主版本、TM-015 原始碼與生產部署權限保持不變。
 
+## G12 八維度來源—主張範圍與證據缺口（研究進展）
+
+[上帝源碼 G12 — 來源主張範圍與證據缺口](上帝源碼-G12-來源主張範圍與證據缺口.md) 將 G11 的八筆來源轉化成**各自有界**的主張契約與待補實證清單。[2,014-byte 明文 Shell One-Liner](../../deployment/Universal_G_G12_Claim_Plaintext_2KB.sh)、[嚴格可讀核心](../../deployment/G12_Claim_Scope_core.py)、[八領域 JSON 契約](../../deployment/G12_claim_scope_ledger.json) 與 [34 項檢查](../../tools/test_universal_g_g12.py) 拒絕把預期壽命、哲學論爭或來源主題逕行升級為人類永生、神學身分或外部部署權限。G12 不宣稱取得具簽章的第三方原始證據、不執行生產部署，TM-015 候選與指定總機均未更動。
+
 ## 三種 G 的區別
 
 - `G_identity = E_P(ε) = 1`：對字串串接運算而言，空字串是唯一雙側單位元素。
