@@ -67,6 +67,10 @@
 
 [上帝源碼 G20 — 完全自足的 Quine](上帝源碼-G20-完全自足的Quine.md) 已實作不從外部檔案或命令列載入自身原始碼的 **1,096-byte 程式 Quine**。它以自指模板產生完整 Bash/Python 程式，再根據**完整源碼位元組的模 3 條件**選擇 TM-015 風格的前 256 質數／2048 進位或 G15 風格的 257 進位，先確認數值編解碼完全還原，才輸出自己的全部原始位元組。[原始單行版](../../deployment/Universal_G_G20_Self_Quine_2KB.sh)、[開發用再生器](../../deployment/G20_Quine_Builder.py)、[獨立驗證器](../../deployment/G20_Quine_Verifier.py) 與 [36 項正反測試](../../tools/test_universal_g_g20.py) 都屬研究分支，**不修改原始 TM-015 或現行總機**。這是完整的程式層級 Quine，**不是**已經在空白紙帶上重現有限轉移表的圖靈機層級 Quine，不提供交易或生產部署權限。
 
+## G21 空白紙帶自列印完整轉移表編碼（研究進展）
+
+[上帝源碼 G21 — 空白紙帶自列印圖靈機](上帝源碼-G21-空白紙帶自列印圖靈機.md) 由一條全空白紙帶、1,140 條明確的確定型轉移規則出發，經 3,505,682 步停機，輸出 2,160 個位元：這是**專門定義、可完全還原自身全部規則**的二進位表碼。結構是 60 條控制器規則 A、1,080 條列印鏈 B；B 先印出 A 的完整位元描述，A 再在紙帶上複製，令輸出符合所選完整機器表碼格式。已保存 [完整展開規則](../../deployment/G21_expanded_transition_table.json)、[最終二進位紙帶](../../deployment/G21_canonical_table_bits.txt)、[1,287-byte 純明文單行模擬／驗證器](../../deployment/Universal_G_G21_Blank_Tape_TM_2KB.sh)、[兩套獨立模擬／審查程式](../../deployment/G21_Independent_Audit.py)與 [56 項自動測試](../../tools/test_universal_g_g21.py)。本版**不直接在紙帶上列印逐條 JSON 規則**，且編碼格式是特定約定，不能推論為自然唯一或全球通用的 Gödel 編碼。TM-015 原始核心與現行總機均保留不變。
+
 ## 三種 G 的區別
 
 - `G_identity = E_P(ε) = 1`：對字串串接運算而言，空字串是唯一雙側單位元素。
