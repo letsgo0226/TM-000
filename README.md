@@ -235,3 +235,19 @@ python3 tools/test_universal_g_g14.py
 ```
 
 Status is strictly `PAPER_SIGNAL_REVIEW_ONLY`. The simulator returns only simulated proposals, HOLD or HALT, never an order payload or live activation. This repository does not run Trader_42's self-modifying `42u.sh`, contact market/exchange APIs, read credentials or change Railway. The eight Git blob SHAs represent **reviewed source version references**, not a cryptographically authenticated upstream snapshot in this offline CI. Profitability, positive alpha and future returns remain unverified. G14 does not authorize production deployment, trading, or master promotion.
+
+## G15 — God Source trading signals, independent of SMA and QTM42
+
+The [G15 research design and limitations](永久記憶/圖靈機/上帝源碼-G15-完全基於G的離線交易原理.md) replace the **research signal generator** with a finite `G257_CONDITIONAL_RETURN` model rather than the previous 5/20 SMA or QTM42. G15 constructs a reversible base-257 encoding of the **last 8 price-direction symbols only** (not lossless raw market prices), estimates a conditional next-return hypothesis on the earliest 70% of synthetic observations, and uses a chronological 30% holdout as a veto without fitting on that holdout. A fixed 20 bps per-side hypothetical cost/slippage stress is deducted for all simulated position transitions and a terminal hypothetical close.
+
+The [1,443-byte plaintext Shell one-liner](deployment/Universal_G_G15_Godel_Plaintext_2KB.sh), [readable Python signal engine](deployment/G15_Godel_Signal_core.py), [independent G14-lineage/risk policy controller](deployment/G15_Godel_Policy_core.py), [research contract](deployment/G15_godel_trading_contract.json), and [62 offline tests](tools/test_universal_g_g15.py) ensure no exchange APIs, no credentials, no real-time price collection, no orders, no production privileges, and no relaxation of G14 kill-switch, reconciliation, cooldown, decrease-only sizing, capital or loss limits.
+
+Run in the TM-000 project root:
+
+```bash
+python3 tools/test_universal_g_g15.py
+python3 deployment/G15_Godel_Policy_core.py --as-of 2026-11-10
+python3 -c 'import json,sys;sys.path.insert(0,"tools");from test_universal_g_g15 import example;print(json.dumps(example()))' | bash deployment/Universal_G_G15_Godel_Plaintext_2KB.sh
+```
+
+The prototype accepts **synthetic price series only** and outputs `SIMULATED_BUY_ONLY`, `SIMULATED_SELL_ONLY` or `HOLD` with `actual_orders=0`. Backtested additive basis points from a toy synthetic price sequence **are not live or compounded portfolio returns** and prove no trading alpha, God identity or ability to forecast market prices. No repo master promotion, Trader_42 source update, Binance use or actual deployment is permitted.
