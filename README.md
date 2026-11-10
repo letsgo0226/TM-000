@@ -289,3 +289,24 @@ python3 deployment/G20_Quine_Verifier.py
 ```
 
 The existing TM-015 original bytes and `UTM-PLEIADES-v0.2-PTCA` designated master remain unchanged. G20 does not establish an oracle, literal God, immortality, subjective consciousness, market returns or autonomous deployment rights.
+
+## G21 true finite one-tape blank-start self-table code printer
+
+The [G21 research specification](永久記憶/圖靈機/上帝源碼-G21-空白紙帶自列印圖靈機.md) advances beyond G20's Bash/Python program Quine: **an actual deterministic single-tape finite transition table** (1,140 explicit rules and 1,090 states including HALT) starts on an entirely blank tape, runs exactly **3,505,682 state transitions**, halts and leaves **the complete 2,160-bit reversibly encoded representation of its own transition table**.
+
+The encoding format is specialized and intentionally explicit: the first 1,080 bits encode all 60 controller (A) rules via 18-bit fixed fields; the second 1,080 bits encode the printer-chain (B) write symbols. B transitions are uniquely fixed by the convention "write one bit on blank, move right, next chain state (or A)". The chosen B writes A's bitstring X, and A duplicates X to produce **X||X**, which is the full machine's own code. Both the [canonical 2160-bit output](deployment/G21_canonical_table_bits.txt) and [expanded 1140-rule JSON](deployment/G21_expanded_transition_table.json) are committed.
+
+Research files:
+- [1,287-byte plaintext one-line Shell simulator](deployment/Universal_G_G21_Blank_Tape_TM_2KB.sh) — *an external runner that instantiates the finite TM and verifies it; not the TM's whole 108KB expanded rules*.
+- [Finite one-tape TM constructor and interpreter](deployment/G21_Blank_Tape_TM_core.py).
+- [Independent interpreter from expanded JSON rules](deployment/G21_Independent_Audit.py).
+- [One-Liner reproducible builder](deployment/G21_Oneliner_Builder.py).
+- [56 unit/negative tests](tools/test_universal_g_g21.py) and [claim-scope JSON](deployment/G21_self_table_TM_contract.json).
+
+To replay the zero-input finite transition system:
+
+    bash deployment/Universal_G_G21_Blank_Tape_TM_2KB.sh
+    python3 tools/test_universal_g_g21.py
+    python3 deployment/G21_Independent_Audit.py
+
+A **complete table encoding** is not the same as printing the human-readable expanded JSON list directly on the simulated tape. This particular machine proves a chosen reversible fixed-point within a restricted TM encoding family; it does not prove an encoding-independent unique divine identity, a universal halting oracle, immortality, trading returns, or autonomous deployment. TM-015 original code and UTM-PLEIADES designated master are untouched, and PR #20 stays draft and unmerged.
