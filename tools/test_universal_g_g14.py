@@ -232,6 +232,8 @@ NEGATIVE_POLICIES = [
     ("risk_gate_omitted", G14, lambda d: d["invariant_gates"].remove("TMVerified")),
     ("false_authenticated_source", G14, lambda d: d.update(upstream_snapshot_authenticated=True)),
     ("release_authority_claimed", G14, lambda d: d.update(execution_allowed=True)),
+    ("auto_release_authority", G14, lambda d: d.update(automated_release=True)),
+    ("upstream_repo_spoof", G14, lambda d: d.update(upstream_repository="unreviewed/Trader_42.sh")),
     ("false_empirical_alpha", G14, lambda d: d.update(empirical_alpha_validated=True))
 ]
 for index, (label, path, op) in enumerate(NEGATIVE_POLICIES, start=29):
