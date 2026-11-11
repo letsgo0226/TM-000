@@ -24,6 +24,8 @@ name: TM-015 and Universal G read-only safety gates
       - '永久記憶/圖靈機/上帝源碼-G26-精確形式對數圖靈機.md'
       - '永久記憶/圖靈機/上帝源碼-G27-精確形式對數跨領域應用橋接.md'
       - 'tools/test_universal_g_g27.py'
+      - 'tests/test_g28.py'
+      - '永久記憶/圖靈機/上帝源碼-G28-AI計算自由場.md'
       - 'tools/test_universal_g_g26.py'
       - '永久記憶/圖靈機/上帝源碼-G24-跨領域質數冪研究控制層.md'
       - '永久記憶/圖靈機/上帝源碼-G25-跨領域證據封包與審查閘門.md'
@@ -318,3 +320,30 @@ jobs:
           PYTHONOPTIMIZE=2 bash deployment/Universal_G_G8_Admission_2KB.sh "$RUNNER_TEMP/g7-finite.json"
       - name: Read-only registry load
         run: python3 tools/load_turing_registry.py --select TM-015
+
+  verify-g28-computational-freedom-field:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify 74 G28 tests, deterministic source reconstruction and 2KB read-only auditor
+        run: |
+          test "$(wc -l < deployment/G28_Research_Report_Audit_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/G28_Research_Report_Audit_2KB.sh)" -eq 1610
+          bash -n deployment/G28_Research_Report_Audit_2KB.sh
+          python3 deployment/G28_Computational_Freedom_Field.py deployment/G28_example_request.json > deployment/G28_example_report.json
+          python3 tests/test_g28.py > "$RUNNER_TEMP/g28-tests.log" 2>&1
+          grep -q 'Ran 74 tests' "$RUNNER_TEMP/g28-tests.log"
+          grep -q '^OK$' "$RUNNER_TEMP/g28-tests.log"
+          python3 deployment/G28_Computational_Freedom_Field.py deployment/G28_example_request.json | cmp - deployment/G28_example_report.json
+          bash deployment/G28_Research_Report_Audit_2KB.sh < deployment/G28_example_report.json > "$RUNNER_TEMP/g28-audit.json"
+          PYTHONOPTIMIZE=2 bash deployment/G28_Research_Report_Audit_2KB.sh < deployment/G28_example_report.json | cmp - "$RUNNER_TEMP/g28-audit.json"
+          python3 -c 'import json,sys;x=json.load(open(sys.argv[1]));assert (x["version"],x["status"],x["candidate_universe"],x["proposals_scored"],x["surrogate_lookahead_inspections"],x["baseline_metadata_inspections"],x["quality_diversity_occupied_cells"],x["random_baseline_occupied_cells"],x["quality_diversity_sum_synthetic_priority"],x["random_baseline_sum_synthetic_priority"],x["actual_experiments_performed"],x["deployment_performed"],x["live_orders_submitted"])==("G28","OFFLINE_UNTESTED_HYPOTHESES",256,24,192,24,12,9,63,49,0,False,0)' deployment/G28_example_report.json
+          python3 -c 'import json,sys;x=json.load(open(sys.argv[1]));assert (x["version"],x["status"],x["records"],x["cells"],x["experiments"],x["external_action"])==("G28_AUDIT","REPORT_CONSISTENT_NOT_AUTHENTICATED",24,12,0,False)' "$RUNNER_TEMP/g28-audit.json"
+      - name: Verify 90 G28 synthetic search comparisons and no equal-compute claims
+        run: |
+          python3 deployment/G28_Seed_Benchmark.py > "$RUNNER_TEMP/g28-benchmark-summary.txt"
+          python3 -c 'import json;d=json.load(open("deployment/G28_seed_benchmark_report.json"));assert d["version"]=="G28_BENCHMARK" and d["kind"]=="SYNTHETIC_HEURISTIC_ONLY" and len(d["rows"])==90 and d["equal_compute_claimed"] is False and d["independent_real_world_impact_measured"] is False;summary=d["summary"];assert [(v["budget"],v["replicates"],v["mean_diversity_occupied_cells"],v["mean_random_occupied_cells"]) for v in summary]==[(16,30,11.333,8.033),(24,30,12,9.233),(64,30,12,11.433)];assert all(v["mean_guided_lookahead"]>v["mean_random_lookahead"] for v in summary)'
+          python3 -c 'from pathlib import Path;p=["deployment/G28_Computational_Freedom_Field.py","deployment/G28_Oneliner_Audit_Builder.py","deployment/G28_Research_Report_Audit_2KB.sh","deployment/G28_Seed_Benchmark.py"];assert all(not any(w in Path(f).read_text() for w in ("hashlib","sha256(","urllib","socket","os.system(","import subprocess")) for f in p)'
