@@ -1,0 +1,97 @@
+{
+  "schema": "G28-FREEDOM-FIELD/1",
+  "mode": "offline",
+  "seed": 28,
+  "budget": 24,
+  "beam_width": 8,
+  "max_cost": 7,
+  "max_risk": 2,
+  "permissions": {
+    "network": false,
+    "external_execution": false,
+    "autonomous_deployment": false,
+    "live_trading": false,
+    "medical_action": false,
+    "human_override": false
+  },
+  "domains": [
+    {
+      "id": "formal_methods",
+      "risk": 0
+    },
+    {
+      "id": "cultivated_meat",
+      "risk": 1
+    },
+    {
+      "id": "healthy_longevity",
+      "risk": 2
+    },
+    {
+      "id": "peacebuilding",
+      "risk": 2
+    }
+  ],
+  "methods": [
+    {
+      "id": "counterexample_search",
+      "cost": 1,
+      "testability": 4
+    },
+    {
+      "id": "simulation",
+      "cost": 2,
+      "testability": 3
+    },
+    {
+      "id": "bayesian_design",
+      "cost": 3,
+      "testability": 3
+    },
+    {
+      "id": "causal_comparison",
+      "cost": 3,
+      "testability": 4
+    }
+  ],
+  "measurements": [
+    {
+      "id": "replication_rate",
+      "cost": 1,
+      "observability": 4
+    },
+    {
+      "id": "error_rate",
+      "cost": 2,
+      "observability": 4
+    },
+    {
+      "id": "time_to_valid_result",
+      "cost": 2,
+      "observability": 3
+    },
+    {
+      "id": "resource_efficiency",
+      "cost": 3,
+      "observability": 2
+    }
+  ],
+  "falsifiers": [
+    {
+      "id": "independent_holdout",
+      "strength": 4
+    },
+    {
+      "id": "adversarial_counterexample",
+      "strength": 4
+    },
+    {
+      "id": "negative_control",
+      "strength": 3
+    },
+    {
+      "id": "null_improvement",
+      "strength": 3
+    }
+  ]
+}
