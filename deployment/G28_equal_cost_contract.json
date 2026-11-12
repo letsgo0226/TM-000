@@ -1,0 +1,42 @@
+{
+  "schema": "G28-equal-cost-synthetic-study/1",
+  "version": "G28_EQ/1",
+  "status": "SYNTHETIC_ACCOUNTED_COST_ONLY",
+  "reference": "Original G28 Computational Freedom Field, unchanged",
+  "research_scope": "Equal weighted credit caps; NOT equal measured physical compute",
+  "screen_cost_units": 1,
+  "validation_cost_models": [
+    1,
+    4,
+    16
+  ],
+  "credit_caps": [
+    32,
+    64,
+    128,
+    256
+  ],
+  "seed_range": [
+    0,
+    29
+  ],
+  "paired_comparisons": 360,
+  "bootstrap_replicates": 1000,
+  "test_count": 60,
+  "fixed_synthetic_universe": 256,
+  "algorithmic_overhead_accounted": false,
+  "full_universe_precomputation_accounted": false,
+  "real_wall_time_equalized": false,
+  "real_world_research_acceleration_validated": false,
+  "blind_external_quality_labels_used": false,
+  "scientific_discovery_verified": false,
+  "sha_or_hashlib_required": false,
+  "network_calls": false,
+  "live_trades": 0,
+  "production_deployment": false,
+  "medical_actions": false,
+  "parent_code_modified": false,
+  "designated_master_modified": false,
+  "master": "UTM-PLEIADES-v0.2-PTCA",
+  "conclusion": "G28 often loses when evaluations are cheap; for high evaluation-to-screen ratios G28 sometimes wins synthetic descriptor coverage. No universal advantage is established."
+}
