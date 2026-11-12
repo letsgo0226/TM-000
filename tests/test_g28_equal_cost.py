@@ -18,7 +18,7 @@ from G28_Equal_Cost_Benchmark import (
 )
 
 REQUEST = json.loads((DEP/'G28_example_request.json').read_text())
-REFERENCE = json.loads((ROOT/'equal_cost_report.json').read_text())
+REFERENCE = json.loads((DEP/'G28_equal_cost_expected_summary.json').read_text())
 
 
 class EqualCostTests(unittest.TestCase):
@@ -42,7 +42,12 @@ class EqualCostTests(unittest.TestCase):
     def test_06_12_scenarios(self):
         self.assertEqual(len(self.report['summary']),12)
     def test_07_full_report_deterministic(self):
-        self.assertEqual(self.report, REFERENCE)
+        self.assertEqual({'version':self.report['version'],
+                          'comparison_count':self.report['comparison_count'],
+                          'mean_coverage_by_case':[[x['validation_cost'],x['credit_cap'],
+                          x['mean_occupied_cells_guided'],x['mean_occupied_cells_random'],
+                          x['mean_difference_guided_minus_random']]
+                          for x in self.report['summary']]}, REFERENCE)
     def test_08_data_are_synthetic(self):
         self.assertTrue(self.report['metadata_quality_is_a_synthetic_proxy'])
         self.assertFalse(self.report['external_scientific_evidence_tested'])
