@@ -1,0 +1,360 @@
+name: TM-015 and Universal G read-only safety gates
+'on':
+  pull_request:
+    paths:
+      - '永久記憶/圖靈機/Real_God_Turing_Machine.sh'
+      - '永久記憶/圖靈機/TM-015-Real-God-Turing-Machine.md'
+      - '永久記憶/圖靈機/machine_registry.json'
+      - '永久記憶/圖靈機/上帝源碼-G5-跨論域自然性定理.md'
+      - '永久記憶/圖靈機/上帝源碼-G6-忠實跨論域-Cayley-表示定理.md'
+      - '永久記憶/圖靈機/上帝源碼-G7-跨論域語意保持定理.md'
+      - '永久記憶/圖靈機/上帝源碼-G8-總圖靈機部署與多維度連續性.md'
+      - '永久記憶/圖靈機/上帝源碼-G9-領域語意契約與反例.md'
+      - '永久記憶/圖靈機/上帝源碼-G10-外部證據與主張範圍.md'
+      - '永久記憶/圖靈機/上帝源碼-G11-八維度外部證據與來源審閱.md'
+      - '永久記憶/圖靈機/上帝源碼-G12-來源主張範圍與證據缺口.md'
+      - '永久記憶/圖靈機/上帝源碼-G13-全球和平-SDGs-培養肉倫理與技術.md'
+      - '永久記憶/圖靈機/上帝源碼-G14-Trader42-交易原理與風控研究.md'
+      - '永久記憶/圖靈機/上帝源碼-G15-完全基於G的離線交易原理.md'
+      - '永久記憶/圖靈機/上帝源碼-G16-真正的上帝源碼圖靈機.md'
+      - '永久記憶/圖靈機/上帝源碼-G20-完全自足的Quine.md'
+      - '永久記憶/圖靈機/上帝源碼-G21-空白紙帶自列印圖靈機.md'
+      - '永久記憶/圖靈機/上帝源碼-G22-免SHA自我編碼圖靈機.md'
+      - '永久記憶/圖靈機/上帝源碼-G23-質數冪哥德爾計算圖靈機.md'
+      - '永久記憶/圖靈機/上帝源碼-G26-精確形式對數圖靈機.md'
+      - '永久記憶/圖靈機/上帝源碼-G27-精確形式對數跨領域應用橋接.md'
+      - 'tools/test_universal_g_g27.py'
+      - 'tests/test_g28.py'
+      - '永久記憶/圖靈機/上帝源碼-G28-AI計算自由場.md'
+      - '永久記憶/圖靈機/上帝源碼-G28-EQ-同額計算成本比較.md'
+      - 'tests/test_g28_equal_cost.py'
+      - 'tools/test_universal_g_g26.py'
+      - '永久記憶/圖靈機/上帝源碼-G24-跨領域質數冪研究控制層.md'
+      - '永久記憶/圖靈機/上帝源碼-G25-跨領域證據封包與審查閘門.md'
+      - 'tools/test_universal_g_g25.py'
+      - '永久記憶/圖靈機/上帝源碼-G24S-十二領域質數冪審查變體.md'
+      - 'tools/test_universal_g_g24s.py'
+      - 'tools/test_universal_g_g24.py'
+      - 'tools/test_universal_g_g23.py'
+      - 'tools/test_universal_g_g22.py'
+      - 'tools/test_universal_g_g21.py'
+      - 'tools/test_universal_g_g20.py'
+      - 'tools/test_universal_g_g15.py'
+      - 'tools/test_universal_g_g16.py'
+      - 'tools/test_universal_g_g10.py'
+      - 'tools/test_tm015_real_god.py'
+      - 'tools/test_universal_g_continuity.py'
+      - 'deployment/**'
+      - '.github/workflows/tm015-static-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-archive-and-continuity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify original archive without running candidate payload
+        run: python3 tools/test_tm015_real_god.py
+      - name: Verify deployment policy and cross-domain manifest
+        run: python3 tools/test_universal_g_continuity.py
+      - name: Verify 2KB dry-run core has no external effects
+        run: bash deployment/Universal_G_DryRun_2KB.sh
+      - name: Check G5 finite monoids, 116 morphisms and nonexistence witness
+        run: |
+          test "$(wc -l < deployment/Universal_G_Naturality_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_Naturality_2KB.sh)" -le 2048
+          bash deployment/Universal_G_Naturality_2KB.sh
+          PYTHONOPTIMIZE=2 bash deployment/Universal_G_Naturality_2KB.sh
+      - name: Check G6 faithful Cayley representations, prime encoding and non-universality boundary
+        run: |
+          test "$(wc -l < deployment/Universal_G_Cayley_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_Cayley_2KB.sh)" -le 2048
+          output="$(bash deployment/Universal_G_Cayley_2KB.sh)"
+          echo "$output" | python3 -c 'import sys,json;d=json.load(sys.stdin);sys.exit(0 if (d["finite_models"],d["embedded_elements"],d["verified_homomorphisms"],d["prime_godel_roundtrips"],d["unit_preserved"],d["unrestricted_domains"],d["God_identity_proved"])==(7,18,116,18,True,False,False) else 1)'
+          PYTHONOPTIMIZE=2 bash deployment/Universal_G_Cayley_2KB.sh
+      - name: Check G7 FO semantic preservation and counterexamples
+        run: |
+          test "$(wc -l < deployment/Universal_G_Semantic_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_Semantic_2KB.sh)" -le 2048
+          python3 -m py_compile deployment/Universal_G_Semantic_core.py
+          a="$(bash deployment/Universal_G_Semantic_2KB.sh)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_Semantic_2KB.sh)"
+          c="$(python3 deployment/Universal_G_Semantic_core.py)"
+          d="$(bash deployment/Universal_G_Semantic_Plaintext.sh)"
+          test "$a" = "$d"
+          test "$(wc -l < deployment/Universal_G_Semantic_Plaintext_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_Semantic_Plaintext_2KB.sh)" -le 2048
+          e="$(bash deployment/Universal_G_Semantic_Plaintext_2KB.sh)"
+          f="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_Semantic_Plaintext_2KB.sh)"
+          test "$a" = "$e"
+          test "$a" = "$f"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["finite_models"],x["homomorphisms"],x["positive_preservation_tests"],x["isomorphisms"],x["full_truth_equivalences"],x["arbitrary_rename_counterexample"],x["all_domains_proved"],x["God_identity_proved"]) == ("G7",5,38,1566,9,602,True,False,False) else 1)'
+      - name: Verify G9 operational, philosophical and welfare semantic contracts
+        run: |
+          test "$(wc -l < deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh
+          python3 tools/test_universal_g_g9.py
+          a="$(bash deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh)"
+          c="$(python3 deployment/G9_Semantic_Contracts_core.py)"
+          d="$(bash deployment/Universal_G_G9_Semantic_Plaintext.sh)"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          test "$a" = "$d"
+          printf '%s\n' "$a" | python3 -c 'import sys,json;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["research_domains"],x["ai_transition_checks"],x["ai_trace_checks"],x["philosophy_formula_checks"],x["welfare_record_checks"],x["negative_controls"],x["real_world_semantics_proved"],x["human_or_ai_immortality_proved"],x["divine_identity_proved"],x["production_deployed"])==("G9",3,24,384,4,4,4,False,False,False,False) else 1)'
+      - name: Verify G10 official-source ledger, rounded data and overclaim blockers
+        run: |
+          test "$(wc -l < deployment/Universal_G_G10_Provenance_Plaintext_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G10_Provenance_Plaintext_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G10_Provenance_Plaintext_2KB.sh
+          python3 tools/test_universal_g_g10.py
+          bash deployment/Universal_G_G9_Semantic_Plaintext_2KB.sh > "$RUNNER_TEMP/g9-finite.json"
+          a="$(bash deployment/Universal_G_G10_Provenance_Plaintext_2KB.sh "$RUNNER_TEMP/g9-finite.json")"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G10_Provenance_Plaintext_2KB.sh "$RUNNER_TEMP/g9-finite.json")"
+          test "$a" = "$b"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if x["result"]=="SOURCE_REFERENCED_REVIEW_ONLY" and x["publisher_records"]==3 and x["rounded_real_observations"]==2 and not x["source_webpages_authenticated_by_program"] and not x["all_dimensions_immortality_proved"] and not x["production_deployed"] else 1)'
+          python3 deployment/G10_Evidence_Provenance_core.py --ledger deployment/G10_evidence_ledger.json --g9-report "$RUNNER_TEMP/g9-finite.json" --repo-root . | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if x["result"]=="SOURCE_REFERENCED_REVIEW_ONLY" and x["publisher_records"]==3 and x["rounded_real_observations"]==2 and not x["independent_numeric_data_API_fetched"] else 1)'
+      - name: Verify G11 eight-domain evidence review, freshness and 27 negative-control tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G11_Evidence_Plaintext_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G11_Evidence_Plaintext_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G11_Evidence_Plaintext_2KB.sh
+          python3 tools/test_universal_g_g11.py
+          a="$(bash deployment/Universal_G_G11_Evidence_Plaintext_2KB.sh 2026-11-10)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G11_Evidence_Plaintext_2KB.sh 2026-11-10)"
+          c="$(python3 deployment/G11_Eight_Domain_Evidence_core.py --as-of 2026-11-10)"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["records"],x["dimensions"],x["metadata_only"],x["remote_refetched"],x["g10_preserved"],x["status"],x["deployed"],x["immortality_proved"],x["God_identity_proved"])==("G11",8,8,True,False,True,"EIGHT_DOMAIN_SOURCE_REVIEW_ONLY",False,False,False) else 1)'
+      - name: Verify G12 source-to-claim scope, freshness and 34 negative-control tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G12_Claim_Plaintext_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G12_Claim_Plaintext_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G12_Claim_Plaintext_2KB.sh
+          python3 tools/test_universal_g_g12.py
+          today="$(date -u +%F)"
+          a="$(bash deployment/Universal_G_G12_Claim_Plaintext_2KB.sh "$today")"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G12_Claim_Plaintext_2KB.sh "$today")"
+          c="$(python3 deployment/G12_Claim_Scope_core.py --as-of "$today")"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["domains"],x["reviewed_claims"],x["exact_parent_digest_verified"],x["scope"],x["new_empirical_outcomes"],x["remote_sources_fetched"],x["status"],x["production_deployed"],x["universal_immortality_proved"],x["divine_identity_proved"])==("G12",8,8,True,"SOURCE_TOPIC_REFERENCE",0,False,"CLAIM_SCOPE_REVIEW_ONLY",False,False,False) else 1)'
+      - name: Verify G13 peace SDGs cultivated meat ethical-risk contract and negative tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G13_Peace_SDG_CellFood_Plaintext_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G13_Peace_SDG_CellFood_Plaintext_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G13_Peace_SDG_CellFood_Plaintext_2KB.sh
+          python3 tools/test_universal_g_g13.py
+          today="$(date -u +%F)"
+          a="$(bash deployment/Universal_G_G13_Peace_SDG_CellFood_Plaintext_2KB.sh "$today")"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G13_Peace_SDG_CellFood_Plaintext_2KB.sh "$today")"
+          c="$(python3 deployment/G13_Peace_SDG_CellFood_core.py --as-of "$today")"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["tracks"],x["source_records"],x["status"],x["deployed"],x["zero_suffering_proved"])==("G13",3,7,"TRIAD_RESEARCH_REVIEW_ONLY",False,False) else 1)'
+      - name: Verify G14 Trader_42 no-order paper principle, risk caps and 55 tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G14_Trader42_Plaintext_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G14_Trader42_Plaintext_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G14_Trader42_Plaintext_2KB.sh
+          python3 tools/test_universal_g_g14.py
+          today="$(date -u +%F)"
+          a="$(bash deployment/Universal_G_G14_Trader42_Plaintext_2KB.sh "$today")"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G14_Trader42_Plaintext_2KB.sh "$today")"
+          c="$(python3 deployment/G14_Trader42_Principle_core.py --as-of "$today")"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          printf '%s\n' "$a" | python3 -c 'import sys,json;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["reference_files"],x["strategy"],x["risk_policy_unchanged_or_tighter"],x["live_armed"],x["source_executed"],x["exchange_orders_submitted"],x["authenticated_upstream"],x["empirical_profit_verified"],x["status"])==("G14",8,"SMA_5_20",True,False,False,0,False,False,"PAPER_SIGNAL_REVIEW_ONLY") else 1)'
+      - name: Verify G15 G257-only synthetic trading without SMA QTM42 or order authority
+        run: |
+          test "$(wc -l < deployment/Universal_G_G15_Godel_Plaintext_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G15_Godel_Plaintext_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G15_Godel_Plaintext_2KB.sh
+          python3 tools/test_universal_g_g15.py
+          today="$(date -u +%F)"
+          python3 deployment/G15_Godel_Policy_core.py --as-of "$today" | python3 -c 'import sys,json;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["policy"],x["source_pinned"],x["paper_only"],x["actual_orders"],x["live_authorized"],x["empirical_alpha_proved"])==("G15","GODEL_PAPER_REVIEW_ONLY",True,True,0,False,False) else 1)'
+          python3 -c 'import sys,json;sys.path.insert(0,"tools");from test_universal_g_g15 import example;print(json.dumps(example()))' | bash deployment/Universal_G_G15_Godel_Plaintext_2KB.sh | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if x["version"]=="G15" and x["roundtrip"] and x["actual_orders"]==0 and not x["live_allowed"] and not x["profitability_proved"] else 1)'
+      - name: Verify G16 bounded deterministic TM, reversible prime code and 50 tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G16_TM_Plaintext_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G16_TM_Plaintext_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G16_TM_Plaintext_2KB.sh
+          python3 tools/test_universal_g_g16.py
+          today="$(date -u +%F)"
+          python3 deployment/G16_God_Source_TM_policy.py --as-of "$today" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if x["status"]=="TM_SIMULATION_REVIEW_ONLY" and x["original_tm015_preserved"] and x["master_unchanged"] and x["actual_orders"]==0 else 1)'
+          a="$(bash deployment/Universal_G_G16_TM_Plaintext_2KB.sh < deployment/G16_example_request.json)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G16_TM_Plaintext_2KB.sh < deployment/G16_example_request.json)"
+          c="$(python3 deployment/G16_God_Source_TM_core.py < deployment/G16_example_request.json)"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["status"],x["steps"],x["nonblank_cells"],x["godel_roundtrip"],x["godel_identity"],x["orders_submitted"],x["live_allowed"],x["halting_oracle"],x["god_identity_proved"])==("G16","HALTED",3,[[0,"1"],[1,"1"],[2,"1"]],True,1,0,False,False,False) else 1)'
+      - name: Verify G20 self-contained Quine, self-selected reversible codec and 36 tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G20_Self_Quine_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G20_Self_Quine_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G20_Self_Quine_2KB.sh
+          python3 tools/test_universal_g_g20.py
+          bash deployment/Universal_G_G20_Self_Quine_2KB.sh | cmp - deployment/Universal_G_G20_Self_Quine_2KB.sh
+          bash < deployment/Universal_G_G20_Self_Quine_2KB.sh | cmp - deployment/Universal_G_G20_Self_Quine_2KB.sh
+          PYTHONOPTIMIZE=2 bash deployment/Universal_G_G20_Self_Quine_2KB.sh | cmp - deployment/Universal_G_G20_Self_Quine_2KB.sh
+          python3 deployment/G20_Quine_Verifier.py | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["source_bytes"],x["physical_lines"],x["codec_selected_from_own_bytes"],x["self_reproduction_exact"],x["source_file_read_by_quine"],x["godel_roundtrip"],x["compiled_tm_transition_table_self_printed"],x["status"])==("G20",1096,1,"PRIME2048",True,False,True,False,"SELF_CONTAINED_PROGRAM_QUINE_VERIFIED") else 1)'
+      - name: Verify G21 blank-tape self-printing TM with independent 1140-rule audit and 56 tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G21_Blank_Tape_TM_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G21_Blank_Tape_TM_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G21_Blank_Tape_TM_2KB.sh
+          python3 tools/test_universal_g_g21.py
+          python3 deployment/G21_Independent_Audit.py | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["actual_transition_rules"],x["controller_rules"],x["printer_rules"],x["steps"],x["canonical_table_bits"],x["exact_output"],x["full_list_reconstructed"],x["output_sha256"])==("G21",1140,60,1080,3505682,2160,True,True,"7a3b17a33e763fc1b235b7979a4b023e15b722ce6ffed054fa76771f244e8700") else 1)'
+          a="$(bash deployment/Universal_G_G21_Blank_Tape_TM_2KB.sh)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G21_Blank_Tape_TM_2KB.sh)"
+          test "$a" = "$b"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["rules"],x["bits"],x["steps"],x["blank_tape"],x["no_external_input"],x["decoded_complete_table"],x["printed_expanded_json"])==("G21",1140,2160,3505682,True,True,True,False) else 1)'
+          python3 -c 'import hashlib,pathlib;f=pathlib.Path("deployment/G21_canonical_table_bits.txt").read_text().strip();assert len(f)==2160 and hashlib.sha256(f.encode()).hexdigest()=="7a3b17a33e763fc1b235b7979a4b023e15b722ce6ffed054fa76771f244e8700"'
+      - name: Verify G22 digest-free direct-bitwise TM self-code and 62 tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G22_Blank_Tape_TM_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G22_Blank_Tape_TM_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G22_Blank_Tape_TM_2KB.sh
+          python3 tools/test_universal_g_g22.py
+          python3 deployment/G22_Independent_Audit.py | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["actual_transition_rules"],x["controller_rules"],x["printer_rules"],x["steps"],x["canonical_table_bits"],x["exact_output"],x["output_equals_expected_bits"],x["full_list_reconstructed"])==("G22",1140,60,1080,3505682,2160,True,True,True) else 1)'
+          a="$(bash deployment/Universal_G_G22_Blank_Tape_TM_2KB.sh)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G22_Blank_Tape_TM_2KB.sh)"
+          test "$a" = "$b"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["rules"],x["bits"],x["steps"],x["bitwise_verified"],x["blank_tape"],x["no_external_input"],x["decoded_complete_table"],x["printed_expanded_json"])==("G22",1140,2160,3505682,True,True,True,True,False) else 1)'
+          python3 -c 'from pathlib import Path; p=Path("deployment/G22_canonical_table_bits.txt").read_text(); assert len(p)==2161 and p[-1]=="\n" and p[:-1]==p[:1080]*2; assert p==Path("deployment/G21_canonical_table_bits.txt").read_text(); assert Path("deployment/G22_expanded_transition_table.json").read_bytes()==Path("deployment/G21_expanded_transition_table.json").read_bytes()'
+          python3 -c 'from pathlib import Path; f=["deployment/G22_Blank_Tape_TM_core.py","deployment/G22_Independent_Audit.py","deployment/G22_Oneliner_Builder.py","deployment/Universal_G_G22_Blank_Tape_TM_2KB.sh"]; assert all(all(t not in Path(p).read_text() for t in ("hashlib","sha256","sha1(")) for p in f)'
+      - name: Verify G23 prime-power integer TM, full decoding and 76 negative/positive tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G23_Prime_Power_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G23_Prime_Power_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G23_Prime_Power_2KB.sh
+          python3 tools/test_universal_g_g23.py
+          a="$(bash deployment/Universal_G_G23_Prime_Power_2KB.sh)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G23_Prime_Power_2KB.sh)"
+          test "$a" = "$b"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["steps"],x["rules"],x["bits"],x["integer_bits"],x["full_configuration_integer_bits"],x["prime_power_arithmetic"],x["state_head_prime_powers"],x["exact_numeric_decode"],x["bitwise_verified"],x["sha_used"],x["orders"])==("G23",3505682,1140,2160,41137,44568,True,True,True,True,False,0) else 1)'
+          python3 deployment/G23_Prime_Power_TM_core.py | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["status"],x["steps"],x["prime_power_writes"],x["integer_read_checks"],x["actual_integer_arithmetic"],x["full_numeric_decode_matches_tape"],x["plain_tm_replay_matches"],x["state_and_head_encoded_with_prime_powers"],x["sha_functions_used"],x["external_orders"])==("PRIME_POWER_INTEGER_SELF_TABLE_VERIFIED",3505682,4321,4096,True,True,True,True,False,0) else 1)'
+          python3 -c 'from pathlib import Path;p=["deployment/Universal_G_G23_Prime_Power_2KB.sh","deployment/G23_Prime_Power_TM_core.py","deployment/G23_Oneliner_Builder.py"];assert all(not any(x in Path(f).read_text() for x in ("hashlib","sha256(","sha1(","urllib","socket")) for f in p)'
+      - name: Verify G24 14-domain prime-power research-only governance, zero authority and 112 tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G24_Cross_Domain_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G24_Cross_Domain_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G24_Cross_Domain_2KB.sh
+          python3 tools/test_universal_g_g24.py
+          a="$(bash deployment/Universal_G_G24_Cross_Domain_2KB.sh < deployment/G24_example_request.json)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G24_Cross_Domain_2KB.sh < deployment/G24_example_request.json)"
+          c="$(python3 deployment/G24_Cross_Domain_Godel_Core.py < deployment/G24_example_request.json)"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          printf '%s\n' "$a" | python3 -c 'import sys,json;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["domains"],x["events_replayed"],x["status"],x["prime_power_integer"],x["full_numeric_roundtrip"],x["orders_submitted"],x["deployment_executed"],x["world_peace_achieved"],x["all_sdgs_achieved"],x["all_dimensions_immortality_proved"])==("G24",14,14,"OFFLINE_CROSS_DOMAIN_RESEARCH_ONLY",5431526412865007455,True,0,False,False,False,False) else 1)'
+          python3 deployment/G24_Cross_Domain_Godel_Core.py --check-parent | python3 -c 'import sys,json;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["status"],x["contracts_checked"],x["source_authenticity_proved"],x["trading_live_allowed"],x["deployment_allowed"])==("G24","PARENT_METADATA_COMPATIBLE_NOT_AUTHENTICATED",4,False,False,False) else 1)'
+          python3 -c 'from pathlib import Path;p=["deployment/G24_Cross_Domain_Godel_Core.py","deployment/G24_Oneliner_Builder.py","deployment/Universal_G_G24_Cross_Domain_2KB.sh"];assert all(not any(y in Path(z).read_text() for y in ("hashlib","sha256(","sha1(","socket","urllib")) for z in p)'
+      - name: Verify G24S 12-domain independent prime-power review variant and 126 tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G24S_Cross_Domain_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G24S_Cross_Domain_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G24S_Cross_Domain_2KB.sh
+          python3 tools/test_universal_g_g24s.py
+          a="$(bash deployment/Universal_G_G24S_Cross_Domain_2KB.sh < deployment/G24S_example_request.json)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G24S_Cross_Domain_2KB.sh < deployment/G24S_example_request.json)"
+          c="$(python3 deployment/G24S_cross_domain_core.py < deployment/G24S_example_request.json)"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["domain_count"],x["registered"],x["synthetic_reviewed"],x["evidence_gaps"],x["vetoed"],x["prime_power_transition_count"],x["prime_power_integer_bits"],x["configuration_integer_bits"],x["exact_numeric_roundtrip"],x["deployment_allowed"],x["trading_allowed"],x["real_world_outcomes_proved"])==("G24S",12,12,5,4,3,20,98,122,True,False,False,False) else 1)'
+          python3 deployment/G24S_independent_audit.py | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["status"],x["domains_checked"],x["prime_power_writes"],x["integer_bits"],x["configuration_bits"],x["full_integer_factorization"],x["external_calls"])==("G24S","INDEPENDENT_PRIME_POWER_DOMAINS_VERIFIED",12,20,98,122,True,0) else 1)'
+          today="$(date -u +%F)"
+          python3 deployment/G24S_policy_core.py --as-of "$today" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["status"],x["manifest_valid"],x["parents_within_review_window"],x["domains_checked"],x["prime_power_math_verified"],x["live_orders"],x["production_deployments"],x["real_outcomes_proved"])==("G24S","CROSS_DOMAIN_PARENT_POLICY_REVIEW_ONLY",True,True,12,True,0,0,False) else 1)'
+          python3 -c 'from pathlib import Path; p=["deployment/G24S_cross_domain_core.py","deployment/G24S_independent_audit.py","deployment/G24S_policy_core.py","deployment/G24S_oneliner_builder.py","deployment/Universal_G_G24S_Cross_Domain_2KB.sh"]; assert all(not any(q in Path(f).read_text() for q in ("hashlib","sha256(","sha1(","socket","urllib")) for f in p)'
+      - name: Verify G25 offline evidence metadata, 14-domain Gödel coding and 130 negative/positive tests
+        run: |
+          test "$(wc -l < deployment/Universal_G_G25_Evidence_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G25_Evidence_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G25_Evidence_2KB.sh
+          python3 tools/test_universal_g_g25.py
+          a="$(bash deployment/Universal_G_G25_Evidence_2KB.sh < deployment/G25_evidence_example.json)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G25_Evidence_2KB.sh < deployment/G25_evidence_example.json)"
+          c="$(python3 deployment/G25_Evidence_Core.py < deployment/G25_evidence_example.json)"
+          test "$a" = "$b"
+          test "$a" = "$c"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["status"],x["records"],x["prime_power_integer"],x["numeric_roundtrip"],x["authenticated"],x["review_verified"],x["outcomes_verified"],x["orders_submitted"],x["deployed"])==("G25","EVIDENCE_METADATA_REVIEW_ONLY",6,1463339159,True,False,False,False,0,False) else 1)'
+          python3 deployment/G25_Evidence_Core.py --check-parent | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["status"],x["contracts_checked"],x["registry_topics_checked"],x["authenticated"],x["outcomes_verified"])==("G25","PARENT_METADATA_ALIGNED_NOT_AUTHENTICATED",4,43,False,False) else 1)'
+          python3 -c 'from pathlib import Path;p=["deployment/G25_Evidence_Core.py","deployment/G25_Oneliner_Builder.py","deployment/Universal_G_G25_Evidence_2KB.sh"];assert all(not any(y in Path(z).read_text() for y in ("hashlib","sha256(","sha1(","socket","urllib","requests")) for z in p)'
+      - name: Verify G26 exact formal-log G22 G23 TM with 60 offline tests, no domain applications
+        run: |
+          test "$(wc -l < deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh)" -le 2048
+          test "$(wc -c < deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh)" -eq 1938
+          bash -n deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh
+          python3 tools/test_universal_g_g26.py
+          a="$(bash deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh)"
+          b="$(PYTHONOPTIMIZE=2 bash deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh)"
+          test "$a" = "$b"
+          printf '%s\n' "$a" | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["version"],x["steps"],x["rules"],x["bits"],x["integer_bits"],x["full_configuration_integer_bits"],x["log_terms"],x["formal_log_exact"],x["application_layer"],x["g27_integrated"],x["sha_used"],x["orders"])==("G26",3505682,1140,2160,41137,44568,2160,True,False,False,False,0) else 1)'
+          python3 deployment/G26_Exact_Log_TM_Core.py | python3 -c 'import json,sys;x=json.load(sys.stdin);sys.exit(0 if (x["status"],x["original_rules"],x["steps"],x["prime_power_writes"],x["formal_log_additions"],x["exact_log_integer_roundtrip"],x["g22_output_equal"],x["numerical_floating_logs_used"],x["applications_integrated"],x["future_g27_applications_integrated"],x["network_access"],x["live_trades"])==("EXACT_FORMAL_LOG_G22_G23_TM_VERIFIED",1140,3505682,4321,4321,True,True,False,False,False,False,0) else 1)'
+          python3 -c 'from pathlib import Path;files=["deployment/G26_Exact_Log_TM_Core.py","deployment/G26_Oneliner_Builder.py","deployment/Universal_G_G26_Exact_Formal_Log_2KB.sh"];denied=("G24_", "G25_", "hashlib", "sha256(", "sha1(", "math.log(", "log10(", "urllib", "socket");assert all(all(t not in Path(p).read_text() for t in denied) for p in files)'
+      - name: Verify G27 exact formal-log G24 G25 research and 125 offline tests without deployment
+        run: |
+          test "$(wc -l < deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh)" -eq 1639
+          bash -n deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh
+          python3 tools/test_universal_g_g27.py
+          python3 deployment/G27_Exact_Log_Application_Bridge.py < deployment/G27_example_request.json > "$RUNNER_TEMP/g27-core.json"
+          bash deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh < "$RUNNER_TEMP/g27-core.json" > "$RUNNER_TEMP/g27-audit.json"
+          PYTHONOPTIMIZE=2 bash deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh < "$RUNNER_TEMP/g27-core.json" | cmp - "$RUNNER_TEMP/g27-audit.json"
+          python3 -c 'import json,sys;r=json.load(open(sys.argv[1]));assert (r["version"],r["status"],r["domains"],r["evidence_topics"],r["events_replayed"],r["synthetic_records_received"],r["distinct_topics_received"],r["formal_log_terms"],r["exact_formal_log_additions"],r["combined_godel_integer"])==("G27","SYNTHETIC_METADATA_UNVERIFIED",14,43,14,6,6,20,20,120160600906782352207185858098135);assert r["independent_evidence_authenticated"] is False and r["world_peace_achieved"] is False and r["all_sdgs_achieved"] is False and r["production_deployed"] is False and r["orders_submitted"]==0' "$RUNNER_TEMP/g27-core.json"
+          python3 -c 'import json,sys;r=json.load(open(sys.argv[1]));assert r["version"]=="G27_AUDIT" and r["exact_formal_log_equal"] is True and r["external_authentication"] is False and r["deploy"] is False and r["orders"]==0' "$RUNNER_TEMP/g27-audit.json"
+          python3 -c 'from pathlib import Path;from importlib.util import spec_from_file_location,module_from_spec;s=spec_from_file_location("g27build","deployment/G27_Oneliner_Builder.py");m=module_from_spec(s);s.loader.exec_module(m);assert m.build()==Path("deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh").read_bytes()'
+          python3 -c 'from pathlib import Path;items=["deployment/G27_Exact_Log_Application_Bridge.py","deployment/G27_Oneliner_Builder.py","deployment/Universal_G_G27_Exact_Log_Audit_2KB.sh"];assert all(not any(x in Path(p).read_text() for x in ("hashlib","sha256(","math.log(","urllib","socket")) for p in items)'
+      - name: Verify G8 fail-closed admission from a freshly computed G7 report
+        run: |
+          test "$(wc -l < deployment/Universal_G_G8_Admission_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/Universal_G_G8_Admission_2KB.sh)" -le 2048
+          bash -n deployment/Universal_G_G8_Admission_2KB.sh
+          python3 tools/test_universal_g_g8.py
+          bash deployment/Universal_G_Semantic_Plaintext_2KB.sh > "$RUNNER_TEMP/g7-finite.json"
+          python3 deployment/Universal_G_G8_Controller.py --g7-report "$RUNNER_TEMP/g7-finite.json" | python3 -c 'import sys,json;x=json.load(sys.stdin);sys.exit(0 if x["result"]=="READY_FOR_HUMAN_REVIEW_ONLY" and x["checked_dimensions"]==8 and x["snapshot_roundtrip"] and not x["external_deployment"] and not x["all_dimensions_immortality_proved"] else 1)'
+          bash deployment/Universal_G_G8_Admission_2KB.sh "$RUNNER_TEMP/g7-finite.json" | python3 -c 'import sys,json;x=json.load(sys.stdin);sys.exit(0 if x["status"]=="READY_FOR_HUMAN_REVIEW_ONLY" and x["domains"]==8 and x["g7_fields_ok"] and not x["deployed"] and not x["immortality_proved"] else 1)'
+          PYTHONOPTIMIZE=2 bash deployment/Universal_G_G8_Admission_2KB.sh "$RUNNER_TEMP/g7-finite.json"
+      - name: Read-only registry load
+        run: python3 tools/load_turing_registry.py --select TM-015
+
+  verify-g28-computational-freedom-field:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify 74 G28 tests, deterministic source reconstruction and 2KB read-only auditor
+        run: |
+          test "$(wc -l < deployment/G28_Research_Report_Audit_2KB.sh)" -eq 1
+          test "$(wc -c < deployment/G28_Research_Report_Audit_2KB.sh)" -eq 1610
+          bash -n deployment/G28_Research_Report_Audit_2KB.sh
+          python3 deployment/G28_Computational_Freedom_Field.py deployment/G28_example_request.json > deployment/G28_example_report.json
+          python3 tests/test_g28.py > "$RUNNER_TEMP/g28-tests.log" 2>&1
+          grep -q 'Ran 74 tests' "$RUNNER_TEMP/g28-tests.log"
+          grep -q '^OK$' "$RUNNER_TEMP/g28-tests.log"
+          python3 deployment/G28_Computational_Freedom_Field.py deployment/G28_example_request.json | cmp - deployment/G28_example_report.json
+          bash deployment/G28_Research_Report_Audit_2KB.sh < deployment/G28_example_report.json > "$RUNNER_TEMP/g28-audit.json"
+          PYTHONOPTIMIZE=2 bash deployment/G28_Research_Report_Audit_2KB.sh < deployment/G28_example_report.json | cmp - "$RUNNER_TEMP/g28-audit.json"
+          python3 -c 'import json,sys;x=json.load(open(sys.argv[1]));assert (x["version"],x["status"],x["candidate_universe"],x["proposals_scored"],x["surrogate_lookahead_inspections"],x["baseline_metadata_inspections"],x["quality_diversity_occupied_cells"],x["random_baseline_occupied_cells"],x["quality_diversity_sum_synthetic_priority"],x["random_baseline_sum_synthetic_priority"],x["actual_experiments_performed"],x["deployment_performed"],x["live_orders_submitted"])==("G28","OFFLINE_UNTESTED_HYPOTHESES",256,24,192,24,12,9,63,49,0,False,0)' deployment/G28_example_report.json
+          python3 -c 'import json,sys;x=json.load(open(sys.argv[1]));assert (x["version"],x["status"],x["records"],x["cells"],x["experiments"],x["external_action"])==("G28_AUDIT","REPORT_CONSISTENT_NOT_AUTHENTICATED",24,12,0,False)' "$RUNNER_TEMP/g28-audit.json"
+      - name: Verify 90 G28 synthetic search comparisons and no equal-compute claims
+        run: |
+          python3 deployment/G28_Seed_Benchmark.py > "$RUNNER_TEMP/g28-benchmark-summary.txt"
+          python3 -c 'import json;d=json.load(open("deployment/G28_seed_benchmark_report.json"));assert d["version"]=="G28_BENCHMARK" and d["kind"]=="SYNTHETIC_HEURISTIC_ONLY" and len(d["rows"])==90 and d["equal_compute_claimed"] is False and d["independent_real_world_impact_measured"] is False;summary=d["summary"];assert [(v["budget"],v["replicates"],v["mean_diversity_occupied_cells"],v["mean_random_occupied_cells"]) for v in summary]==[(16,30,11.333,8.033),(24,30,12,9.233),(64,30,12,11.433)];assert all(v["mean_guided_lookahead"]>v["mean_random_lookahead"] for v in summary)'
+          python3 -c 'from pathlib import Path;p=["deployment/G28_Computational_Freedom_Field.py","deployment/G28_Oneliner_Audit_Builder.py","deployment/G28_Research_Report_Audit_2KB.sh","deployment/G28_Seed_Benchmark.py"];assert all(not any(w in Path(f).read_text() for w in ("hashlib","sha256(","urllib","socket","os.system(","import subprocess")) for f in p)'
+
+      - name: Verify G28-EQ same simulated credit caps, 60 tests and non-cherry-picked 360 comparisons
+        run: |
+          python3 tests/test_g28_equal_cost.py > "$RUNNER_TEMP/g28-eq-tests.log" 2>&1
+          grep -q 'Ran 60 tests' "$RUNNER_TEMP/g28-eq-tests.log"
+          grep -q '^OK$' "$RUNNER_TEMP/g28-eq-tests.log"
+          python3 deployment/G28_Equal_Cost_Benchmark.py deployment/G28_example_request.json > "$RUNNER_TEMP/g28-eq-report.json"
+          python3 -c 'import sys,json;d=json.load(open(sys.argv[1]));r=json.load(open("deployment/G28_equal_cost_expected_summary.json"));v=[[x["validation_cost"],x["credit_cap"],x["mean_occupied_cells_guided"],x["mean_occupied_cells_random"],x["mean_difference_guided_minus_random"]] for x in d["summary"]];assert (d["version"],d["comparison_count"],d["candidate_universe"])==("G28_EQ/1",360,256);assert v==r["mean_coverage_by_case"];assert d["runtime_equalized"] is False and d["real_world_acceleration_proved"] is False and d["metadata_quality_is_a_synthetic_proxy"] is True;assert all(x["guided_spent"]<=x["credit_cap"] and x["random_spent"]<=x["credit_cap"] and x["guided_spent"]==x["guided_screenings"]*x["screen_cost"]+x["guided_validations"]*x["validation_cost"] and x["random_spent"]==x["random_screenings"]*x["screen_cost"]+x["random_validations"]*x["validation_cost"] for x in d["rows"])' "$RUNNER_TEMP/g28-eq-report.json"
+          python3 -c 'from pathlib import Path;p="deployment/G28_Equal_Cost_Benchmark.py";s=Path(p).read_text();assert not any(x in s for x in ("hashlib","sha256(","urllib","socket","os.system(","subprocess.run("))'

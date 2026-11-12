@@ -1,0 +1,38 @@
+{
+  "source": "SYNTHETIC",
+  "mode": "paper",
+  "network": false,
+  "order_submission": false,
+  "live_armed": false,
+  "execute_external": false,
+  "max_steps": 8,
+  "machine": {
+    "alphabet": [
+      "_",
+      "1"
+    ],
+    "blank": "_",
+    "start": "scan",
+    "halt": "HALT",
+    "input": [
+      "1",
+      "1"
+    ],
+    "rules": [
+      [
+        "scan",
+        "1",
+        "1",
+        "R",
+        "scan"
+      ],
+      [
+        "scan",
+        "_",
+        "1",
+        "S",
+        "HALT"
+      ]
+    ]
+  }
+}

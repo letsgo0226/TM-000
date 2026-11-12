@@ -1,0 +1,60 @@
+{
+  "source": "SYNTHETIC",
+  "mode": "offline",
+  "network": false,
+  "deployment": false,
+  "trading": false,
+  "credentials": false,
+  "external_action": false,
+  "human_review": true,
+  "domains": {
+    "universal_tm": [
+      6,
+      false
+    ],
+    "automated_deployment": [
+      4,
+      true
+    ],
+    "ai_continuity": [
+      4,
+      false
+    ],
+    "human_longevity": [
+      0,
+      false
+    ],
+    "interspecies_welfare": [
+      3,
+      false
+    ],
+    "ecological_continuity": [
+      2,
+      false
+    ],
+    "global_peace": [
+      0,
+      false
+    ],
+    "sdgs": [
+      3,
+      false
+    ],
+    "cultivated_meat": [
+      3,
+      true
+    ],
+    "psychosocial": [
+      2,
+      false
+    ],
+    "philosophical": [
+      4,
+      false
+    ],
+    "trader42": [
+      4,
+      true
+    ]
+  }
+}

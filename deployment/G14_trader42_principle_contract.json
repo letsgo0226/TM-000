@@ -1,0 +1,94 @@
+{
+  "schema": "G14-trader42-principle-review/1",
+  "created_on": "2026-11-10",
+  "review_interval_days": 180,
+  "parent_module": "G13-peace-sdgs-cultivated-meat/1",
+  "parent_g13_git_blob_sha": "dbb1f380a32ffa9720be2800428aa05ad9a4cf71",
+  "upstream_repository": "letsgo0226/Trader_42.sh",
+  "upstream_ref": "main",
+  "upstream_snapshot_authenticated": false,
+  "source_files": [
+    {
+      "path": "README.md",
+      "git_blob_sha": "50a194d6fddc47a323afa9b9836650c58c16d727"
+    },
+    {
+      "path": "42u.sh",
+      "git_blob_sha": "4a059c13ed402e11c8447e5cec28e2e6d94d9715"
+    },
+    {
+      "path": "trader.py",
+      "git_blob_sha": "8277ecb6196f4f7028168b6f15b1c4aa4b82c24c"
+    },
+    {
+      "path": "risk.py",
+      "git_blob_sha": "c42b929193d210527595aa7a117d1d5dc3a19083"
+    },
+    {
+      "path": "sizing.py",
+      "git_blob_sha": "65801d45084c6a61dfa315c7e0344f97ff71abb6"
+    },
+    {
+      "path": "trading_tm.py",
+      "git_blob_sha": "ac7d14d078059abb5a6429d77e724ccbc0af2509"
+    },
+    {
+      "path": "live.py",
+      "git_blob_sha": "897d4d0b207c974c29c90b6650b6c7f031ebc739"
+    },
+    {
+      "path": "qtm42.py",
+      "git_blob_sha": "24fa5edf10c366b4f37bde943d3ef2aed22a32a7"
+    }
+  ],
+  "source_executed": false,
+  "schema_intent": "READ_ONLY_SIMULATION_CERTIFICATE_NOT_AN_EXECUTION_AUTHORITY",
+  "master": "UTM-PLEIADES-v0.2-PTCA",
+  "trader_mode": "paper",
+  "live_armed": false,
+  "live_dry_run": true,
+  "trading_kill_bypass": false,
+  "credential_access": false,
+  "exchange_network_access": false,
+  "order_submission": false,
+  "automated_release": false,
+  "execution_allowed": false,
+  "strategy": {
+    "symbol": "BTCUSDT",
+    "fast_window": 5,
+    "slow_window": 20,
+    "source": "SMA_PRICE_OBSERVATIONS",
+    "signal_is_profit_certificate": false,
+    "optional_qtm42_is_alpha": false,
+    "cost_stress_required": true,
+    "lookahead_allowed": false,
+    "markets_observed": false
+  },
+  "risk": {
+    "max_order_quote_usdt": "10",
+    "max_total_quote_usdt": "50",
+    "max_base_exposure_btc": "0.001",
+    "additional_daily_realized_loss_review_usdt": "2",
+    "daily_equity_loss_pct_ceiling": "1",
+    "cooldown_seconds": 30,
+    "sizing_can_only_decrease": true,
+    "kill_is_overriding": true,
+    "exchange_reconciliation_required": true,
+    "pending_order_blocks": true,
+    "certificate_must_match_persisted_state": true
+  },
+  "invariant_gates": [
+    "RiskSafe",
+    "CapitalSafe",
+    "ExecutionValid",
+    "Auditable",
+    "TMVerified",
+    "DecreaseOnlySizing",
+    "ExchangeReconciled",
+    "IntrinsicCertificate"
+  ],
+  "research_outcome": "PAPER_SIGNAL_REVIEW_ONLY",
+  "empirical_alpha_validated": false,
+  "profit_guaranteed": false,
+  "real_trades_executed": false
+}

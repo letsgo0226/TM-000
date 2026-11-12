@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+"""Generate G27's independent math report auditor. Full G24/G25 validation lives in the readable core."""
+from pathlib import Path
+
+PYTHON = "import sys,json\nC=lambda v:v or sys.exit('BLOCKED')\nx=json.load(sys.stdin)\nC(type(x)==dict and x.get('version')=='G27' and x.get('status')=='SYNTHETIC_METADATA_UNVERIFIED')\na=x['domain_state_bits'];b=x['evidence_topic_bits'];C(type(a)==list and len(a)==14 and type(b)==list and len(b)==43)\ns=a+b;C(all(type(v)==int and v in (0,1) for v in s))\np=[];k=2\nwhile len(p)<59:\n if all(k%q for q in p if q*q<=k):p.append(k)\n k+=1\np=p[2:];L=[[q,1] for q,v in zip(p,s) if v];n=d=e=1\nfor j,(q,v) in enumerate(zip(p,s)):\n if v:\n  n*=q\n  if j<14:d*=q\n  else:e*=q\nC(n==x['combined_godel_integer'] and d==x['g24_integer'] and e==x['evidence_topic_integer'])\nC(x['formal_log_coefficients']==L and x['formal_log_terms']==len(L) and x['distinct_topics_received']==sum(b))\nC(x['integer_multiplicative_updates']==x['exact_formal_log_additions'] and x['direct_numeric_factorization_equal'] is True and x['exact_log_product_identity'] is True)\nC(all(x[k] is False for k in ('independent_evidence_authenticated','independent_impact_proved','all_dimensions_immortality_proved','world_peace_achieved','all_sdgs_achieved','cultivated_meat_approved_or_cruelty_free_proved','trader42_profit_validated','production_deployed','sha_used','network_access')))\nC(x['orders_submitted']==0 and x['human_review_required'] is True and x['metadata_present_not_authenticated'] is True)\nprint(json.dumps(dict(version='G27_AUDIT',exact_formal_log_equal=True,prime_power_integer=n,domain_factors=14,topic_factors=43,external_authentication=False,deploy=False,orders=0),sort_keys=True))"
+
+def build():
+    return ("python3 -c $'" + PYTHON.replace("\\", "\\\\").replace("'", "\\'").replace("\n", "\\n") + "'\n").encode("utf-8")
+
+if __name__ == "__main__":
+    result = build()
+    if len(result)>2048 or result.count(b"\n")!=1:
+        raise SystemExit("invalid 2KB source")
+    Path(__file__).with_name("Universal_G_G27_Exact_Log_Audit_2KB.sh").write_bytes(result)
+    print("G27 bytes",len(result))

@@ -132,6 +132,24 @@
       "status": "active-bounded-total-reference"
     },
     {
+      "id": "TM-015",
+      "record": "TM-015-Real-God-Turing-Machine.md",
+      "cores": [
+        "Real_God_Turing_Machine.sh"
+      ],
+      "considers": [
+        "TM-000",
+        "UTM-PLEIADES-v0.2-PTCA"
+      ],
+      "totality_scope": "FINITE_SELF_REFERENCE_AND_REVERSIBLE_ENCODING_ONLY",
+      "continuity_scope": "SYMBOLIC_ONLY",
+      "source_sha256": "4e68a5a333417e7f5b49989a297b72a41642efce892b0033b27621f19c248c6d",
+      "status": "research-candidate-not-master",
+      "auto_execute": false,
+      "production_deploy": false,
+      "replaces_default_machine": false
+    },
+    {
       "id": "UTM-PLEIADES",
       "record": "UTM-PLEIADES-v0.1.md",
       "cores": [

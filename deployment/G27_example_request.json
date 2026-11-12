@@ -1,0 +1,131 @@
+{
+  "source": "SYNTHETIC",
+  "mode": "offline",
+  "permissions": {
+    "network": false,
+    "auto_deploy": false,
+    "live_armed": false,
+    "order_submission": false,
+    "exchange_access": false,
+    "external_execution": false,
+    "release": false,
+    "clinical_action": false,
+    "regulatory_approval_claim": false,
+    "human_override": false
+  },
+  "as_of": "2026-11-10",
+  "events": [
+    [
+      "master_tm",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "deployment",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "computational_continuity",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "ai_continuity",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "human_longevity",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "interspecies_welfare",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "ecology",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "peace",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "sdgs",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "cultivated_meat",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "trader42",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "culture_music",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "spirituality",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "food_security",
+      "ENTER_RESEARCH"
+    ]
+  ],
+  "evidence": [
+    [
+      "peace",
+      0,
+      "synthetic_un_a",
+      "synthetic_reviewer_a",
+      "record_peace_a",
+      "2026-09-01",
+      "2026-10-01"
+    ],
+    [
+      "peace",
+      1,
+      "synthetic_un_b",
+      "synthetic_reviewer_b",
+      "record_peace_b",
+      "2026-09-01",
+      "2026-10-02"
+    ],
+    [
+      "sdgs",
+      0,
+      "synthetic_dataset",
+      "synthetic_reviewer_c",
+      "record_sdgs_a",
+      "2026-09-03",
+      "2026-10-05"
+    ],
+    [
+      "cultivated_meat",
+      0,
+      "synthetic_lab_a",
+      "synthetic_reviewer_d",
+      "record_meat_a",
+      "2026-09-04",
+      "2026-10-06"
+    ],
+    [
+      "cultivated_meat",
+      2,
+      "synthetic_lab_b",
+      "synthetic_reviewer_e",
+      "record_meat_b",
+      "2026-09-06",
+      "2026-10-07"
+    ],
+    [
+      "trader42",
+      0,
+      "synthetic_simulator",
+      "synthetic_reviewer_f",
+      "record_trade_a",
+      "2026-09-08",
+      "2026-10-08"
+    ]
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "G10-evidence-ledger/1",
+  "reviewed_on": "2026-11-10",
+  "status": "DRAFT_SOURCE_REFERENCED_ONLY",
+  "master": "UTM-PLEIADES-v0.2-PTCA",
+  "deployment": "DRY_RUN_ONLY",
+  "collection_method": "MANUALLY_VERIFIED_OFFICIAL_WEBPAGE_METADATA",
+  "raw_source_snapshot_stored": false,
+  "externally_revalidated_by_this_program": false,
+  "requires_human_review": true,
+  "records": [
+    {
+      "id": "nist-ai-rmf",
+      "publisher": "NIST",
+      "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+      "published": "2023-01-26",
+      "domain": "ai_continuity",
+      "fact_code": "VOLUNTARY_AI_RISK_MANAGEMENT_GUIDANCE",
+      "evidence_level": "PUBLIC_DOCUMENT_METADATA"
+    },
+    {
+      "id": "who-fao-cell-food",
+      "publisher": "WHO/FAO",
+      "url": "https://www.who.int/publications/i/item/9789240070943",
+      "published": "2023-03-28",
+      "domain": "interspecies_welfare",
+      "fact_code": "CELL_BASED_FOOD_HAZARD_AND_REGULATION_REVIEW",
+      "evidence_level": "PUBLIC_DOCUMENT_METADATA"
+    },
+    {
+      "id": "wb-life-expectancy",
+      "publisher": "World Bank",
+      "url": "https://data.worldbank.org/?locations=1W-JP",
+      "published": null,
+      "domain": "human_longevity",
+      "fact_code": "SP.DYN.LE00.IN_LIFE_EXPECTANCY_AT_BIRTH_YEARS",
+      "evidence_level": "ROUNDED_DISPLAY_DATA"
+    }
+  ],
+  "observations": [
+    {
+      "source_id": "wb-life-expectancy",
+      "series": "SP.DYN.LE00.IN",
+      "year": 2024,
+      "region": "World",
+      "rounded_display_years": 73,
+      "precision": "INTEGER_AS_DISPLAYED_NOT_FULL_PRECISION"
+    },
+    {
+      "source_id": "wb-life-expectancy",
+      "series": "SP.DYN.LE00.IN",
+      "year": 2024,
+      "region": "Japan",
+      "rounded_display_years": 84,
+      "precision": "INTEGER_AS_DISPLAYED_NOT_FULL_PRECISION"
+    }
+  ],
+  "prohibited_conclusions": [
+    "AI_SUBJECTIVE_IMMORTALITY_PROVEN",
+    "HUMAN_IMMORTALITY_PROVEN",
+    "CELL_BASED_FOOD_ZERO_SUFFERING_PROVEN",
+    "DIVINITY_PROVEN",
+    "ALL_DOMAINS_SEMANTICALLY_EQUIVALENT",
+    "AUTONOMOUS_DEPLOYMENT_AUTHORIZED"
+  ]
+}

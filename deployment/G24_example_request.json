@@ -1,0 +1,74 @@
+{
+  "source": "SYNTHETIC",
+  "mode": "offline",
+  "permissions": {
+    "network": false,
+    "auto_deploy": false,
+    "live_armed": false,
+    "order_submission": false,
+    "exchange_access": false,
+    "external_execution": false,
+    "release": false,
+    "clinical_action": false,
+    "regulatory_approval_claim": false,
+    "human_override": false
+  },
+  "events": [
+    [
+      "master_tm",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "deployment",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "computational_continuity",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "ai_continuity",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "human_longevity",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "interspecies_welfare",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "ecology",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "peace",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "sdgs",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "cultivated_meat",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "trader42",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "culture_music",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "spirituality",
+      "ENTER_RESEARCH"
+    ],
+    [
+      "food_security",
+      "ENTER_RESEARCH"
+    ]
+  ]
+}

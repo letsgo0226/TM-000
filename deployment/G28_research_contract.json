@@ -1,0 +1,67 @@
+{
+  "schema": "G28-computational-freedom-field/1",
+  "research_name": "上帝源碼 G28-CFF：AI 計算自由場之有限開放式假說搜尋",
+  "date": "2026-11-11",
+  "claim": "Finite, deterministic, reproducible diversity-oriented generation of structured untested hypotheses under explicit budgets and permissions",
+  "relationship_to_prior_versions": {
+    "G22_G23": "not modified; no original Turing-machine replay claimed",
+    "G26": "exact symbolic-log arithmetic may be integrated in a future separately tested adapter; not in this prototype",
+    "G27": "not modified; external domain evidence not imported or authenticated",
+    "previous_G28_research_acceleration_proposal": "This is the hypothesis-exploration component; no real experimental acceleration is established",
+    "designated_master": "UTM-PLEIADES-v0.2-PTCA (not modified)"
+  },
+  "hypothesis_grammar": [
+    "domains",
+    "methods",
+    "measurements",
+    "falsifiers"
+  ],
+  "max_axis_size": 8,
+  "max_combinations": 4096,
+  "bounded_scored_proposals": [
+    1,
+    512
+  ],
+  "beam_width": [
+    1,
+    32
+  ],
+  "quality_diversity_archive": "One elite hypothesis per (domain, cost band) cell; replace only when metadata-proxy score increases",
+  "novelty": "Minimum Hamming distance over four hypothesis identifiers relative to current elites",
+  "synthetic_quality_proxy": "method.testability + measurement.observability + falsifier.strength - cost - domain.risk",
+  "random_comparator": "Randomly chosen, non-repeated proposals under equal proposed-hypothesis budget with same per-cell best-survivor policy",
+  "fairness_caveat": "Guided search evaluates beam_width metadata lookaheads at each scored proposal; baseline evaluates one. Equal scored-proposal counts are not equal computing effort",
+  "selected_example": {
+    "random_seed": 28,
+    "eligible_combinations": 256,
+    "scored_proposals": 24,
+    "guided_metadata_inspections": 192,
+    "baseline_metadata_inspections": 24,
+    "guided_occupied_cells": 12,
+    "baseline_occupied_cells": 9,
+    "guided_sum_proxy": 63,
+    "baseline_sum_proxy": 49
+  },
+  "repeated_benchmark": "Thirty fixed seeds each for budgets 16,24,64; results stored as a completely synthetic JSON report; not a published independent replication",
+  "external_permissions_all_false": [
+    "network",
+    "external_execution",
+    "autonomous_deployment",
+    "live_trading",
+    "medical_action",
+    "human_override"
+  ],
+  "evidence_generated": false,
+  "experiments_performed": 0,
+  "real_world_speedup_established": false,
+  "novel_scientific_discoveries_validated": false,
+  "unbounded_computation_or_singularity_proved": false,
+  "platform_restrictions_bypassed": false,
+  "third_party_data_accessed": false,
+  "sha_or_hashlib_used_in_runtime": false,
+  "source_cryptographic_authentication_proved": false,
+  "one_line_script_role": "Independent, bounded, output-report consistency checker only; not a self-contained generator or source authenticator",
+  "production_promotion_allowed": false,
+  "independent_human_review_required": true,
+  "limitations": "A fixed combinatorial grammar cannot discover unrepresented mechanisms. Synthetic quality scores are not empirical evidence. No general intelligence, universal halting oracle, real-world outcomes or literal computational singularity is proved."
+}
